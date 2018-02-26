@@ -1,0 +1,36 @@
+html {
+	font-family: 'Inconsolata', monospace;
+	font-size: 10px;
+	background: #252425;
+	color: #90A4AE;
+	letter-spacing: 2px;
+	transition: all .5s ease;
+	h1 {
+		margin: 30px auto;
+		font-size: 4rem;
+		text-align: center;
+	}
+	p {
+		width: 75%;
+		display: block;
+		margin: 20px auto;
+		font-size: 2rem;
+		line-height: 2.5rem;
+	}
+	button {
+		display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(5%);
+		margin: 15px auto;
+		background-color: #607D8B;
+    border: none;
+    color: #FFFFFF;
+    padding: 10px 40px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2rem;
+    cursor: pointer;
+	}
+}
