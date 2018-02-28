@@ -4,7 +4,7 @@ html {
 	background: #252425;
 	color: #90A4AE;
 	letter-spacing: 2px;
-	transition: all .5s ease;
+	transition: all .1s linear;
 	h1 {
 		margin: 30px auto;
 		font-size: 4rem;
@@ -32,5 +32,11 @@ html {
     text-decoration: none;
     font-size: 2rem;
     cursor: pointer;
+		&:disabled, &[disabled] {
+			background-color: #ccc;
+			color: #666;
+      pointer-events: none;
+			cursor: not-allowed;
+		}
 	}
 }

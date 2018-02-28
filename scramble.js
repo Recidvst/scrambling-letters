@@ -1,6 +1,3 @@
-// in progresss
-// TODO - reset button functionality - to scramble again + improve code.
-
 ((Scrambler) => { 	
 	// utility fn to get a random character 
 	const randomChar = function() {
@@ -8,10 +5,13 @@
 	}
 	// utility fn to get a random delay time 
 	const randomTime = function() {
-		return 2000 + (Math.random() * (10 - 4000) + 4000);
+		return 1000 + (Math.random() * (1 - 3000) + 3000);
 	}	
-	// get scrambler elements
+	// get scrambler elements, reset btn, init blocker
 	const domEls = document.querySelectorAll('[data-scrambler]'); 
+	const button = document.querySelector("#scramble-button");
+	let prevent = false; 
+	
 	// main fn
 	var scrambleFn = function() {
 		// for each scramble element
@@ -20,7 +20,7 @@
 			let newLetters = element.textContent.split('');
 			let revert = []; // init empty kill switch array		
 			
-			setInterval( function() { 
+			const ticker = setInterval( function() { 
 				// map over letters and replace with random or revert back to truth
 				truth.map( (letter, i) => {
 						// break if a space
@@ -38,15 +38,28 @@
 						// set html
 						element.textContent = newLetters.join('');
 					});
+				
+				// kill interval after all letter returned to normal to save stack
+					let killCheck = (newLetters.length == truth.length) && newLetters.every(function(e, i) {
+							return e === truth[i]; 
+					});
+					if ( killCheck ) {
+						clearInterval(ticker); // stop looping
+						prevent = false; // allow fn to be restarted
+						button.disabled = false;
+					}
 			}, 100);
 			
 		}); // end forEach
 	}; // end main
 	scrambleFn();
 	
-	// const button = document.querySelector("#scramble-button");
-	// button.addEventListener('click', function(event) {
-	// 	scrambleFn();
-	// });
+	button.addEventListener('click', function(e) {
+		if ( prevent === false ) { // if loop not in progress
+			scrambleFn();
+		}
+		prevent = true; // loop blocked
+		button.disabled = true;
+	});
 	
 })();
