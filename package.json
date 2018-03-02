@@ -1,0 +1,44 @@
+{
+  "name": "scrambling-letters",
+  "version": "1.1.0",
+  "description": "Scrambling Letters",
+  "main": "scramble.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Recidvst/scrambling-letters"
+  },
+  "author": "Chris Snowden <cdsnowden@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Recidvst/scrambling-letters/issues"
+  },
+  "homepage": "https://github.com/Recidvst/scrambling-lettersr#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "bootstrap-grid": "^2.0.1",
+    "browser-sync": "^2.18.8",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.5.1",
+    "gulp-uglify": "^2.1.2",
+    "gulp-util": "^3.0.8"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}

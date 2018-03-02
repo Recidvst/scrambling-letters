@@ -23,31 +23,31 @@
 			const ticker = setInterval( function() { 
 				// map over letters and replace with random or revert back to truth
 				truth.map( (letter, i) => {
-						// break if a space
-						if (' \t\n\r\v'.indexOf(letter) > -1) return; 
-						// set new random letter
-						newLetters[i] = randomChar();
-						// set random timeout to make letters reset at different times
-						setTimeout( function() { 
-								revert[i] = true; 
-						}, randomTime() );
-						// reset individual letter if kill switch
-						if ( revert[i] === true ) {
-								newLetters[i] = truth[i];
-						}
-						// set html
-						element.textContent = newLetters.join('');
-					});
+					// break if a space
+					if (' \t\n\r\v'.indexOf(letter) > -1) return; 
+					// set new random letter
+					newLetters[i] = randomChar();
+					// set random timeout to make letters reset at different times
+					setTimeout( function() { 
+						revert[i] = true; 
+					}, randomTime() );
+					// reset individual letter if kill switch
+					if ( revert[i] === true ) {
+							newLetters[i] = truth[i];
+					};
+					// set html
+					element.textContent = newLetters.join('');
+				});
 				
 				// kill interval after all letter returned to normal to save stack
 					let killCheck = (newLetters.length == truth.length) && newLetters.every(function(e, i) {
-							return e === truth[i]; 
+						return e === truth[i]; 
 					});
 					if ( killCheck ) {
 						clearInterval(ticker); // stop looping
 						prevent = false; // allow fn to be restarted
 						button.disabled = false;
-					}
+					};
 			}, 100);
 			
 		}); // end forEach
