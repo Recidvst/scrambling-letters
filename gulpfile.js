@@ -4,7 +4,8 @@ var babel = require('gulp-babel');
 
 // Packages Declaration
 var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
+// var uglify = require('gulp-uglify');
+var uglify = require('gulp-uglify-es').default;
 var rename = require('gulp-rename');
 var cleancss = require('gulp-clean-css');
 var concat = require('gulp-concat');
@@ -53,7 +54,11 @@ gulp.task('dist scripts', function() {
       'node_modules/babel-polyfill/dist/polyfill.js',
       'js/scramble.js'
       ])
-      .pipe(babel({presets: ['es2015']}).on('error', gutil.log))
+      // .pipe(babel({
+      //   presets: [
+      //     'es2015'
+      //   ]
+      // }).on('error', gutil.log))
       .pipe(sourcemaps.init())
       .pipe(uglify().on('error', gutil.log))
       .pipe(concat('scramble.js'))
@@ -67,10 +72,8 @@ gulp.task('dist scripts', function() {
 gulp.task('dev scripts', function() {
     return gulp.src(
       [
-      'node_modules/babel-polyfill/dist/polyfill.js',
       'js/example.js'
       ])
-      .pipe(babel({presets: ['es2015']}).on('error', gutil.log))
       .pipe(sourcemaps.init())
       .pipe(uglify().on('error', gutil.log))
       .pipe(concat('scrambledev.js'))
