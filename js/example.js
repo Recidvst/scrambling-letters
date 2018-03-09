@@ -6,7 +6,9 @@ Scrambler('[data-scrambler-h1]');
 Scrambler('.scramble-text-class');
 
 Scrambler({
-    target: '#scramble-text-id'
+    target: '#scramble-text-id',
+    random: [2000, 50000],
+    speed: 50
 });
 
 

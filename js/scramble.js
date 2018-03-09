@@ -19,6 +19,7 @@ var Scrambler = (function () {
 			if ( passedAsObject ) { 
 				scrambleArgs.target = ( typeof scrambleArgs.target !== 'undefined' && ( passedAsObject ) ) ? scrambleArgs.target : '[data-scrambler]';
 				scrambleArgs.random = ( typeof scrambleArgs.random !== 'undefined' && ( passedAsObject ) ) ? scrambleArgs.random : [1000, 3000];
+				scrambleArgs.speed = ( typeof scrambleArgs.speed !== 'undefined' && ( passedAsObject ) ) ? scrambleArgs.speed : 100;
 			}
 			// utility fn to get a random delay time 
 			const randomTime = function() {
@@ -43,7 +44,8 @@ var Scrambler = (function () {
 							let truth = element.textContent.split(''); // get letters
 							let newLetters = element.textContent.split('');
 							let revert = []; // init empty kill switch array	
-							
+							let speed = (scrambleArgs.speed) ? scrambleArgs.speed : 100 ;
+
 							const ticker = setInterval( function() { 
 								// map over letters and replace with random or revert back to truth
 								truth.map( (letter, i) => {
@@ -71,7 +73,7 @@ var Scrambler = (function () {
 										clearInterval(ticker); // stop looping
 										element.setAttribute('data-scramble-active','false');
 									};
-							}, 100); // end ticker
+							}, speed); // end ticker
 
 						} // end check for active
 
@@ -85,5 +87,3 @@ var Scrambler = (function () {
 	return scramble;
 	
 })();
-
-// console.log(Scrambler);
