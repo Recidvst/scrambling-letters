@@ -3,7 +3,6 @@ var Scrambler = (function () {
 	// main fn - exposed to window
 	const scramble = function(scrambleArgs) {
 		try {
-			var prevent = false;
 			/*** helper functions ***/
 			// utility fn to get a random character 
 			const randomChar = function() {
