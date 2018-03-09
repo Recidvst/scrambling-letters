@@ -7,8 +7,8 @@ Scrambler('.scramble-text-class');
 
 Scrambler({
     target: '#scramble-text-id',
-    random: [2000, 50000],
-    speed: 50
+    random: [1000, 30000],
+    speed: 100
 });
 
 
