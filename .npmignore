@@ -4,3 +4,5 @@ js/example.js
 scss/example.scss
 dist/scrambleDev.min.css
 dist/scrambleDev.min.js
+yarn.lock
+package-lock.json

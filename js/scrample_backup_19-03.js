@@ -1,5 +1,5 @@
 
-const Scrambler = (function () {	
+var Scrambler = (function () {	
 	// main fn - exposed to window
 	const scramble = function(scrambleArgs) {
 		try {
@@ -32,7 +32,7 @@ const Scrambler = (function () {
 
 			function scrambleFire ( scrambleArgs ) { // remember, hoisted
 					// get chosen scramble items
-					const scramble = ( passedAsObject ) ? [...document.querySelectorAll(scrambleArgs.target)] : [...document.querySelectorAll(scrambleArgs)] ;
+					var scramble = ( passedAsObject ) ? [...document.querySelectorAll(scrambleArgs.target)] : [...document.querySelectorAll(scrambleArgs)] ;
 
 					// for each scramble element
 					scramble.forEach(function (element, which) {
