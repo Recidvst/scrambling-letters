@@ -1,6 +1,6 @@
 {
   "name": "scrambling-letters",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Scrambling Letters",
   "main": "scramble.min.js",
   "scripts": {

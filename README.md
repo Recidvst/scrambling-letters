@@ -15,8 +15,6 @@ Loops through any elements with the relevant selector or data attribute and scra
 
 To-do:
 - Test suite.
-- Browser support improvements.
-- Better handling of sub-tags.
 
 
 ## Get Scrambling Letters
