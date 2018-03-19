@@ -20,7 +20,7 @@ gulp.task('default', ['check', 'clean', 'dev-sass', 'dev-scripts', 'dist-scripts
 
 // Gulp Watch function
 gulp.task('watch', function() {
-  gulp.watch('scss/*.scss', ['dev sass']);
+  gulp.watch('scss/*.scss', ['dev-sass']);
   gulp.watch('js/*.js', ['dev-scripts', 'dist-scripts', 'dist-ES5-scripts', 'dist-babel-scripts']);
   gulp.watch('*.html').on('change', browserSync.reload);
 })

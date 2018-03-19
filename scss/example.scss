@@ -81,6 +81,11 @@ html {
 				}
 		}
 	}
+	footer {
+		p {
+			color: $text;
+		}
+	}
 	button {
     display: inline-block;
     position: relative;

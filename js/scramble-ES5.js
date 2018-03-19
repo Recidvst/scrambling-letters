@@ -22,6 +22,7 @@ var Scrambler = function () {
 						element.setAttribute('data-scramble-active', 'true');
 
 						var truth = element.textContent.split(''); // get letters
+						var truthHTML = element.innerHTML; // get html
 						var newLetters = element.textContent.split('');
 						var revert = []; // init empty kill switch array	
 						var speed = scrambleArgs.speed ? scrambleArgs.speed : 100;
@@ -50,6 +51,7 @@ var Scrambler = function () {
 								return e === truth[i];
 							});
 							if (killCheck) {
+								element.innerHTML = truthHTML;
 								clearInterval(ticker); // stop looping
 								element.setAttribute('data-scramble-active', 'false');
 							};

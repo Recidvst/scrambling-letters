@@ -31,10 +31,6 @@ To-do:
 - Initiate a Scrambler instance by calling Scrambler() with a valid selector or data-attribute. 
 - If you wish to add configuration, pass Scrambler an object containing config options (see below).
 
-#### Warning:
-- Scrambler will keep text that lives inside a sub-tag like a span or link, but will eat any markup. This will be addressed in a later version, but for now best practice is to use quite granular targeting. 
-- Of course, you can target generic tags but avoid certain elements by using something similar to this: ':not(.no-scramble)'.
-
 ### Configure
 You can configure your Scrambler instance by passing an object. The available options are as follows:
 
@@ -53,3 +49,6 @@ You can configure your Scrambler instance by passing an object. The available op
 **Type:** integer  
 **Default:** 100  
 **Required:** No.  
+
+#### Warning:
+- Scrambler will temporarily lose unique styling from text within child nodes e.g. link tags within a paragraph. This will be replaced at the end of the cycle but can result in FOUC. This is planned to be addressed later, but best practice is to be more granular in your targeting.

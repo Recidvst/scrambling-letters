@@ -41,6 +41,7 @@ const Scrambler = (function () {
 							element.setAttribute('data-scramble-active','true');
 
 							let truth = element.textContent.split(''); // get letters
+							let truthHTML = element.innerHTML; // get html
 							let newLetters = element.textContent.split('');
 							let revert = []; // init empty kill switch array	
 							let speed = (scrambleArgs.speed) ? scrambleArgs.speed : 100 ;
@@ -69,6 +70,7 @@ const Scrambler = (function () {
 										return e === truth[i]; 
 									});
 									if ( killCheck ) {
+										element.innerHTML = truthHTML;
 										clearInterval(ticker); // stop looping
 										element.setAttribute('data-scramble-active','false');
 									};
