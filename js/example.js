@@ -1,5 +1,5 @@
 
-// Scrambler();
+console.log('example test');
 
 Scrambler('[data-title-scrambler]');
 
