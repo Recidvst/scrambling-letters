@@ -16,12 +16,12 @@ var browserSync = require('browser-sync').create();
 var autoprefixer = require('gulp-autoprefixer');
 
 // Gulp Default tasks
-gulp.task('default', ['check', 'clean', 'dev-sass', 'dev-scripts', 'dist-scripts', 'browser-sync', 'watch']);
+gulp.task('default', ['check', 'clean', 'dev-sass', 'dev-scripts', 'dist-scripts', 'dist-ES5-scripts', 'dist-babel-scripts', 'browser-sync', 'watch']);
 
 // Gulp Watch function
 gulp.task('watch', function() {
   gulp.watch('scss/*.scss', ['dev sass']);
-  gulp.watch('js/*.js', ['dev scripts', 'dist scripts']);
+  gulp.watch('js/*.js', ['dev-scripts', 'dist-scripts', 'dist-ES5-scripts', 'dist-babel-scripts']);
   gulp.watch('*.html').on('change', browserSync.reload);
 })
 
@@ -51,17 +51,49 @@ gulp.task('dev-sass', function() {
 gulp.task('dist-scripts', function() {
     return gulp.src(
       [
-      // 'node_modules/babel-polyfill/dist/polyfill.js',
       'js/scramble.js'
       ])
-      // .pipe(babel({
-      //   presets: [
-      //     'es2015'
-      //   ]
-      // }).on('error', gutil.log))
       .pipe(sourcemaps.init())
       .pipe(uglify().on('error', gutil.log))
       .pipe(concat('scramble.js'))
+      .pipe(rename({
+        suffix: ".min"
+      }))
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest('dist'))
+      .pipe(browserSync.reload({stream: true}))
+});
+// Babel
+gulp.task('dist-ES5-scripts', function() {
+    return gulp.src(
+      [
+      'js/scramble-ES5.js'
+      ])
+      .pipe(sourcemaps.init())
+      .pipe(uglify().on('error', gutil.log))
+      .pipe(concat('scramble-ES5.js'))
+      .pipe(rename({
+        suffix: ".min"
+      }))
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest('dist'))
+      .pipe(browserSync.reload({stream: true}))
+});
+// Babel
+gulp.task('dist-babel-scripts', function() {
+    return gulp.src(
+      [
+      'node_modules/babel-polyfill/dist/polyfill.js',
+      'js/scramble.js'
+      ])
+      .pipe(babel({
+        presets: [
+          'es2015'
+        ]
+      }).on('error', gutil.log))
+      .pipe(sourcemaps.init())
+      .pipe(uglify().on('error', gutil.log))
+      .pipe(concat('scramble-babel-polyfill.js'))
       .pipe(rename({
         suffix: ".min"
       }))
