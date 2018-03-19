@@ -11,12 +11,12 @@ Loops through any elements with the relevant data attribute and scrambles the le
 
 [Demo Page](https://recidvst.github.io/scrambling-letters 'Scrambling Letters demo')
 
-[Codepen example](https://codepen.io/Recidvst/pen/ZrjmJj "Scrambling Letters Codepen")
+[Codepen initial POC](https://codepen.io/Recidvst/pen/ZrjmJj "Scrambling Letters Codepen")
 
 
 To-do:
 - Test suite.
-- Browser compatibility run-through.
+- Browser support improvements.
 - Better handling of sub-tags.
 
 
@@ -33,7 +33,7 @@ To-do:
 
 #### Warning:
 - Scrambler will keep text that lives inside a sub-tag like a span or link, but will eat any markup. This will be addressed in a later version, but for now best practice is to use quite granular targeting. 
-- Of course, you can avoid this by using something similar to this: ':not(.no-scramble)'.
+- Of course, you can target generic tags but avoid certain elements by using something similar to this: ':not(.no-scramble)'.
 
 ### Configure
 You can configure your Scrambler instance by passing an object. The available options are as follows:

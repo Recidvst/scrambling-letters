@@ -16,7 +16,7 @@ var browserSync = require('browser-sync').create();
 var autoprefixer = require('gulp-autoprefixer');
 
 // Gulp Default tasks
-gulp.task('default', ['check', 'clean', 'dev sass', 'dev scripts', 'dist scripts', 'browser-sync', 'watch']);
+gulp.task('default', ['check', 'clean', 'dev-sass', 'dev-scripts', 'dist-scripts', 'browser-sync', 'watch']);
 
 // Gulp Watch function
 gulp.task('watch', function() {
@@ -26,7 +26,7 @@ gulp.task('watch', function() {
 })
 
 // SASS Compile + Minify
-gulp.task('dev sass', function() {
+gulp.task('dev-sass', function() {
   return gulp.src(
     [
     'node_modules/bootstrap-grid/dist/grid.min.css',
@@ -48,7 +48,7 @@ gulp.task('dev sass', function() {
     .pipe(browserSync.reload({stream: true}))
 });
 // Concat + Minify .js
-gulp.task('dist scripts', function() {
+gulp.task('dist-scripts', function() {
     return gulp.src(
       [
       // 'node_modules/babel-polyfill/dist/polyfill.js',
@@ -69,7 +69,7 @@ gulp.task('dist scripts', function() {
       .pipe(gulp.dest('dist'))
       .pipe(browserSync.reload({stream: true}))
 });
-gulp.task('dev scripts', function() {
+gulp.task('dev-scripts', function() {
     return gulp.src(
       [
       'js/example.js'
