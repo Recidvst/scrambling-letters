@@ -1,6 +1,4 @@
 
-console.log('example test');
-
 Scrambler('[data-title-scrambler]');
 
 Scrambler('p:not(.no-scramble), ul:not(.no-scramble) li');

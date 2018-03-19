@@ -1,7 +1,5 @@
 
-	console.log('out');
 var Scrambler = (function () {	
-	console.log('in');
 	// main fn - exposed to window
 	const scramble = function(scrambleArgs) {
 		try {
