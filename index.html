@@ -5,52 +5,136 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="title" content="Scrambling Letters ">
-    <meta name="description" content="Scrambling Letters.">
+    <meta name="description" content=" Scrambling Letters - a lightweight javascript library for adding a scrambling/decoding effect to your text.">
     <meta name="author" content="Recidvst">
 
     <title>Scrambling Letters</title>
 
     <link href="dist/scrambleDev.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
   </head>
 
 <body>
 
-<main class="container-fluid">
+<main class="container">
 
-  <header class="row heading">
-    <div class="col-xs-12">
-      <h1 data-scrambler data-scrambler-h1 class="text-center"> Scrambling Letters </h1>
-    </div>
-  </header>
-        
-    <p data-scrambler class="scramble-text-class">
-        Doesn't the devil live forever; who ever heard that the devil was dead? Did you ever see any person wearing mourning for the devil?
-    </p>
+    <header class="row heading">
+        <div class="col-xs-12">
+            <h1 data-title-scrambler class="text-center"> Scrambling Letters </h1>
+            <h3 id="scramble-text-id" class="text-center"> A lightweight javascript library for adding a scrambling/decoding effect to your text.</h3>
+        </div>
 
-    <button id="scramble-button"> Scramble </button>
+        <div class="col-xs-12 button-hold text-center">
+            <button class="trigger-btn" id="scramble-title-button"> Scramble Titles </button>
+            <button class="trigger-btn" id="scramble-paragraph-button"> Scramble Text </button>
+        </div>
+    </header>        
 
-    <p data-scrambler class="scramble-text-class">
-        Consider the subtleness of the sea; how its most dreaded creatures glide under water, unapparent for the most part, and treacherously hidden beneath the loveliest tints of azure..... Consider all this; and then turn to this green, gentle , and most docile earth; consider them both, the sea and the land; and do you not find a strange analogy to something in yourself?
-    </p>
+    <section class="row why-scrambling">
+        <div class="col-xs-12">
+            <h2 data-title-scrambler> Why Scrambling Letters? </h2>
+            <ul>
+                <li>
+                    Vanilla JS with no dependencies
+                </li>
+                <li>
+                    Just 9kb dist minified
+                </li>
+                <li>
+                    Support for targeting multiple text sections separately
+                </li>
+                <li>
+                    Simple configuration options 
+                </li>
+                <li>
+                    Available on NPM and Yarn
+                </li>
+            </ul>
+        </div>
+    </section>
 
-    <p data-scrambler id="scramble-text-id">
-        <span>
-        Why did the old Persians hold the sea holy? Why did the Greeks give it a separate deity, and own brother Jove?
-        </span> 
-        Surely all this is not without meaning. And still deeper the meaning of that story of Narcissus, who because he could not grasp the tormenting mild image he saw in the fountain, plunged into it and was drowned. But that same image, we ourselves see in all rivers and oceans. It is the image of the ungraspable phantom of life; and this is the key to it all. 
-    </p>
+    <section class="row how-to">
+        <div class="col-xs-12 get-started">
+            <h2 data-title-scrambler> Getting Started </h2>
+    
+            <h3 data-title-scrambler> Download </h3>
+            <ul>
+                <li>Download the Scrambling Letters dist files from <a href="https://github.com/Recidvst/scrambling-letters" title="Scrambling Letters Github page">Github</a> or from <a href="https://www.npmjs.com/package/scrambling-letters" title="Scrambling Letters NPM page">NPM</a> or <a href="https://yarnpkg.com/en/package/scrambling-letters" title="Scrambling Letters Yarn page">Yarn</a></li>
+                <br />
+                <li>Include the minified scramble.min.js file in the manner of your choice. This will allow you to access the new <strong class="highlight">Scrambler()</strong> function.</li>
+            </ul>
+    
+            <h3 data-title-scrambler> Initiate </h3>
+            <ul>
+                <li> Scrambler() needs to be told which piece of text to scramble. </li>
+                <br />
+                <li>Initiate a Scrambler instance by calling <strong class="highlight">Scrambler()</strong> with a valid selector or data-attribute. 
+                    <br>
+                    <strong class="highlight">e.g. Scrambler('.example-text'); or Scrambler('[data-example-text]');</strong>
+                </li>
+                <br />
+                <li> If you wish to add configuration, pass <strong class="highlight">Scrambler()</strong> an object containing config options (see below).</li>
+            </ul>
+            <h4 data-title-scrambler> Warning: </h4>
+            <p> 
+            Scrambler will keep text that lives inside a sub-tag like a span or link, but will eat any markup. This will be addressed in a later version, but for now best practice is to use quite granular targeting.
+            </p>
+            <p> 
+            Of course, you can avoid this by using something similar to this: ':not(.no-scramble)'.           
+            </p>
+        </div>
+        <div class="col-xs-12 options">
+        <h2 data-title-scrambler> Settings </h2>
+            <h3 data-title-scrambler> Configure </h3>
+            <p>
+                You can configure your Scrambler instance by passing your selector and some config parameters as an object. e.g: <br />
+                <pre>
+        Scrambler({
+            <span>target:</span> '[data-title-scrambler]',
+            <span>random:</span> [1000, 30000],
+            <span>speed:</span> 100
+        });</pre>
+            </p>
+            <p>
+                The available options are as follows:
+                <ul class="no-scramble">
+                    <li>
+                        <h4 data-title-scrambler> Target </h4>
+                        <strong> Purpose: </strong> This is the text you wish to Scramble! Pass a selector or data attribute (or anything else valid for document.querySelectorAll). <br />
+                        <strong> Type: </strong> string <br />
+                        <strong> Default: </strong> [data-scrambler] <br />
+                        <strong> Required: </strong> Yes.
+                    </li>
+                    <li>
+                        <h4 data-title-scrambler> Random </h4>
+                        <strong> Purpose: </strong> This controls the randomised time before each letter returns to its original state. The first value is the minimum delay and the second value is the maximum. E.g. changing [1000, 3000] to [1000, 6000] would increase the maximum time. <br />
+                        <strong> Type: </strong> array <br />
+                        <strong> Default: </strong> [1000, 3000] <br />
+                        <strong> Required: </strong> No.
+                    </li>
+                    <li>
+                        <h4 data-title-scrambler> Speed </h4>
+                        <strong> Purpose: </strong> This controls the speed a which the letters will change. I would advise leaving it at the default 100, but you can tweak this value if you desire. <br />
+                        <strong> Type: </strong> integer <br />
+                        <strong> Default: </strong> 100 <br />
+                        <strong> Required: </strong> No.
+                    </li>
+                </ul>
+            </p>
+        </div>
+    
+    </section>
 
     <footer>    
         <div class="col-xs-12">
-            <p> Made by Chris Snowden | Under MIT license | <a href="https://github.com/Recidvst/scrambling-letters" title="Scrambling Letters on Github" target="_blank"> View on Github</a> </p>
+            <p class="no-scramble"> Made by Chris Snowden | MIT license | <a href="https://github.com/Recidvst/scrambling-letters" title="Scrambling Letters on Github" target="_blank"> View on Github</a> </p>
         </div>
     </footer>
 
 </main>
 
-<script src="js/scramble.js"></script>
-<script src="js/example.js"></script>
+<script src="dist/scramble.min.js"></script>
+<script src="dist/scrambleDev.min.js"></script>
 
 </body>
 </html>

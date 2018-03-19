@@ -1,36 +1,102 @@
+$back: rgb(40, 40, 40);
+$text: #ffffff;
+$alttext: #3fc35e;
+$highlight1: #e0a3ef;
+$highlight2: mediumvioletred;
+
 html {
 	font-family: 'Inconsolata', monospace;
 	font-size: 10px;
-	background: #252425;
-	color: #90A4AE;
+	background: $back;
+	color: $alttext;
 	letter-spacing: 2px;
 	transition: all .1s linear;
 	h1 {
 		margin: 30px auto;
-		font-size: 4rem;
+		font-size: 6rem;
 		text-align: center;
+		color: $text;
+	}
+	h2 {
+		margin: 15px auto;
+		font-size: 4rem;
+		color: $text;
+	}
+	h3 {
+		margin: 15px auto;
+		font-size: 3rem;
+		color: $text;
+    text-decoration: underline;
+	}
+	h4 {
+		display: block;
+		margin: 15px auto;
+		font-size: 2.25rem;
+		color: $text;
+	}
+	h1 + h3 {
+		color: $alttext;
+    text-decoration: none;
 	}
 	p {
-		width: 75%;
 		display: block;
 		margin: 20px auto;
 		font-size: 2rem;
 		line-height: 2.5rem;
 	}
+	ul {
+		li {
+			font-size: 2rem;	
+			line-height: 3rem;				
+		}
+	}
+	a {
+		color: $highlight1;
+		&:active, &:focus, &:visited {
+			color: $highlight2;
+		}
+	}
+	.why-scrambling{
+		p {
+			padding: 10px;
+			font-weight: 700;
+		}
+	}
+	.how-to {
+		.get-started, .options {
+			strong {
+				color: $text;
+			}
+		}
+		pre {
+				display: block;
+				background: black;
+				color: $highlight1;
+				font-size: 1.5rem;
+				line-height: 1.5;
+				padding: 10px;
+				// overflow: scroll;
+				span {
+						color: $highlight2;
+				}
+		}
+	}
 	button {
-		display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(5%);
-		margin: 15px auto;
-		background-color: #607D8B;
-    border: none;
-    color: #FFFFFF;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    margin: 15px auto;
+    min-width: 300px;
     padding: 10px 40px;
+		background-color: transparent;
+    border: 3px solid $highlight1;
+    color: $highlight1;
     text-align: center;
     text-decoration: none;
     font-size: 2rem;
+    font-family: sans-serif;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
     cursor: pointer;
 		&:disabled, &[disabled] {
 			background-color: #ccc;
@@ -38,5 +104,32 @@ html {
       pointer-events: none;
 			cursor: not-allowed;
 		}
+    &:after {
+        content: "";
+        position: absolute;
+        height: 0%;
+        left: 50%;
+        top: 50%;
+        width: 150%;
+        z-index: -1;
+        transition: all 0.75s ease 0s;
+        transform: translateX(-50%) translateY(-50%) rotate(25deg);
+        background: $highlight1;
+    }
+    &:hover {
+        color: $back;
+        &:after {
+            height: 450%;
+        }
+    }
+    @media(max-width: 797px) {
+        width: 100%;
+    }
+	}
+	.text-center {
+		text-align: center;
+	}
+	.highlight {
+			color: $highlight1;
 	}
 }

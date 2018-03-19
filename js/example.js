@@ -1,9 +1,9 @@
 
 // Scrambler();
 
-Scrambler('[data-scrambler-h1]');
+Scrambler('[data-title-scrambler]');
 
-Scrambler('.scramble-text-class');
+Scrambler('p:not(.no-scramble), ul:not(.no-scramble) li');
 
 Scrambler({
     target: '#scramble-text-id',
@@ -12,8 +12,17 @@ Scrambler({
 });
 
 
-var button = document.querySelector("#scramble-button");
-button.addEventListener('click', function(e) {
-    Scrambler('[data-scrambler]');
+var buttonT = document.querySelector("#scramble-title-button");
+var buttonP = document.querySelector("#scramble-paragraph-button");
+buttonT.addEventListener('click', function(e) {
+    Scrambler('[data-title-scrambler]');
+    Scrambler({
+        target: '#scramble-text-id',
+        random: [1000, 30000],
+        speed: 100
+    });
+});
+buttonP.addEventListener('click', function(e) {
+    Scrambler('p, .get-started li');
 });
 

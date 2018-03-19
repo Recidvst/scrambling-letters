@@ -20,7 +20,7 @@ gulp.task('default', ['check', 'clean', 'dev sass', 'dev scripts', 'dist scripts
 
 // Gulp Watch function
 gulp.task('watch', function() {
-  gulp.watch('scss/*.scss', ['dev sass', 'dist sass']);
+  gulp.watch('scss/*.scss', ['dev sass']);
   gulp.watch('js/*.js', ['dev scripts', 'dist scripts']);
   gulp.watch('*.html').on('change', browserSync.reload);
 })
@@ -51,7 +51,7 @@ gulp.task('dev sass', function() {
 gulp.task('dist scripts', function() {
     return gulp.src(
       [
-      'node_modules/babel-polyfill/dist/polyfill.js',
+      // 'node_modules/babel-polyfill/dist/polyfill.js',
       'js/scramble.js'
       ])
       // .pipe(babel({
@@ -76,7 +76,7 @@ gulp.task('dev scripts', function() {
       ])
       .pipe(sourcemaps.init())
       .pipe(uglify().on('error', gutil.log))
-      .pipe(concat('scrambledev.js'))
+      .pipe(concat('scrambleDev.js'))
       .pipe(rename({
         suffix: ".min"
       }))
