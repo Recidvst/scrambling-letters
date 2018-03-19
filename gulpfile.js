@@ -39,7 +39,7 @@ gulp.task('dev-sass', function() {
        }))
     .pipe(sass().on('error', gutil.log))
     .pipe(cleancss())
-    .pipe(concat('scrambleDev.css'))
+    .pipe(concat('scramble-dev.css'))
     .pipe(rename({
       suffix: ".min"
     }))
@@ -76,7 +76,7 @@ gulp.task('dev-scripts', function() {
       ])
       .pipe(sourcemaps.init())
       .pipe(uglify().on('error', gutil.log))
-      .pipe(concat('scrambleDev.js'))
+      .pipe(concat('scramble-dev.js'))
       .pipe(rename({
         suffix: ".min"
       }))
