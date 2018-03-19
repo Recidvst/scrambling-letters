@@ -15,6 +15,7 @@ Loops through any elements with the relevant selector or data attribute and scra
 
 To-do:
 - Test suite.
+- Better handling of nested tags?
 
 
 ## Get Scrambling Letters
