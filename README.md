@@ -22,7 +22,7 @@ To-do:
 
 ### Download
 - Download the Scrambling Letters dist files from [Github](https://github.com/Recidvst/scrambling-letters/archive/master.zip 'Github download') or from [NPM](https://www.npmjs.com/package/scrambling-letters 'npm download') or [Yarn](https://yarnpkg.com/en/package/scrambling-letters 'yarn download').
-- Pick the dist file you desire - standard, ES5 or babel polyfilled.
+- Pick the dist file you desire - ES6, ES5 or babel polyfilled. The standard ES6 version will not support IE.
 - Include the minified js file in the manner of your choice. This will allow you to access the new Scrambler() function.
 
 ### Initiate
