@@ -21,6 +21,6 @@ buttonT.addEventListener('click', function(e) {
     });
 });
 buttonP.addEventListener('click', function(e) {
-    Scrambler('p:not(.no-scramble), ul:not(.no-scramble) li');
+    Scrambler('p:not(.no-scramble), ul:not(.no-scramble) li, h3:not(.no-scramble)');
 });
 

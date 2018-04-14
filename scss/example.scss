@@ -14,7 +14,6 @@ html {
 	h1 {
 		margin: 30px auto;
 		font-size: 6rem;
-		text-align: center;
 		color: $text;
 	}
 	h2 {
@@ -86,6 +85,45 @@ html {
 			color: $text;
 		}
 	}
+
+	.download-btn {
+		display: inline-block;
+		position: relative;
+		overflow: hidden;
+		margin: 5px 2px;
+		padding: 10px 40px;
+		min-width: 250px;
+		text-align: center;
+		font-size: 2rem;
+		font-family: sans-serif;
+		text-decoration: none;
+		cursor: pointer;
+		border: 2px solid $highlight1;
+		transition: all .2s ease-in;
+		span {
+			z-index: 2;
+		}
+		&:after {
+			content: '';
+			z-index: -1;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 0;
+			height: 100%;
+			background: $highlight1;
+			transition: all .2s ease-out;
+		}
+		&:hover {
+			color: $back;
+			&:after {
+				width: 100%;
+				left: 0;
+			}
+		}
+	}
+
+
 	button {
     display: inline-block;
     position: relative;
@@ -93,11 +131,10 @@ html {
     margin: 15px auto;
     min-width: 300px;
     padding: 10px 40px;
-		background-color: transparent;
+	background-color: transparent;
     border: 3px solid $highlight1;
     color: $highlight1;
     text-align: center;
-    text-decoration: none;
     font-size: 2rem;
     font-family: sans-serif;
     text-decoration: none;
