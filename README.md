@@ -4,15 +4,11 @@
 [![license](https://img.shields.io/github/license/recidvst/scrambling-letters.svg)]()
 
 # Scrambling Letters
-A lightweight javascript library for scrambling letters within a piece of text, giving a nice decoding effect.
+> A lightweight javascript library for scrambling letters within a piece of text, giving a nice decoding effect.
 
 Loops through any elements with the relevant selector or data attribute and scrambles the letters randomly for a couple of seconds before returning them one by one to their original state.
 
 [Demo Page](https://recidvst.github.io/scrambling-letters 'Scrambling Letters demo')
-
-To-do:
-- Test suite.
-- Better handling of nested tags?
 
 
 ## Get Scrambling Letters
@@ -57,3 +53,7 @@ Scrambler({
 
 #### Warning:
 - Scrambler will temporarily lose unique styling from text within child nodes e.g. link tags within a paragraph. This will be replaced at the end of the cycle but can result in FOUC. This is planned to be addressed later, but best practice is to be more granular in your targeting.
+
+#### To-do:
+- Test suite.
+- Better handling of nested tags?

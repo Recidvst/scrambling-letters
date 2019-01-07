@@ -1,7 +1,13 @@
 {
   "name": "scrambling-letters",
-  "version": "1.3.0",
+  "version": "1.3.01",
   "description": "A lightweight javascript library for scrambling letters within a piece of text, giving a nice decoding effect.",
+  "keywords": [
+    "scramble",
+    "text",
+    "letters",
+    "javascript"
+  ],
   "main": "dist/scramble.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
