@@ -10,9 +10,6 @@ Loops through any elements with the relevant selector or data attribute and scra
 
 [Demo Page](https://recidvst.github.io/scrambling-letters 'Scrambling Letters demo')
 
-[Codepen initial POC](https://codepen.io/Recidvst/pen/ZrjmJj "Scrambling Letters Codepen")
-
-
 To-do:
 - Test suite.
 - Better handling of nested tags?
@@ -20,18 +17,27 @@ To-do:
 
 ## Get Scrambling Letters
 
-### Download
-- Download the Scrambling Letters dist files from [Github](https://github.com/Recidvst/scrambling-letters/archive/master.zip 'Github download') or from [NPM](https://www.npmjs.com/package/scrambling-letters 'npm download') or [Yarn](https://yarnpkg.com/en/package/scrambling-letters 'yarn download').
+### Download/Import
+- Download the Scrambling Letters dist files from [Github](https://github.com/Recidvst/scrambling-letters/archive/master.zip 'Github download') or install via [NPM](https://www.npmjs.com/package/scrambling-letters 'npm download') or [Yarn](https://yarnpkg.com/en/package/scrambling-letters 'yarn download').
 - Pick the dist file you desire - ES6, ES5 or babel polyfilled. The standard ES6 version will not support IE.
-- Include the minified js file in the manner of your choice. This will allow you to access the new Scrambler() function.
+- Import or include the JS. The standard file is an export but the ES5 version is plain JS. This will allow you to access the new Scrambler() function.
 
 ### Initiate
 - Scrambler() needs to be told which piece of text to scramble.
-- Initiate a Scrambler instance by calling Scrambler() with a valid selector or data-attribute. 
+- Initiate a Scrambler instance by calling Scrambler() with a valid selector. 
 - If you wish to add configuration, pass Scrambler an object containing config options (see below).
 
 ### Configure
 You can configure your Scrambler instance by passing an object. The available options are as follows:
+
+e.g.
+```
+Scrambler({
+  target: '#scramble-id',
+  random: [1000, 30000],
+  speed: 80
+});
+```
 
 #### Target
 **Purpose:** This is the text you wish to Scramble! Pass a selector or data attribute (or anything else valid for document.querySelectorAll).    

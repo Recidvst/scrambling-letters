@@ -2,8 +2,13 @@ gulpfile.js
 index.html
 js/example.js
 scss/example.scss
-dist/scrambleDev.min.css
-dist/scrambleDev.min.js
+favicon.ico
+
+dist/example.min.js
+dist/example.min.css
+
+bower_components
+node_modules
 yarn.lock
 yarn-error.log
 package-lock.json

@@ -19,116 +19,115 @@ var autoprefixer = require('gulp-autoprefixer');
 gulp.task('default', ['check', 'clean', 'dev-sass', 'dev-scripts', 'dist-scripts', 'dist-ES5-scripts', 'dist-babel-scripts', 'browser-sync', 'watch']);
 
 // Gulp Watch function
-gulp.task('watch', function() {
+gulp.task('watch', function () {
   gulp.watch('scss/*.scss', ['dev-sass']);
   gulp.watch('js/*.js', ['dev-scripts', 'dist-scripts', 'dist-ES5-scripts', 'dist-babel-scripts']);
   gulp.watch('*.html').on('change', browserSync.reload);
 })
 
 // SASS Compile + Minify
-gulp.task('dev-sass', function() {
+gulp.task('dev-sass', function () {
   return gulp.src(
     [
-    'node_modules/bootstrap-grid/dist/grid.min.css',
-    'scss/example.scss'
+      'node_modules/bootstrap-grid/dist/grid.min.css',
+      'scss/example.scss'
     ])
     .pipe(sourcemaps.init())
     .pipe(autoprefixer({
-           browsers: ['last 5 versions'],
-           cascade: false
-       }))
+      browsers: ['last 5 versions'],
+      cascade: false
+    }))
     .pipe(sass().on('error', gutil.log))
     .pipe(cleancss())
-    .pipe(concat('scramble-dev.css'))
+    .pipe(concat('example.css'))
     .pipe(rename({
       suffix: ".min"
     }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist'))
-    .pipe(browserSync.reload({stream: true}))
+    .pipe(browserSync.reload({ stream: true }))
 });
 // Concat + Minify .js
-gulp.task('dist-scripts', function() {
-    return gulp.src(
-      [
+gulp.task('dist-scripts', function () {
+  return gulp.src(
+    [
       'js/scramble.js'
-      ])
-      .pipe(sourcemaps.init())
-      .pipe(uglify().on('error', gutil.log))
-      .pipe(concat('scramble.js'))
-      .pipe(rename({
-        suffix: ".min"
-      }))
-      .pipe(sourcemaps.write())
-      .pipe(gulp.dest('dist'))
-      .pipe(browserSync.reload({stream: true}))
+    ])
+    .pipe(sourcemaps.init())
+    .pipe(uglify().on('error', gutil.log))
+    .pipe(concat('scramble.js'))
+    .pipe(rename({
+      suffix: ".min"
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.reload({ stream: true }))
 });
 // Babel
-gulp.task('dist-ES5-scripts', function() {
-    return gulp.src(
-      [
+gulp.task('dist-ES5-scripts', function () {
+  return gulp.src(
+    [
       'js/scramble-ES5.js'
-      ])
-      .pipe(sourcemaps.init())
-      .pipe(uglify().on('error', gutil.log))
-      .pipe(concat('scramble-ES5.js'))
-      .pipe(rename({
-        suffix: ".min"
-      }))
-      .pipe(sourcemaps.write())
-      .pipe(gulp.dest('dist'))
-      .pipe(browserSync.reload({stream: true}))
+    ])
+    .pipe(sourcemaps.init())
+    .pipe(uglify().on('error', gutil.log))
+    .pipe(concat('scramble-ES5.js'))
+    .pipe(rename({
+      suffix: ".min"
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.reload({ stream: true }))
 });
 // Babel
-gulp.task('dist-babel-scripts', function() {
-    return gulp.src(
-      [
+gulp.task('dist-babel-scripts', function () {
+  return gulp.src(
+    [
       'node_modules/babel-polyfill/dist/polyfill.js',
       'js/scramble.js'
-      ])
-      .pipe(babel({
-        presets: [
-          'es2015'
-        ]
-      }).on('error', gutil.log))
-      .pipe(sourcemaps.init())
-      .pipe(uglify().on('error', gutil.log))
-      .pipe(concat('scramble-babel-polyfill.js'))
-      .pipe(rename({
-        suffix: ".min"
-      }))
-      .pipe(sourcemaps.write())
-      .pipe(gulp.dest('dist'))
-      .pipe(browserSync.reload({stream: true}))
+    ])
+    .pipe(babel({
+      presets: [
+        'es2015'
+      ]
+    }).on('error', gutil.log))
+    .pipe(sourcemaps.init())
+    .pipe(uglify().on('error', gutil.log))
+    .pipe(concat('scramble-babel-polyfill.js'))
+    .pipe(rename({
+      suffix: ".min"
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.reload({ stream: true }))
 });
-gulp.task('dev-scripts', function() {
-    return gulp.src(
-      [
+gulp.task('dev-scripts', function () {
+  return gulp.src(
+    [
       'js/example.js'
-      ])
-      .pipe(sourcemaps.init())
-      .pipe(uglify().on('error', gutil.log))
-      .pipe(concat('scramble-dev.js'))
-      .pipe(rename({
-        suffix: ".min"
-      }))
-      .pipe(sourcemaps.write())
-      .pipe(gulp.dest('dist'))
-      .pipe(browserSync.reload({stream: true}))
+    ])
+    .pipe(sourcemaps.init())
+    .pipe(uglify().on('error', gutil.log))
+    .pipe(rename({
+      suffix: ".min"
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.reload({ stream: true }))
 });
 // Clear build folder
-gulp.task('clean', function() {
-    return del.sync(['dist/*']);
+gulp.task('clean', function () {
+  return del.sync(['dist/*']);
 });
 // browser-sync server
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        server: {
-            baseDir: "./"
-        }
-    });
+gulp.task('browser-sync', function () {
+  browserSync.init({
+    server: {
+      baseDir: "./"
+    }
+  });
 });
 // Gulp run test
-gulp.task('check', function() {
+gulp.task('check', function () {
   console.log('Tasks running..');
 });

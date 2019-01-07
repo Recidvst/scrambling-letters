@@ -1,14 +1,14 @@
 {
   "name": "scrambling-letters",
   "version": "1.2.2",
-  "description": "Scrambling Letters",
-  "main": "scramble.min.js",
+  "description": "A lightweight javascript library for scrambling letters within a piece of text, giving a nice decoding effect.",
+  "main": "dist/scramble.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Recidvst/scrambling-letters"
+    "url": "git+https://github.com/Recidvst/scrambling-letters.git"
   },
   "author": "Chris Snowden <cdsnowden@gmail.com>",
   "license": "MIT",
