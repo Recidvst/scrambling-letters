@@ -2,8 +2,10 @@ export const Scrambler = function (scrambleArgs) {
 	try {
 		/*** helper functions ***/
 		// utility fn to get a random character 
-		const randomChar = function () {
-			return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 1);
+		const randomChar = function (length) {
+			let l = length || 1;
+			let r = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, l);
+			if (' \t\n\r\v'.indexOf(r) < 0) return r;
 		}
 		// object test
 		const isObject = function (a) {
@@ -16,6 +18,7 @@ export const Scrambler = function (scrambleArgs) {
 			scrambleArgs.target = (typeof scrambleArgs.target !== 'undefined' && (passedAsObject)) ? scrambleArgs.target : '[data-scrambler]';
 			scrambleArgs.random = (typeof scrambleArgs.random !== 'undefined' && (passedAsObject)) ? scrambleArgs.random : [1000, 3000];
 			scrambleArgs.speed = (typeof scrambleArgs.speed !== 'undefined' && (passedAsObject)) ? scrambleArgs.speed : 100;
+			scrambleArgs.text = (typeof scrambleArgs.text !== 'undefined' && (passedAsObject)) ? scrambleArgs.text : false;
 		}
 		// utility fn to get a random delay time 
 		const randomTime = function () {
@@ -39,13 +42,40 @@ export const Scrambler = function (scrambleArgs) {
 
 					let truth = element.textContent.split(''); // get letters
 					let truthHTML = element.innerHTML; // get html
+					let startText = truth;
 					let newLetters = element.textContent.split('');
 					let revert = []; // init empty kill switch array	
 					let speed = (scrambleArgs.speed) ? scrambleArgs.speed : 100;
+					let HTMLreset = false;
+
+					// if user defines an ending text string then use that instead of the original text
+					const defineEndText = function(end) {
+						let endText = end || element.textContent;
+            truth = endText.split('');
+            newLetters = endText.split('');
+            startText = [];
+            truth.forEach( (item, index) => {
+              if (' \t\n\r\v'.indexOf(truth[index]) > -1) {
+                startText.push(' ');
+              } else {
+                startText.push(randomChar());
+              }
+            });
+            startText = startText;
+					}
+					// first check passed option and then data-attribute 
+					if (scrambleArgs.text && scrambleArgs.text !== "" && (typeof scrambleArgs.text === 'string' || scrambleArgs.text instanceof String) ) {
+						defineEndText(scrambleArgs.text);
+						HTMLreset = true;
+					}
+					else if (element.getAttribute('data-scramble-text') && element.getAttribute('data-scramble-text') !== "") {
+						defineEndText(element.getAttribute('data-scramble-text'));
+						HTMLreset = true;
+					}
 
 					const ticker = setInterval(function () {
 						// map over letters and replace with random or revert back to truth
-						truth.map((letter, i) => {
+						startText.map((letter, i) => {
 							// break if a space
 							if (' \t\n\r\v'.indexOf(letter) > -1) return;
 							// set new random letter
@@ -68,6 +98,12 @@ export const Scrambler = function (scrambleArgs) {
 						});
 						if (killCheck) {
 							element.innerHTML = truthHTML;
+              if (HTMLreset) {
+								let innerContent = element.children[0];
+                if (innerContent && innerContent !== "") {
+                  innerContent.textContent = newLetters.join('');
+                }
+              }
 							clearInterval(ticker); // stop looping
 							element.setAttribute('data-scramble-active', 'false');
 						};

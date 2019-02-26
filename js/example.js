@@ -1,4 +1,9 @@
-Scrambler('[data-title-scrambler]');
+Scrambler({
+    target: '[data-title-scrambler]',
+    random: [1000, 30000],
+    speed: 100,
+    text: 'hello world'
+});
 
 Scrambler('p:not(.no-scramble), ul:not(.no-scramble) li');
 

@@ -1,8 +1,11 @@
 $back: rgb(40, 40, 40);
 $text: #ffffff;
 $alttext: #3fc35e;
-$highlight1: #e0a3ef;
-$highlight2: mediumvioletred;
+$pink: #ed1cdc;
+$pink-dark: #790072;
+$blue: #bde1ff;
+$blue-dark: #0080e2;
+$blue-darker: #004097;
 
 html {
 	font-family: 'Inconsolata', monospace;
@@ -50,9 +53,9 @@ html {
 		}
 	}
 	a {
-		color: $highlight1;
+		color: $blue;
 		&:active, &:focus, &:visited {
-			color: $highlight2;
+			color: $blue;
 		}
 	}
 	.why-scrambling{
@@ -70,13 +73,13 @@ html {
 		pre {
 				display: block;
 				background: black;
-				color: $highlight1;
+				color: $blue;
 				font-size: 1.5rem;
 				line-height: 1.5;
 				padding: 10px;
 				// overflow: scroll;
 				span {
-						color: $highlight2;
+						color: $blue;
 				}
 		}
 	}
@@ -86,56 +89,19 @@ html {
 		}
 	}
 
-	.download-btn {
-		display: inline-block;
-		position: relative;
-		overflow: hidden;
-		margin: 5px 2px;
-		padding: 10px 40px;
-		min-width: 250px;
-		text-align: center;
-		font-size: 2rem;
-		font-family: sans-serif;
-		text-decoration: none;
-		cursor: pointer;
-		border: 2px solid $highlight1;
-		transition: all .2s ease-in;
-		span {
-			z-index: 2;
-		}
-		&:after {
-			content: '';
-			z-index: -1;
-			position: absolute;
-			top: 0;
-			left: 50%;
-			width: 0;
-			height: 100%;
-			background: $highlight1;
-			transition: all .2s ease-out;
-		}
-		&:hover {
-			color: $back;
-			&:after {
-				width: 100%;
-				left: 0;
-			}
-		}
-	}
 
-
-	button {
+	button, .button {
     display: inline-block;
     position: relative;
     overflow: hidden;
     margin: 15px auto;
-    min-width: 300px;
+    min-width: 200px;
     padding: 10px 40px;
-	background-color: transparent;
-    border: 3px solid $highlight1;
-    color: $highlight1;
+		background-color: transparent;
+    border: 3px solid $blue;
+    color: $blue;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: sans-serif;
     text-decoration: none;
     transition: all .2s ease-in-out;
@@ -156,7 +122,7 @@ html {
         z-index: -1;
         transition: all 0.75s ease 0s;
         transform: translateX(-50%) translateY(-50%) rotate(25deg);
-        background: $highlight1;
+        background: $blue;
     }
     &:hover {
         color: $back;
@@ -172,6 +138,144 @@ html {
 		text-align: center;
 	}
 	.highlight {
-			color: $highlight1;
+			color: $blue;
 	}
+}
+
+// main neon style
+.neon-text {
+  position: relative;
+  display: inline-block;
+  padding: 10px 30px 14px;
+  margin: 30px auto;
+  text-align: center;
+  z-index: 1;
+  max-width: 100%;
+	min-width: 250px;
+  overflow: visible;
+  background: transparent;
+  border: none;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $blue;
+  text-shadow: 0 0 10px $blue-dark, 0 0 20px $blue-dark, 0 0 30px $blue-dark, 0 0 40px $blue-darker, 0 0 70px $blue-darker;
+	font-family: 'Inconsolata', monospace;
+	font-size: 2em;
+  line-height: 4rem;
+  letter-spacing: 4px;
+  transition: all .2s ease;    
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid rgba(255,255,255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 0 15px 4px $pink, 0 0 120px 2px $pink-dark, inset 0 0 15px 4px $pink, inset 0 0 50px 2px $pink-dark;
+    transition: all .2s ease;
+    z-index: -1;
+    opacity: 1;
+  }
+	&:visited {
+		color: $blue;
+	}
+
+	&.main-title {
+		font-size: 4rem;
+		line-height: 5rem;
+	}
+	a {
+		text-decoration: none;
+	}
+
+	// fizzling hover animation
+  &:hover { 
+    animation: fizzleText ease-in-out .8s;
+    &:before {
+      animation: none;
+      animation: fizzleBorder ease-in-out .8s;
+    }
+  }
+}
+
+// animations //
+@keyframes fizzleBorder {
+  0% {
+    opacity: 0.3;
+  }
+  10%{
+    opacity: 0.1;
+  }
+  20%{
+    opacity: 0.4;
+    box-shadow: 0 0 15px 4px $blue, 0 0 120px 2px $blue-dark, inset 0 0 15px 4px $blue, inset 0 0 50px 2px $blue-dark;
+  }
+  30%{
+    opacity: 0.1;
+  }
+  40%{
+    opacity: 0.1;
+  }
+  50%{
+    opacity: 0.6;
+  }
+  60%{
+    opacity: 0.2;
+  }
+  80%{
+    opacity: 0.2;
+  }
+  90%{
+    opacity: 0.9;
+  }
+  95%{
+    opacity: 0.1;
+    box-shadow: 0 0 15px 4px $pink, 0 0 120px 2px $pink-dark, inset 0 0 15px 4px $pink, inset 0 0 50px 2px $pink-dark;
+  }
+  100%{
+    opacity: 0.8;
+  }
+}
+@keyframes fizzleText {
+  0% {
+    opacity: 0.3;
+    text-shadow: none;
+  }
+  10%{
+    opacity: 0.2;
+  }
+  20%{
+    opacity: 0.3;
+  }
+  30%{
+    opacity: 0.2;
+  }
+  40%{
+    opacity: 0.2;
+  }
+  50%{
+    opacity: 0.6;
+    text-shadow: 0 0 10px $blue-dark, 0 0 15px $blue-dark, 0 0 25px $blue-dark, 0 0 40px $blue-darker;
+  }
+  60%{
+    opacity: 0.2;
+    text-shadow: none;
+  }
+  80%{
+    opacity: 0.2;
+  }
+  90%{
+    opacity: 0.8;
+  }
+  95%{
+    opacity: 0.2;
+    text-shadow: none;
+  }
+  100%{
+    opacity: 0.6;
+    text-shadow: 0 0 10px $blue-dark, 0 0 15px $blue-dark, 0 0 25px $blue-dark, 0 0 40px $blue-darker;
+  }
 }
