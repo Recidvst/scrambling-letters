@@ -6,16 +6,18 @@
 # Scrambling Letters
 > A lightweight javascript library for scrambling letters within a piece of text, giving a nice decoding effect.
 
-Loops through any elements with the relevant selector or data attribute and scrambles the letters randomly for a couple of seconds before returning them one by one to their original state.
+Loops through any elements with the relevant selector or data attribute and scrambles the letters randomly for a couple of seconds before returning them one by one to their original state or an alternate string.
 
-[Demo Page](https://recidvst.github.io/scrambling-letters 'Scrambling Letters demo')
+[**Demo Page**](https://recidvst.github.io/scrambling-letters 'Scrambling Letters demo')
+
+---
 
 
 ## Get Scrambling Letters
 
-### Download/Import
-- Download the Scrambling Letters dist files from [Github](https://github.com/Recidvst/scrambling-letters/archive/master.zip 'Github download') or install via [NPM](https://www.npmjs.com/package/scrambling-letters 'npm download') or [Yarn](https://yarnpkg.com/en/package/scrambling-letters 'yarn download').
-- Pick the dist file you desire - ES6, ES5 or babel polyfilled. The standard ES6 version will not support IE.
+### Download/Install
+- Download the Scrambling Letters dist files from [Github](https://github.com/Recidvst/scrambling-letters/archive/master.zip 'Github download') or install via [NPM](https://www.npmjs.com/package/scrambling-letters 'npm download').
+- Pick the dist file you desire - ES6, ES5 or babel polyfilled. The standard ES6 version will not support IE and is a named export.
 - Import or include the JS. The standard file is an export but the ES5 version is plain JS. This will allow you to access the new Scrambler() function.
 
 ### Initiate
@@ -25,15 +27,6 @@ Loops through any elements with the relevant selector or data attribute and scra
 
 ### Configure
 You can configure your Scrambler instance by passing an object. The available options are as follows:
-
-e.g.
-```
-Scrambler({
-  target: '#scramble-id',
-  random: [1000, 30000],
-  speed: 80
-});
-```
 
 #### Target
 **Purpose:** This is the text you wish to Scramble! Pass a selector or data attribute (or anything else valid for document.querySelectorAll).    
@@ -50,6 +43,21 @@ Scrambler({
 **Type:** integer  
 **Default:** 100  
 **Required:** No.  
+#### Text
+**Purpose:** This lets you specify the end state of the Scrambled text. By default the Scrambler will revert to the original text after animating, but if this option is set then the end state of the text will instead be the specified string. e.g. "Starting Text" -> *scramble* -> "Ending Text"
+**Type:** string  
+**Default:** The element text  
+**Required:** No.  
+
+#### Example
+```
+Scrambler({
+  target: '#scramble-id',
+  random: [1000, 5000],
+  speed: 100,
+  text: 'Hello World'
+});
+```
 
 #### Warning:
 - Scrambler will temporarily lose unique styling from text within child nodes e.g. link tags within a paragraph. This will be replaced at the end of the cycle but can result in FOUC. This is planned to be addressed later, but best practice is to be more granular in your targeting.
