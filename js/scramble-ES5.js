@@ -91,6 +91,8 @@ var Scrambler = function Scrambler(scrambleArgs) {
 
                 if (innerContent && innerContent !== "") {
                   innerContent.textContent = newLetters.join('');
+                } else {
+                  element.textContent = newLetters.join('');
                 }
               }
 

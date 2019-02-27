@@ -103,6 +103,9 @@ export const Scrambler = function (scrambleArgs) {
                 if (innerContent && innerContent !== "") {
                   innerContent.textContent = newLetters.join('');
                 }
+								else {
+									element.textContent = newLetters.join('');
+								}
               }
 							clearInterval(ticker); // stop looping
 							element.setAttribute('data-scramble-active', 'false');
