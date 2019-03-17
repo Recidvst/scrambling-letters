@@ -4,7 +4,6 @@ var babel = require("gulp-babel");
 
 // Packages Declaration
 var sass = require("gulp-sass");
-// var uglify = require('gulp-uglify');
 var uglify = require("gulp-uglify-es").default;
 var rename = require("gulp-rename");
 var cleancss = require("gulp-clean-css");
@@ -15,7 +14,7 @@ var del = require("del");
 var browserSync = require("browser-sync").create();
 var autoprefixer = require("gulp-autoprefixer");
 
-// Gulp Default tasks
+// Gulp Default/Dev task
 gulp.task("default", [
   "check",
   "clean",
@@ -26,6 +25,17 @@ gulp.task("default", [
   "dist-babel-scripts",
   "browser-sync",
   "watch"
+]);
+
+// Gulp Production task
+gulp.task("prod", [
+  "check",
+  "clean",
+  "dev-sass",
+  "dev-scripts",
+  "dist-scripts",
+  "dist-ES5-scripts",
+  "dist-babel-scripts"
 ]);
 
 // Gulp Watch function
@@ -54,6 +64,20 @@ gulp.task("dev-sass", function() {
     .pipe(sass().on("error", gutil.log))
     .pipe(cleancss())
     .pipe(concat("example.css"))
+    .pipe(
+      rename({
+        suffix: ".min"
+      })
+    )
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest("dist"))
+    .pipe(browserSync.reload({ stream: true }));
+});
+gulp.task("dev-scripts", function() {
+  return gulp
+    .src(["js/example.js"])
+    .pipe(sourcemaps.init())
+    .pipe(uglify().on("error", gutil.log))
     .pipe(
       rename({
         suffix: ".min"
@@ -116,20 +140,6 @@ gulp.task("dist-babel-scripts", function() {
     .pipe(gulp.dest("dist"))
     .pipe(browserSync.reload({ stream: true }));
 });
-gulp.task("dev-scripts", function() {
-  return gulp
-    .src(["js/example.js"])
-    .pipe(sourcemaps.init())
-    .pipe(uglify().on("error", gutil.log))
-    .pipe(
-      rename({
-        suffix: ".min"
-      })
-    )
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest("dist"))
-    .pipe(browserSync.reload({ stream: true }));
-});
 // Clear build folder
 gulp.task("clean", function() {
   return del.sync(["dist/*"]);
@@ -138,7 +148,8 @@ gulp.task("clean", function() {
 gulp.task("browser-sync", function() {
   browserSync.init({
     server: {
-      baseDir: "./"
+      baseDir: "./",
+      cors: true
     }
   });
 });

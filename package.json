@@ -4,13 +4,18 @@
   "description": "A lightweight javascript library for scrambling letters within a piece of text, giving a nice decoding effect.",
   "keywords": [
     "scramble",
+    "scrambling-letters",
+    "scrambling letters",
+    "scrambling text",
     "text",
-    "letters",
+    "random letters",
     "javascript"
   ],
   "main": "dist/scramble.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp",
+    "prod": "gulp prod",
+    "test": "SET NODE_ENV=test & nyc mocha"
   },
   "repository": {
     "type": "git",
@@ -25,11 +30,13 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-plugin-istanbul": "^5.1.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "bootstrap-grid": "^2.0.1",
     "browser-sync": "^2.18.8",
+    "chai": "*",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
@@ -41,11 +48,22 @@
     "gulp-sourcemaps": "^2.5.1",
     "gulp-uglify": "^2.1.2",
     "gulp-uglify-es": "^1.0.1",
-    "gulp-util": "^3.0.8"
+    "gulp-util": "^3.0.8",
+    "jsdom": "14.0.0",
+    "jsdom-global": "3.0.2",
+    "mocha": "*",
+    "nyc": "^13.3.0"
   },
   "babel": {
     "presets": [
       "es2015"
-    ]
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
   }
 }

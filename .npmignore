@@ -7,6 +7,10 @@ favicon.ico
 dist/example.min.js
 dist/example.min.css
 
+test/
+coverage/
+.nyc_output
+
 bower_components
 node_modules
 yarn.lock

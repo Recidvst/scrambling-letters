@@ -13,7 +13,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var Scrambler = function Scrambler(scrambleArgs) {
-  try {
     // call action fn
     var scrambleFire = function scrambleFire(scrambleArgs) {
       // remember, hoisted
@@ -142,7 +141,9 @@ var Scrambler = function Scrambler(scrambleArgs) {
 
     scrambleFire(scrambleArgs);
     ; // end scrambleFire
-  } catch (e) {
-    console.trace('%cuh-oh: %c' + e + '', 'color:indianred;', 'color:cornflowerblue;');
-  }
+
 }; // end Scramble
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = Scrambler;
+}
