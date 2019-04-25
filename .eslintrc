@@ -1,0 +1,21 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "window": true,
+    "ga": true
+  },
+  "rules": {
+    "no-console": ["error", { allow: ["warn"] }],
+    "no-tabs": ["off"],
+    "indent": ["off"],
+    "eol-last": "off",
+    "func-names": ["error", "as-needed"],
+    "max-len": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "no-shadow": ["error", { "hoist": "never" }]
+  }
+}
