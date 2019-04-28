@@ -1,8 +1,10 @@
 {
   "extends": "airbnb",
+  // "extends": "eslint:recommended",
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
   "globals": {
     "window": true,
