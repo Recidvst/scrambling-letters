@@ -136,137 +136,160 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /* eslint-disable import/prefer-default-export */
-var Scrambler = function Scrambler(scrambleArgs) {
-  /** * helper functions ** */
-  // utility fn to get a random character
-  var randomChar = function randomChar(length) {
-    var l = length || 1;
-    var r = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, l);
-    if (' \t\n\r\v'.indexOf(r) < 0) return r;
-    return false;
-  }; // object test
+var Scrambler = function Scrambler() {
+  // named export
+  var ScramblerSetup = function (scrambleArgs) {
+    // wrapper function
+
+    /** * helper functions ** */
+    // utility fn to get a random character
+    var randomChar = function randomChar(length) {
+      var l = length || 1;
+      var r = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, l);
+      if (' \t\n\r\v'.indexOf(r) < 0) return r;
+      return false;
+    }; // object test
 
 
-  var isObject = function isObject(a) {
-    return !!a && a.constructor === Object;
-  }; // did the user pass an object as an argument?
+    var isObject = function isObject(a) {
+      return !!a && a.constructor === Object;
+    }; // set function default arguments if it was an object
 
 
-  var passedAsObject = isObject(scrambleArgs) || _typeof(scrambleArgs) === 'object'; // set function default arguments if it was an object
+    var checkPassedAsObj = function () {
+      // did the user pass an object as an argument?
+      var passedAsObject = isObject(scrambleArgs) || _typeof(scrambleArgs) === 'object';
 
-  if (passedAsObject) {
-    scrambleArgs.target = typeof scrambleArgs.target !== 'undefined' && passedAsObject ? scrambleArgs.target : '[data-scrambler]';
-    scrambleArgs.random = typeof scrambleArgs.random !== 'undefined' && passedAsObject ? scrambleArgs.random : [1000, 3000];
-    scrambleArgs.speed = typeof scrambleArgs.speed !== 'undefined' && passedAsObject ? scrambleArgs.speed : 100;
-    scrambleArgs.text = typeof scrambleArgs.text !== 'undefined' && passedAsObject ? scrambleArgs.text : false;
-  } // utility fn to get a random delay time
-
-
-  var randomTime = function randomTime() {
-    if (passedAsObject) {
-      return scrambleArgs.random[0] + (Math.random() * (1 - scrambleArgs.random[1]) + scrambleArgs.random[1]);
-    }
-
-    return 1000 + (Math.random() * (1 - 3000) + 3000);
-  };
-
-  var scrambleFire = function scrambleFire(scrambleFireArgs) {
-    // remember, hoisted
-    // get chosen scramble items
-    var scramble = passedAsObject ? _toConsumableArray(document.querySelectorAll(scrambleFireArgs.target)) : _toConsumableArray(document.querySelectorAll(scrambleFireArgs)); // for each scramble element
-
-    scramble.forEach(function (element) {
-      if (element.getAttribute('data-scramble-active') !== 'true') {
-        element.setAttribute('data-scramble-active', 'true');
-        var truth = element.textContent.split(''); // get letters
-
-        var truthHTML = element.innerHTML; // get html
-
-        var startText = truth;
-        var newLetters = element.textContent.split('');
-        var revert = []; // init empty kill switch array
-
-        var speed = scrambleFireArgs.speed ? scrambleFireArgs.speed : 100;
-        var HTMLreset = false; // if user defines an ending text string then use that instead of the original text
-
-        var defineEndText = function defineEndText(end) {
-          var endText = end || element.textContent;
-          truth = endText.split('');
-          newLetters = endText.split('');
-          var startTextTemp = [];
-          truth.forEach(function (item, index) {
-            if (' \t\n\r\v'.indexOf(truth[index]) > -1) {
-              startTextTemp.push(' ');
-            } else {
-              startTextTemp.push(randomChar());
-            }
-          });
-          startText = startTextTemp;
-        }; // first check passed option and then data-attribute
+      if (passedAsObject) {
+        scrambleArgs.target = typeof scrambleArgs.target !== 'undefined' && passedAsObject ? scrambleArgs.target : '[data-scrambler]';
+        scrambleArgs.random = typeof scrambleArgs.random !== 'undefined' && passedAsObject ? scrambleArgs.random : [1000, 3000];
+        scrambleArgs.speed = typeof scrambleArgs.speed !== 'undefined' && passedAsObject ? scrambleArgs.speed : 100;
+        scrambleArgs.text = typeof scrambleArgs.text !== 'undefined' && passedAsObject ? scrambleArgs.text : false;
+        return true;
+      } else {
+        return false;
+      }
+    }(); // utility fn to get a random delay time
 
 
-        if (scrambleFireArgs.text && scrambleFireArgs.text !== '' && (typeof scrambleFireArgs.text === 'string' || scrambleFireArgs.text instanceof String)) {
-          defineEndText(scrambleFireArgs.text);
-          HTMLreset = true;
-        } else if (element.getAttribute('data-scramble-text') && element.getAttribute('data-scramble-text') !== '') {
-          defineEndText(element.getAttribute('data-scramble-text'));
-          HTMLreset = true;
-        }
+    var randomTime = function randomTime() {
+      if (passedAsObject) {
+        return scrambleArgs.random[0] + (Math.random() * (1 - scrambleArgs.random[1]) + scrambleArgs.random[1]);
+      }
 
-        var ticker = setInterval(function () {
-          // map over letters and replace with random or revert back to truth
-          startText.map(function (letter, i) {
-            // break if a space
-            if (' \t\n\r\v'.indexOf(letter) > -1) return false; // set new random letter
+      return 1000 + (Math.random() * (1 - 3000) + 3000);
+    };
 
-            newLetters[i] = randomChar(); // set random timeout to make letters reset at different times
+    var scrambleFire = function scrambleFire(scrambleFireArgs) {
+      // remember, hoisted
+      // get chosen scramble items
+      var scramble = passedAsObject ? _toConsumableArray(document.querySelectorAll(scrambleFireArgs.target)) : _toConsumableArray(document.querySelectorAll(scrambleFireArgs)); // for each scramble element
 
-            setTimeout(function () {
-              revert[i] = true;
-            }, randomTime()); // reset individual letter if kill switch
+      scramble.forEach(function (element) {
+        if (element.getAttribute('data-scramble-active') !== 'true') {
+          element.setAttribute('data-scramble-active', 'true');
+          var truth = element.textContent.split(''); // get letters
 
-            if (revert[i] === true) {
-              newLetters[i] = truth[i];
-            } // set html
+          var truthHTML = element.innerHTML; // get html
 
+          var startText = truth;
+          var newLetters = element.textContent.split('');
+          var revert = []; // init empty kill switch array
 
-            element.textContent = newLetters.join('');
-            return true;
-          }); // kill interval after all letter returned to normal to save stack
+          var speed = scrambleFireArgs.speed ? scrambleFireArgs.speed : 100;
+          var HTMLreset = false; // if user defines an ending text string then use that instead of the original text
 
-          var killCheck = newLetters.length === truth.length && newLetters.every(function (e, i) {
-            return e === truth[i];
-          });
-
-          if (killCheck) {
-            element.innerHTML = truthHTML;
-
-            if (HTMLreset) {
-              var innerContent = element.children[0];
-
-              if (innerContent && innerContent !== '') {
-                innerContent.textContent = newLetters.join('');
+          var defineEndText = function defineEndText(end) {
+            var endText = end || element.textContent;
+            truth = endText.split('');
+            newLetters = endText.split('');
+            var startTextTemp = [];
+            truth.forEach(function (item, index) {
+              if (' \t\n\r\v'.indexOf(truth[index]) > -1) {
+                startTextTemp.push(' ');
               } else {
-                element.textContent = newLetters.join('');
+                startTextTemp.push(randomChar());
               }
-            }
+            });
+            startText = startTextTemp;
+          }; // first check passed option and then data-attribute
 
-            clearInterval(ticker); // stop looping
 
-            element.setAttribute('data-scramble-active', 'false');
+          if (scrambleFireArgs.text && scrambleFireArgs.text !== '' && (typeof scrambleFireArgs.text === 'string' || scrambleFireArgs.text instanceof String)) {
+            defineEndText(scrambleFireArgs.text);
+            HTMLreset = true;
+          } else if (element.getAttribute('data-scramble-text') && element.getAttribute('data-scramble-text') !== '') {
+            defineEndText(element.getAttribute('data-scramble-text'));
+            HTMLreset = true;
           }
-        }, speed); // end ticker
-      } // end check for active
 
-    }); // end forEach
-  }; // end scrambleFire
+          var ticker = setInterval(function () {
+            // map over letters and replace with random or revert back to truth
+            startText.map(function (letter, i) {
+              // break if a space
+              if (' \t\n\r\v'.indexOf(letter) > -1) return false; // set new random letter
+
+              newLetters[i] = randomChar(); // set random timeout to make letters reset at different times
+
+              setTimeout(function () {
+                revert[i] = true;
+              }, randomTime()); // reset individual letter if kill switch
+
+              if (revert[i] === true) {
+                newLetters[i] = truth[i];
+              } // set html
 
 
-  scrambleFire(scrambleArgs); // call action fn
-}; // end Scramble
+              element.textContent = newLetters.join('');
+              return true;
+            }); // kill interval after all letter returned to normal to save stack
 
+            var killCheck = newLetters.length === truth.length && newLetters.every(function (e, i) {
+              return e === truth[i];
+            });
+
+            if (killCheck) {
+              element.innerHTML = truthHTML;
+
+              if (HTMLreset) {
+                var innerContent = element.children[0];
+
+                if (innerContent && innerContent !== '') {
+                  innerContent.textContent = newLetters.join('');
+                } else {
+                  element.textContent = newLetters.join('');
+                }
+              }
+
+              clearInterval(ticker); // stop looping
+
+              element.setAttribute('data-scramble-active', 'false');
+            }
+          }, speed); // end ticker
+        } // end check for active
+
+      }); // end forEach
+    }; // end scrambleFire
+
+
+    scrambleFire(scrambleArgs); // call action fn
+    // expose functions
+
+    return {
+      scrambleFire: scrambleFire,
+      randomChar: randomChar,
+      randomTime: randomTime,
+      isObject: isObject,
+      checkPassedAsObj: checkPassedAsObj
+    };
+  }(); // end ScramblerSetuo
+
+
+  return ScramblerSetup.scrambleFire; // return main fn
+};
 
 exports.Scrambler = Scrambler;
+console.warn(Scrambler);
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -295,7 +318,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56599" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52768" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

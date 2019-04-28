@@ -11,14 +11,15 @@
     "random letters",
     "javascript"
   ],
-  "main": "example.js",
+  "browser": "example.js",
   "scripts": {
     "check": "echo 'npm OK'",
     "start": "parcel index.html",
     "start-open": "parcel index.html --open",
     "start-https": "parcel index.html --https",
     "build": "parcel build index.html",
-    "test": "SET NODE_ENV=test & nyc mocha"
+    "test": "NODE_ENV=test nyc mocha",
+    "testWin": "SET NODE_ENV=test & nyc mocha"
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,9 @@
   "homepage": "https://github.com/Recidvst/scrambling-lettersr#readme",
   "devDependencies": {
     "@babel/core": "^7.4.3",
+    "@babel/register": "^7.4.4",
     "autoprefixer": "^9.5.1",
+    "babel-register": "^6.26.0",
     "bootstrap-grid": "^2.0.1",
     "chai": "*",
     "eslint": "^5.16.0",

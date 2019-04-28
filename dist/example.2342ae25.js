@@ -117,13 +117,13 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/scramble.js":[function(require,module,exports) {
+})({"js/scrambleSetup.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Scrambler = void 0;
+exports.ScramblerSetup = void 0;
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -135,8 +135,11 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-/* eslint-disable import/prefer-default-export */
-var Scrambler = function Scrambler(scrambleArgs) {
+/* eslint-disable import/prefer-default-export, no-console */
+// export main setup function - this is imported in the main api export
+var ScramblerSetup = function (scrambleArgs) {
+  // wrapper function
+
   /** * helper functions ** */
   // utility fn to get a random character
   var randomChar = function randomChar(length) {
@@ -149,21 +152,23 @@ var Scrambler = function Scrambler(scrambleArgs) {
 
   var isObject = function isObject(a) {
     return !!a && a.constructor === Object;
-  }; // did the user pass an object as an argument?
+  }; // array test
 
 
-  var passedAsObject = isObject(scrambleArgs) || _typeof(scrambleArgs) === 'object'; // set function default arguments if it was an object
-
-  if (passedAsObject) {
-    scrambleArgs.target = typeof scrambleArgs.target !== 'undefined' && passedAsObject ? scrambleArgs.target : '[data-scrambler]';
-    scrambleArgs.random = typeof scrambleArgs.random !== 'undefined' && passedAsObject ? scrambleArgs.random : [1000, 3000];
-    scrambleArgs.speed = typeof scrambleArgs.speed !== 'undefined' && passedAsObject ? scrambleArgs.speed : 100;
-    scrambleArgs.text = typeof scrambleArgs.text !== 'undefined' && passedAsObject ? scrambleArgs.text : false;
-  } // utility fn to get a random delay time
+  var isArray = function isArray(a) {
+    return !!a && a.constructor === Array;
+  }; // boolean test
 
 
-  var randomTime = function randomTime() {
-    if (passedAsObject) {
+  var isBool = function isBool(a) {
+    return !!a && a.constructor === Boolean;
+  }; // utility fn to get a random delay time
+
+
+  var randomTime = function randomTime(arg) {
+    var asObj = arg || false;
+
+    if (asObj) {
       return scrambleArgs.random[0] + (Math.random() * (1 - scrambleArgs.random[1]) + scrambleArgs.random[1]);
     }
 
@@ -171,8 +176,22 @@ var Scrambler = function Scrambler(scrambleArgs) {
   };
 
   var scrambleFire = function scrambleFire(scrambleFireArgs) {
-    // remember, hoisted
-    // get chosen scramble items
+    // return if array passed (needs string or object)
+    if (isArray(scrambleFireArgs) || isBool(scrambleFireArgs)) {
+      return false;
+    } // set function default arguments if it was an object
+
+
+    var passedAsObject = isObject(scrambleFireArgs) || _typeof(scrambleFireArgs) === 'object';
+
+    if (passedAsObject) {
+      scrambleFireArgs.target = typeof scrambleFireArgs.target !== 'undefined' && passedAsObject ? scrambleFireArgs.target : '[data-scrambler]';
+      scrambleFireArgs.random = typeof scrambleFireArgs.random !== 'undefined' && passedAsObject ? scrambleFireArgs.random : [1000, 3000];
+      scrambleFireArgs.speed = typeof scrambleFireArgs.speed !== 'undefined' && passedAsObject ? scrambleFireArgs.speed : 100;
+      scrambleFireArgs.text = typeof scrambleFireArgs.text !== 'undefined' && passedAsObject ? scrambleFireArgs.text : false;
+    } // get chosen scramble items
+
+
     var scramble = passedAsObject ? _toConsumableArray(document.querySelectorAll(scrambleFireArgs.target)) : _toConsumableArray(document.querySelectorAll(scrambleFireArgs)); // for each scramble element
 
     scramble.forEach(function (element) {
@@ -259,19 +278,48 @@ var Scrambler = function Scrambler(scrambleArgs) {
       } // end check for active
 
     }); // end forEach
+
+    return true;
   }; // end scrambleFire
+  // scrambleFire(scrambleArgs); // trigger function
+  // expose functions
 
 
-  scrambleFire(scrambleArgs); // call action fn
-}; // end Scramble
+  return {
+    scrambleFire: scrambleFire,
+    randomChar: randomChar,
+    randomTime: randomTime,
+    isObject: isObject
+  };
+}(); // end ScramblerSetup
 
+
+exports.ScramblerSetup = ScramblerSetup;
+},{}],"js/scramble.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Scrambler = void 0;
+
+var _scrambleSetup = require("./scrambleSetup");
+
+/* eslint-disable import/prefer-default-export, no-console */
+// get setup function
+// export main api function
+var Scrambler = function (setup) {
+  // wrapper function
+  return setup.scrambleFire;
+}(_scrambleSetup.ScramblerSetup);
 
 exports.Scrambler = Scrambler;
-},{}],"js/example.js":[function(require,module,exports) {
+},{"./scrambleSetup":"js/scrambleSetup.js"}],"js/example.js":[function(require,module,exports) {
 "use strict";
 
 var _scramble = require("./scramble");
 
+/* eslint-disable no-console */
 (0, _scramble.Scrambler)({
   target: '[data-title-scrambler]',
   random: [1000, 30000],
@@ -333,7 +381,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56599" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61984" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

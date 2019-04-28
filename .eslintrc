@@ -13,7 +13,7 @@
     "no-tabs": ["off"],
     "indent": ["off"],
     "eol-last": "off",
-    "func-names": ["error", "as-needed"],
+    "func-names": ["off"],
     "max-len": "off",
     "no-param-reassign": ["error", { "props": false }],
     "no-shadow": ["error", { "hoist": "never" }]
