@@ -117,13 +117,69 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/scrambleSetup.js":[function(require,module,exports) {
+})({"js/scrambleUtil.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ScramblerSetup = void 0;
+exports.isBool = exports.isArray = exports.isObject = exports.randomTime = exports.randomChar = void 0;
+
+/* eslint-disable import/prefer-default-export, no-console */
+// export helper functions - these are used in the ScrambleSetup wrapper
+// utility fn to get a random character
+var randomChar = function randomChar(length, debug) {
+  var l = length || 1;
+  var d = debug || false;
+  var r = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, l);
+  if (' \t\n\r\v'.indexOf(r) < 0 && debug !== true) return r;
+  return false;
+}; // utility fn to get a random delay time
+
+
+exports.randomChar = randomChar;
+
+var randomTime = function randomTime(arg, rand) {
+  var asObj = arg || false;
+
+  if (asObj && isArray(rand) && rand.length > 1) {
+    return rand[0] + (Math.random() * (1 - rand[1]) + rand[1]);
+  }
+
+  return 1000 + (Math.random() * (1 - 3000) + 3000);
+}; // object test
+
+
+exports.randomTime = randomTime;
+
+var isObject = function isObject(a) {
+  return !!a && a.constructor === Object;
+}; // array test
+
+
+exports.isObject = isObject;
+
+var isArray = function isArray(a) {
+  return !!a && a.constructor === Array;
+}; // boolean test
+
+
+exports.isArray = isArray;
+
+var isBool = function isBool(a) {
+  return typeof a === "boolean";
+};
+
+exports.isBool = isBool;
+},{}],"js/scrambleSetup.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ScrambleSetup = void 0;
+
+var _scrambleUtil = require("./scrambleUtil");
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -135,54 +191,17 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-/* eslint-disable import/prefer-default-export, no-console */
 // export main setup function - this is imported in the main api export
-var ScramblerSetup = function (scrambleArgs) {
+var ScrambleSetup = function () {
   // wrapper function
-
-  /** * helper functions ** */
-  // utility fn to get a random character
-  var randomChar = function randomChar(length) {
-    var l = length || 1;
-    var r = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, l);
-    if (' \t\n\r\v'.indexOf(r) < 0) return r;
-    return false;
-  }; // object test
-
-
-  var isObject = function isObject(a) {
-    return !!a && a.constructor === Object;
-  }; // array test
-
-
-  var isArray = function isArray(a) {
-    return !!a && a.constructor === Array;
-  }; // boolean test
-
-
-  var isBool = function isBool(a) {
-    return !!a && a.constructor === Boolean;
-  }; // utility fn to get a random delay time
-
-
-  var randomTime = function randomTime(arg) {
-    var asObj = arg || false;
-
-    if (asObj) {
-      return scrambleArgs.random[0] + (Math.random() * (1 - scrambleArgs.random[1]) + scrambleArgs.random[1]);
-    }
-
-    return 1000 + (Math.random() * (1 - 3000) + 3000);
-  };
-
   var scrambleFire = function scrambleFire(scrambleFireArgs) {
     // return if array passed (needs string or object)
-    if (isArray(scrambleFireArgs) || isBool(scrambleFireArgs)) {
+    if ((0, _scrambleUtil.isArray)(scrambleFireArgs) || (0, _scrambleUtil.isBool)(scrambleFireArgs)) {
       return false;
     } // set function default arguments if it was an object
 
 
-    var passedAsObject = isObject(scrambleFireArgs) || _typeof(scrambleFireArgs) === 'object';
+    var passedAsObject = (0, _scrambleUtil.isObject)(scrambleFireArgs) || _typeof(scrambleFireArgs) === 'object';
 
     if (passedAsObject) {
       scrambleFireArgs.target = typeof scrambleFireArgs.target !== 'undefined' && passedAsObject ? scrambleFireArgs.target : '[data-scrambler]';
@@ -217,7 +236,7 @@ var ScramblerSetup = function (scrambleArgs) {
             if (' \t\n\r\v'.indexOf(truth[index]) > -1) {
               startTextTemp.push(' ');
             } else {
-              startTextTemp.push(randomChar());
+              startTextTemp.push((0, _scrambleUtil.randomChar)());
             }
           });
           startText = startTextTemp;
@@ -238,11 +257,11 @@ var ScramblerSetup = function (scrambleArgs) {
             // break if a space
             if (' \t\n\r\v'.indexOf(letter) > -1) return false; // set new random letter
 
-            newLetters[i] = randomChar(); // set random timeout to make letters reset at different times
+            newLetters[i] = (0, _scrambleUtil.randomChar)(); // set random timeout to make letters reset at different times
 
             setTimeout(function () {
               revert[i] = true;
-            }, randomTime()); // reset individual letter if kill switch
+            }, (0, _scrambleUtil.randomTime)((0, _scrambleUtil.isObject)(scrambleFireArgs), scrambleFireArgs.random)); // reset individual letter if kill switch
 
             if (revert[i] === true) {
               newLetters[i] = truth[i];
@@ -281,21 +300,15 @@ var ScramblerSetup = function (scrambleArgs) {
 
     return true;
   }; // end scrambleFire
-  // scrambleFire(scrambleArgs); // trigger function
-  // expose functions
+  // expose function
 
 
-  return {
-    scrambleFire: scrambleFire,
-    randomChar: randomChar,
-    randomTime: randomTime,
-    isObject: isObject
-  };
+  return scrambleFire;
 }(); // end ScramblerSetup
 
 
-exports.ScramblerSetup = ScramblerSetup;
-},{}],"js/scramble.js":[function(require,module,exports) {
+exports.ScrambleSetup = ScrambleSetup;
+},{"./scrambleUtil":"js/scrambleUtil.js"}],"js/scramble.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -310,8 +323,8 @@ var _scrambleSetup = require("./scrambleSetup");
 // export main api function
 var Scrambler = function (setup) {
   // wrapper function
-  return setup.scrambleFire;
-}(_scrambleSetup.ScramblerSetup);
+  return setup;
+}(_scrambleSetup.ScrambleSetup);
 
 exports.Scrambler = Scrambler;
 },{"./scrambleSetup":"js/scrambleSetup.js"}],"js/example.js":[function(require,module,exports) {
@@ -322,33 +335,29 @@ var _scramble = require("./scramble");
 /* eslint-disable no-console */
 (0, _scramble.Scrambler)({
   target: '[data-title-scrambler]',
-  random: [1000, 30000],
+  random: [1000, 5000],
   speed: 100
 });
 (0, _scramble.Scrambler)('p:not(.no-scramble), ul:not(.no-scramble) li');
-(0, _scramble.Scrambler)({
-  target: '#scramble-text-id',
-  random: [1000, 30000],
-  speed: 100
-});
 var buttonT = document.querySelector('#scramble-title-button');
 var buttonP = document.querySelector('#scramble-paragraph-button');
-var buttonN = document.querySelector('#scramble-paragraph-new');
+var buttonN = document.querySelector('#scramble-paragraph-decode');
 buttonT.addEventListener('click', function () {
-  (0, _scramble.Scrambler)('[data-title-scrambler]');
   (0, _scramble.Scrambler)({
-    target: '#scramble-text-id',
-    random: [1000, 30000],
-    speed: 100
+    target: '[data-title-scrambler]',
+    random: [1000, 10000]
   });
 });
 buttonP.addEventListener('click', function () {
-  (0, _scramble.Scrambler)('p:not(.no-scramble), ul:not(.no-scramble) li, h3:not(.no-scramble)');
+  (0, _scramble.Scrambler)({
+    target: 'p:not(.no-scramble), ul:not(.no-scramble) li, h3:not(.no-scramble)',
+    random: [1000, 30000]
+  });
 });
 buttonN.addEventListener('click', function () {
   (0, _scramble.Scrambler)({
     target: '[data-title-scrambler]',
-    random: [1000, 30000],
+    random: [1000, 20000],
     speed: 100,
     text: 'Secret message'
   });
@@ -381,7 +390,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61984" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50337" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

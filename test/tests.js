@@ -3,16 +3,15 @@ require('jsdom-global')();
 const assert = require('assert');
 const chai = require('chai');
 const expect = chai.expect;
-const should = chai.should;
 
-// import Scrambler and create test var
+// import Scrambler and create test vars
 const Scrambler = require('../js/scramble.js');
 const ScramblerSetup = require('../js/scrambleSetup.js');
 
 const TEST_TRIGGER = Scrambler.Scrambler;
-const TEST_SETUP = ScramblerSetup.ScramblerSetup;
+const TEST_SETUP = ScramblerSetup;
 
-describe('scramblerExists', function() {
+describe('scramblerFunctionsExist', function() {
   it('main function should exist', function() {
     expect(TEST_TRIGGER).to.exist;
   });
@@ -22,12 +21,12 @@ describe('scramblerExists', function() {
 });
 
 describe('scramblerIsFunction', function() {
-  it('should be a function', function() {
+  it('main function should be a function', function() {
     expect(typeof(TEST_TRIGGER)).to.equal('function')
   });
 });
 describe('scramblerSetupIsObject', function() {
-  it('should be an object', function() {
+  it('setup function should be an object', function() {
     expect(typeof(TEST_SETUP)).to.equal('object')
   });
 });

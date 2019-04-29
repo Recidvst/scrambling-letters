@@ -1,40 +1,12 @@
 /* eslint-disable import/prefer-default-export, no-console */
 
+// get util functions
+import {
+  randomChar, randomTime, isObject, isArray, isBool,
+} from './scrambleUtil';
+
 // export main setup function - this is imported in the main api export
-export const ScramblerSetup = (function (scrambleArgs) { // wrapper function
-  /** * helper functions ** */
-  // utility fn to get a random character
-  const randomChar = function (length) {
-    const l = length || 1;
-    const r = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, l);
-    if (' \t\n\r\v'.indexOf(r) < 0) return r;
-    return false;
-  };
-
-  // object test
-  const isObject = function (a) {
-    return (!!a) && (a.constructor === Object);
-  };
-
-  // array test
-  const isArray = function (a) {
-    return (!!a) && (a.constructor === Array);
-  };
-
-  // boolean test
-  const isBool = function (a) {
-    return (!!a) && (a.constructor === Boolean);
-  };
-
-  // utility fn to get a random delay time
-  const randomTime = function (arg) {
-    const asObj = arg || false;
-    if (asObj) {
-      return scrambleArgs.random[0] + ((Math.random() * (1 - scrambleArgs.random[1])) + scrambleArgs.random[1]);
-    }
-    return 1000 + ((Math.random() * (1 - 3000)) + 3000);
-  };
-
+export const ScrambleSetup = (function () { // wrapper function
   const scrambleFire = function (scrambleFireArgs) {
     // return if array passed (needs string or object)
     if (isArray(scrambleFireArgs) || isBool(scrambleFireArgs)) {
@@ -100,7 +72,7 @@ export const ScramblerSetup = (function (scrambleArgs) { // wrapper function
             // set random timeout to make letters reset at different times
             setTimeout(() => {
               revert[i] = true;
-            }, randomTime());
+            }, randomTime(isObject(scrambleFireArgs), scrambleFireArgs.random));
             // reset individual letter if kill switch
             if (revert[i] === true) {
               newLetters[i] = truth[i];
@@ -131,13 +103,6 @@ export const ScramblerSetup = (function (scrambleArgs) { // wrapper function
     return true;
   }; // end scrambleFire
 
-  // scrambleFire(scrambleArgs); // trigger function
-
-  // expose functions
-  return {
-    scrambleFire,
-    randomChar,
-    randomTime,
-    isObject,
-  };
+  // expose function
+  return scrambleFire;
 }()); // end ScramblerSetup
