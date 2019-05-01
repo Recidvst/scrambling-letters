@@ -1,5 +1,4 @@
 const Scrambler = require('./scramble.js');
-console.warn(Scrambler);
 
 Scrambler({
   target: '[data-title-scrambler]',

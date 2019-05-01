@@ -3,7 +3,6 @@
 
 var Scrambler = require('./scramble.js');
 
-console.warn(Scrambler);
 Scrambler({
   target: '[data-title-scrambler]',
   random: [1000, 5000],
@@ -39,9 +38,8 @@ buttonN.addEventListener('click', function () {
 
 /* eslint-disable import/prefer-default-export, no-console */
 // get setup function
-var ScrambleSetup = require('./scrambleSetup.js');
+var ScrambleSetup = require('./scrambleSetup.js'); // export main api function
 
-console.log(ScrambleSetup); // export main api function
 
 var Scrambler = function (setup) {
   // wrapper function

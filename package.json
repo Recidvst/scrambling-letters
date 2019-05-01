@@ -16,7 +16,7 @@
     "check": "echo 'npm OK'",
     "test": "NODE_ENV=test nyc mocha",
     "testWin": "SET NODE_ENV=test & nyc mocha",
-    "styles": "node-sass scss -o dist/css & cleancss dist/css/example.css -o dist/css/example.min.css",
+    "styles": "node-sass scss/example.scss -o dist/css & cleancss dist/css/example.css -o dist/css/example.min.css",
     "bundleJS": "browserify -t [ babelify --presets [ @babel/preset-env ] ] js/scramble.js -o dist/js/scramble.js & uglifyjs dist/js/scramble.js --output dist/js/scramble.min.js",
     "localJS": "browserify -t [ babelify --presets [ @babel/preset-env ] ] js/example.js -o dist/js/example.js & uglifyjs dist/js/example.js --output dist/js/example.min.js",
     "dev": "watchify -t [ babelify --presets [ @babel/preset-env ] ] js/scramble.js -o dist/js/scramble.js -v",

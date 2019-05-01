@@ -2,7 +2,6 @@
 
 // get setup function
 const ScrambleSetup = require('./scrambleSetup.js');
-console.log(ScrambleSetup);
 
 // export main api function
 const Scrambler = (function (setup) { // wrapper function
