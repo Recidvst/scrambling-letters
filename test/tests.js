@@ -8,8 +8,10 @@ const expect = chai.expect;
 const Scrambler = require('../js/scramble.js');
 const ScramblerSetup = require('../js/scrambleSetup.js');
 
-const TEST_TRIGGER = Scrambler.Scrambler;
+const TEST_TRIGGER = Scrambler;
 const TEST_SETUP = ScramblerSetup;
+console.log(TEST_TRIGGER);
+console.log(TEST_SETUP);
 
 describe('scramblerFunctionsExist', function() {
   it('main function should exist', function() {
@@ -25,9 +27,9 @@ describe('scramblerIsFunction', function() {
     expect(typeof(TEST_TRIGGER)).to.equal('function')
   });
 });
-describe('scramblerSetupIsObject', function() {
-  it('setup function should be an object', function() {
-    expect(typeof(TEST_SETUP)).to.equal('object')
+describe('scramblerSetupIsFunction', function() {
+  it('setup function should be a function', function() {
+    expect(typeof(TEST_SETUP)).to.equal('function')
   });
 });
 

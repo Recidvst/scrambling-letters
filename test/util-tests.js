@@ -7,6 +7,7 @@ const expect = chai.expect;
 const ScramblerUtils = require('../js/scrambleUtil.js');
 
 const TEST_UTILS = ScramblerUtils;
+console.log(TEST_UTILS);
 
 
 describe('utilFunctionsExist', function() {

@@ -14,12 +14,14 @@
   "browser": "example.js",
   "scripts": {
     "check": "echo 'npm OK'",
-    "start": "parcel index.html",
-    "start-open": "parcel index.html --open",
-    "start-https": "parcel index.html --https",
-    "build": "parcel build index.html",
     "test": "NODE_ENV=test nyc mocha",
-    "testWin": "SET NODE_ENV=test & nyc mocha"
+    "testWin": "SET NODE_ENV=test & nyc mocha",
+    "styles": "node-sass scss -o dist/css & cleancss dist/css/example.css -o dist/css/example.min.css",
+    "bundleJS": "browserify -t [ babelify --presets [ @babel/preset-env ] ] js/scramble.js -o dist/js/scramble.js & uglifyjs dist/js/scramble.js --output dist/js/scramble.min.js",
+    "localJS": "browserify -t [ babelify --presets [ @babel/preset-env ] ] js/example.js -o dist/js/example.js & uglifyjs dist/js/example.js --output dist/js/example.min.js",
+    "dev": "watchify -t [ babelify --presets [ @babel/preset-env ] ] js/scramble.js -o dist/js/scramble.js -v",
+    "serve": "beefy js/scramble.js --browserify browserify --live",
+    "build": "npm run styles && npm run bundleJS && npm run localJS"
   },
   "repository": {
     "type": "git",
@@ -31,27 +33,27 @@
     "url": "https://github.com/Recidvst/scrambling-letters/issues"
   },
   "homepage": "https://github.com/Recidvst/scrambling-lettersr#readme",
-  "devDependencies": {
-    "@babel/core": "^7.4.3",
+  "dependencies": {
+    "browserify": "^16.2.3",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
     "@babel/register": "^7.4.4",
-    "autoprefixer": "^9.5.1",
-    "babel-register": "^6.26.0",
+    "babelify": "^10.0.0",
+    "beefy": "^2.1.8",
     "bootstrap-grid": "^2.0.1",
+    "clean-css-cli": "^4.3.0",
+    "node-sass": "^4.12.0",
+    "uglify-js": "^3.5.9",
+    "watchify": "^3.11.1",
+    "autoprefixer": "^9.5.1",
     "chai": "*",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4",
     "jsdom": "14.0.0",
     "jsdom-global": "3.0.2",
     "mocha": "*",
-    "node-sass": "^4.11.0",
-    "nyc": "^13.3.0",
-    "parcel-bundler": "^1.12.3",
-    "parcel-plugin-eslint": "^1.0.7",
-    "parcel-plugin-imagemin": "^2.1.3",
-    "parcel-plugin-purgecss": "^2.1.0",
-    "sass": "^1.17.2"
+    "nyc": "^13.3.0"
   }
 }

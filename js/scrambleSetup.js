@@ -1,20 +1,18 @@
 /* eslint-disable import/prefer-default-export, no-console */
 
 // get util functions
-import {
-  randomChar, randomTime, isObject, isArray, isBool,
-} from './scrambleUtil';
+const ScramblerUtils = require('./scrambleUtil.js');
 
 // export main setup function - this is imported in the main api export
-export const ScrambleSetup = (function () { // wrapper function
+const ScrambleSetup = (function () { // wrapper function
   const scrambleFire = function (scrambleFireArgs) {
     // return if array passed (needs string or object)
-    if (isArray(scrambleFireArgs) || isBool(scrambleFireArgs)) {
+    if (ScramblerUtils.isArray(scrambleFireArgs) || ScramblerUtils.isBool(scrambleFireArgs)) {
       return false;
     }
 
     // set function default arguments if it was an object
-    const passedAsObject = (isObject(scrambleFireArgs) || typeof scrambleFireArgs === 'object');
+    const passedAsObject = (ScramblerUtils.isObject(scrambleFireArgs) || typeof scrambleFireArgs === 'object');
     if (passedAsObject) {
       scrambleFireArgs.target = (typeof scrambleFireArgs.target !== 'undefined' && (passedAsObject)) ? scrambleFireArgs.target : '[data-scrambler]';
       scrambleFireArgs.random = (typeof scrambleFireArgs.random !== 'undefined' && (passedAsObject)) ? scrambleFireArgs.random : [1000, 3000];
@@ -48,7 +46,7 @@ export const ScrambleSetup = (function () { // wrapper function
             if (' \t\n\r\v'.indexOf(truth[index]) > -1) {
               startTextTemp.push(' ');
             } else {
-              startTextTemp.push(randomChar());
+              startTextTemp.push(ScramblerUtils.randomChar());
             }
           });
           startText = startTextTemp;
@@ -68,11 +66,11 @@ export const ScrambleSetup = (function () { // wrapper function
             // break if a space
             if (' \t\n\r\v'.indexOf(letter) > -1) return false;
             // set new random letter
-            newLetters[i] = randomChar();
+            newLetters[i] = ScramblerUtils.randomChar();
             // set random timeout to make letters reset at different times
             setTimeout(() => {
               revert[i] = true;
-            }, randomTime(isObject(scrambleFireArgs), scrambleFireArgs.random));
+            }, ScramblerUtils.randomTime(ScramblerUtils.isObject(scrambleFireArgs), scrambleFireArgs.random));
             // reset individual letter if kill switch
             if (revert[i] === true) {
               newLetters[i] = truth[i];
@@ -106,3 +104,5 @@ export const ScrambleSetup = (function () { // wrapper function
   // expose function
   return scrambleFire;
 }()); // end ScramblerSetup
+
+module.exports = ScrambleSetup;

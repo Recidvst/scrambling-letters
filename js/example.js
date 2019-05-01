@@ -1,6 +1,5 @@
-/* eslint-disable no-console */
-
-import { Scrambler } from './scramble';
+const Scrambler = require('./scramble.js');
+console.warn(Scrambler);
 
 Scrambler({
   target: '[data-title-scrambler]',
@@ -17,7 +16,7 @@ const buttonN = document.querySelector('#scramble-paragraph-decode');
 buttonT.addEventListener('click', () => {
   Scrambler({
     target: '[data-title-scrambler]',
-    random: [1000, 10000]
+    random: [1000, 10000],
   });
 });
 
