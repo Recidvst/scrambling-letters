@@ -1,15 +1,27 @@
+# setup
+package.json
 gulpfile.js
+rollup.config.js
+.eslintrc
+.babelrc
+
+# dev
 index.html
-js/example.js
 scss/example.scss
+scss/grid.scss
+js/example.js
+js/example.js
 favicon.ico
 
-dist/example.min.js
-dist/example.min.css
+# local dist
+dist/css/
+dist/js/dev/
 
+# tests
 test/
 coverage/
 .nyc_output
+.cache
 
 bower_components
 node_modules

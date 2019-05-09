@@ -1,11 +1,11 @@
+/* global Scrambler */
 /* eslint-disable import/prefer-default-export, no-console */
 
 // get setup function
-const ScrambleSetup = require('./scrambleSetup.js');
+import { ScrambleSetup } from './scrambleSetup.js';
+console.warn(ScrambleSetup);
 
 // export main api function
-const Scrambler = (function (setup) { // wrapper function
+export const Scrambler = (function (setup) { // wrapper function
   return setup;
 }(ScrambleSetup));
-
-module.exports = Scrambler;
