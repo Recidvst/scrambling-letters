@@ -4,10 +4,9 @@ const assert = require('assert');
 const chai = require('chai');
 const expect = chai.expect;
 
-const ScramblerUtils = require('../js/scrambleUtil.js');
+import { isObject, isArray, isBool, randomChar, randomTime } from './scrambleUtil.js';
 
-const TEST_UTILS = ScramblerUtils;
-console.log(TEST_UTILS);
+console.log(isObject);
 
 
 describe('utilFunctionsExist', function() {

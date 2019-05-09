@@ -1,9 +1,6 @@
-"use strict";
-
 /* global Scrambler */
 
 /* eslint-disable import/prefer-default-export, no-console */
-console.error(Scrambler);
 Scrambler({
   target: '[data-title-scrambler]',
   random: [1000, 5000],

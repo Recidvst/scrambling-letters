@@ -9,6 +9,9 @@
     "window": true,
     "ga": true
   },
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "rules": {
     "no-console": ["error", { allow: ["warn"] }],
     "no-tabs": ["off"],

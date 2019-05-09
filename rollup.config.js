@@ -1,20 +1,39 @@
+
+import resolve from 'rollup-plugin-node-resolve';
+import babel from 'rollup-plugin-babel';
+import { eslint } from 'rollup-plugin-eslint';
+import uglify from 'rollup-plugin-uglify-es';
+
 const dist = 'dist';
 
 export default {
-  input: 'js/scramble.js',
+  input: 'js/scrambler.js',
   output: [
     {
-      file: `${dist}/bundle.cjs.js`,
+      file: `${dist}/scrambler.cjs.js`,
       format: 'cjs'
     },
     {
-      file: `${dist}/bundle.esm.js`,
+      file: `${dist}/scrambler.esm.js`,
       format: 'esm'
     },
     {
       name: 'Scrambler',
-      file: `${dist}/bundle.umd.js`,
+      file: `${dist}/scrambler.umd.js`,
       format: 'umd'
+    },
+    {
+      name: 'Scrambler',
+      file: `${dist}/scrambler.min.js`,
+      format: 'iife'
     }
+  ],
+  plugins: [
+    resolve(),
+    eslint(),
+    babel({
+      exclude: 'node_modules/**',
+    }),
+    uglify()
   ]
 }

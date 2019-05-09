@@ -1,6 +1,5 @@
 /* global Scrambler */
 /* eslint-disable import/prefer-default-export, no-console */
-console.error(Scrambler);
 
 Scrambler({
   target: '[data-title-scrambler]',
