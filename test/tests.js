@@ -4,9 +4,12 @@ const assert = require('assert');
 const chai = require('chai');
 const expect = chai.expect;
 
+console.log(process.env.BABEL_ENV);
+console.log(process.env.NODE_ENV);
+
 // import Scrambler and create test vars
-const Scrambler = require('../js/scramble.js');
-const ScramblerSetup = require('../js/scrambleSetup.js');
+import Scrambler from '../js/scrambler.js';
+import ScramblerSetup from '../js/scrambleSetup.js';
 
 const TEST_TRIGGER = Scrambler;
 const TEST_SETUP = ScramblerSetup;
