@@ -4,17 +4,14 @@ const assert = require('assert');
 const chai = require('chai');
 const expect = chai.expect;
 
-console.log(process.env.BABEL_ENV);
-console.log(process.env.NODE_ENV);
-
 // import Scrambler and create test vars
 import Scrambler from '../js/scrambler.js';
 import ScramblerSetup from '../js/scrambleSetup.js';
 
 const TEST_TRIGGER = Scrambler;
 const TEST_SETUP = ScramblerSetup;
-console.log(TEST_TRIGGER);
 console.log(TEST_SETUP);
+console.log(TEST_SETUP({target: undefined}, true));
 
 describe('scramblerFunctionsExist', function() {
   it('main function should exist', function() {
@@ -36,7 +33,7 @@ describe('scramblerSetupIsFunction', function() {
   });
 });
 
-describe('scramblerParamTypes', function() {
+describe('scramblerParams', function() {
   it('should succeed if passed a string', function() {
     expect(TEST_TRIGGER('string')).to.not.be.undefined;
   });
@@ -47,18 +44,43 @@ describe('scramblerParamTypes', function() {
     expect(TEST_TRIGGER(['button','.title'])).to.be.false;
   });
   it('should fail silently if passed a boolean', function() {
-    expect(TEST_TRIGGER(true)).to.be.false;;
+    expect(TEST_TRIGGER(true)).to.be.false;
   });
-  it('should fail loudly if passed an integer', function() {
-    assert.throws(() => TEST_TRIGGER(1), Error);
-  });
-  it('should fail loudly if passed a float', function() {
-    assert.throws(() => TEST_TRIGGER(1.01), Error);
+  it('should fail silently if passed a number', function() {
+    expect(TEST_TRIGGER(7)).to.be.false;
+    expect(TEST_TRIGGER(7.01)).to.be.false;
   });
   it('should fail loudly if passed a function', function() {
     assert.throws(() => TEST_TRIGGER(function test() {return true}), Error);
   });
   it('should fail loudly if passed an undefined param', function() {
     assert.throws(() => TEST_TRIGGER(ZZZ), Error, "ReferenceError: ZZZ is not defined");
+  });
+});
+
+describe('scramblerDefaultArguments', function() {
+  it('should return the default ([data-scrambler]) if undefined passed as the target value', function() {
+    expect(TEST_TRIGGER({target: undefined}, true)).to.deep.include({target: '[data-scrambler]'});
+  });
+  it('should return the default ([1000, 3000]) if undefined passed as the random value', function() {
+    expect(TEST_TRIGGER({random: undefined}, true)).to.deep.include({random: [1000, 3000]});
+  });
+  it('should return the default (100) if undefined passed as the speed value', function() {
+    expect(TEST_TRIGGER({speed: undefined}, true)).to.deep.include({speed: 100});
+  });
+  it('should return the default (false) if undefined passed as the text value', function() {
+    expect(TEST_TRIGGER({text: undefined}, true)).to.deep.include({text: false});
+  });
+  it('should return the default ([data-scrambler]) if nothing passed as the target value', function() {
+    expect(TEST_TRIGGER({speed: 200}, true)).to.deep.include({target: '[data-scrambler]'});
+  });
+  it('should return the default ([1000, 3000]) if nothing passed as the random value', function() {
+    expect(TEST_TRIGGER({target: 'element'}, true)).to.deep.include({random: [1000, 3000]});
+  });
+  it('should return the default (100) if undefined nothing as the speed value', function() {
+    expect(TEST_TRIGGER({target: 'element'}, true)).to.deep.include({speed: 100});
+  });
+  it('should return the default (false) if undefined nothing as the text value', function() {
+    expect(TEST_TRIGGER({target: 'element'}, true)).to.deep.include({text: false});
   });
 });

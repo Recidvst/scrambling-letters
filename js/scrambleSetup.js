@@ -4,9 +4,9 @@
 import { isObject, isArray, isBool, randomChar, randomTime } from './scrambleUtil.js';
 
 // export main setup function - this is imported in the main api export
-export default function (scrambleFireArgs) {
+export default function (scrambleFireArgs, debug = false) {
   // return if array passed (needs string or object)
-  if (isArray(scrambleFireArgs) || isBool(scrambleFireArgs)) {
+  if (isArray(scrambleFireArgs) || isBool(scrambleFireArgs) || (typeof scrambleFireArgs === 'number') ) {
     return false;
   }
 
@@ -97,5 +97,10 @@ export default function (scrambleFireArgs) {
       }, speed); // end ticker
     } // end check for active
   }); // end forEach
-  return true;
+  if (debug === true) {
+    return scrambleFireArgs;
+  }
+  else {
+    return true;
+  }
 } // end scrambleFire
