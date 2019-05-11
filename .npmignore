@@ -4,7 +4,7 @@ gulpfile.js
 rollup.config.js
 .eslintrc
 .babelrc
-travis.yml
+.travis.yml
 
 # dev
 index.html
