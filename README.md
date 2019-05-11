@@ -1,6 +1,7 @@
 
 [![npm](https://img.shields.io/npm/dt/scrambling-letters.svg)]()
 [![npm](https://img.shields.io/npm/v/scrambling-letters.svg)]()
+[![Coverage Status](https://coveralls.io/repos/github/Recidvst/scrambling-letters/badge.svg?branch=master)](https://coveralls.io/github/Recidvst/scrambling-letters?branch=master)
 [![license](https://img.shields.io/github/license/recidvst/scrambling-letters.svg)]()
 
 # Scrambling Letters
@@ -17,8 +18,8 @@ Loops through any elements with the relevant selector or data attribute and scra
 
 ### Download/Install
 - Download the Scrambling Letters dist files from [Github](https://github.com/Recidvst/scrambling-letters/archive/master.zip 'Github download') or install via [NPM](https://www.npmjs.com/package/scrambling-letters 'npm download').
-- Pick the dist file you desire - ES6, ES5 or babel polyfilled. The standard ES6 version will not support IE and is a named export.
-- Import or include the JS. The standard file is an export but the ES5 version is plain JS. This will allow you to access the **Scrambler()** function.
+- Pick the dist file you desire. Choose from UMD, ESM, CJS, IIFE or use the source code and build your own.
+- Import or include the JS into your site/app. This will allow you to access the **Scrambler()** function.
 
 ### Initiate
 - Scrambler() needs to be told which piece of text to scramble.
