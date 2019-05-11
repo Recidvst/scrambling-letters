@@ -84,3 +84,20 @@ describe('scramblerDefaultArguments', function() {
     expect(TEST_TRIGGER({target: 'element'}, true)).to.deep.include({text: false});
   });
 });
+
+describe('scramblerValidArguments', function() {
+  it('should return the passed argument if a valid string passed as the target value', function() {
+    expect(TEST_TRIGGER({target: 'valid-string'}, true)).to.deep.include({target: 'valid-string'});
+  });
+  it('should return the passed argument if a valid array of numbers passed as the random value', function() {
+    expect(TEST_TRIGGER({random: [2000, 4000]}, true)).to.deep.include({random: [2000, 4000]});
+  });
+  it('should return the passed argument if a valid number passed as the speed value', function() {
+    expect(TEST_TRIGGER({speed: 200}, true)).to.deep.include({speed: 200});
+  });
+  it('should return the passed argument if a valid string passed as the text value', function() {
+    expect(TEST_TRIGGER({text: 'valid'}, true)).to.deep.include({text: 'valid'});
+  });
+});
+
+// will break if random is passed an array of non-numbers? similarly, all other options..
