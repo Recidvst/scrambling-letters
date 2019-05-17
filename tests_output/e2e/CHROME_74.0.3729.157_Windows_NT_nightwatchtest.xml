@@ -5,9 +5,9 @@
 
   <testsuite name="e2e.nightwatchtest"
     errors="0" failures="0" hostname="" id="" package="e2e" skipped="0"
-    tests="1" time="7.641" timestamp="">
+    tests="1" time="7.402" timestamp="">
   
-    <testcase name="Demo test Google" classname="e2e.nightwatchtest" time="7.641" assertions="3">
+    <testcase name="Demo test Google" classname="e2e.nightwatchtest" time="7.402" assertions="3">
 
     
 
