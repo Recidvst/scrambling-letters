@@ -24,6 +24,11 @@ export default {
     },
     {
       name: 'Scrambler',
+      file: `${dist}/scrambler.iife.js`,
+      format: 'iife'
+    },
+    {
+      name: 'Scrambler',
       file: `${dist}/scrambler.min.js`,
       format: 'iife'
     }

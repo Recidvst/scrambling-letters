@@ -669,6 +669,57 @@
   .col-lg-offset-0 {
     margin-left: 0; } }
 
+.nano-button {
+  position: relative;
+  display: inline-block;
+  color: #bde1ff;
+  text-decoration: none;
+  width: 250px;
+  height: 50px;
+  margin: 10px;
+  overflow: hidden;
+  transition: all 1s ease; }
+  .nano-button .outline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    stroke: #bde1ff;
+    stroke-width: 2px;
+    fill: transparent;
+    fill: rgba(189, 225, 255, 0.1);
+    transition: all 1.5s ease; }
+  .nano-button .text {
+    font-size: 2rem;
+    line-height: 1;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-family: 'Inconsolata', monospace;
+    text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 1.5s ease; }
+  .nano-button:hover .outline {
+    stroke: #B96CFF;
+    fill: rgba(185, 108, 255, 0.1); }
+  .nano-button:hover .text {
+    color: #B96CFF; }
+  .nano-button.anim-sides .outline {
+    stroke-dasharray: 70 230;
+    stroke-dashoffset: 60; }
+  .nano-button.anim-sides:hover .outline {
+    stroke-dashoffset: -650; }
+  .nano-button.anim-top-bottom .outline {
+    stroke-dasharray: 150;
+    stroke-dashoffset: 250; }
+  .nano-button.anim-top-bottom:hover .outline {
+    stroke-dashoffset: -350; }
+
 html {
   font-family: 'Inconsolata', monospace;
   font-size: 10px;
@@ -678,6 +729,10 @@ html {
   -webkit-transition: all .1s linear;
   -o-transition: all .1s linear;
   transition: all .1s linear; }
+  html body {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0; }
   html h1 {
     margin: 30px auto;
     font-size: 6rem;
@@ -704,9 +759,16 @@ html {
     margin: 20px auto;
     font-size: 2rem;
     line-height: 2.5rem; }
-  html ul li {
-    font-size: 2rem;
-    line-height: 3.5rem; }
+  @media (max-width: 767px) {
+    html h1 {
+      font-size: 5rem; }
+    html h2 {
+      font-size: 3.5rem; } }
+  html ul {
+    padding-left: 20px; }
+    html ul li {
+      font-size: 2rem;
+      line-height: 3.5rem; }
   html a {
     color: #bde1ff; }
     html a:active, html a:focus, html a:visited {
@@ -729,55 +791,18 @@ html {
     html .how-to pre span {
       color: #bde1ff; }
   html footer p {
-    color: #ffffff; }
-  html button, html .button {
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    margin: 10px auto;
-    min-width: 200px;
-    padding: 13px 40px;
-    background-color: transparent;
-    border: 3px solid #bde1ff;
-    color: #bde1ff;
-    text-align: center;
-    font-size: 1.5rem;
-    font-family: sans-serif;
-    text-decoration: none;
-    -webkit-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-    cursor: pointer; }
-    html button:disabled, html button[disabled], html .button:disabled, html .button[disabled] {
-      background-color: #ccc;
-      color: #666;
-      pointer-events: none;
-      cursor: not-allowed; }
-    html button:after, html .button:after {
-      content: "";
-      position: absolute;
-      height: 0%;
-      left: 50%;
-      top: 50%;
-      width: 150%;
-      z-index: -1;
-      -webkit-transition: all 0.75s ease 0s;
-      -o-transition: all 0.75s ease 0s;
-      transition: all 0.75s ease 0s;
-      -webkit-transform: translateX(-50%) translateY(-50%) rotate(25deg);
-      -ms-transform: translateX(-50%) translateY(-50%) rotate(25deg);
-      transform: translateX(-50%) translateY(-50%) rotate(25deg);
-      background: #bde1ff; }
-    html button:hover, html .button:hover {
-      color: #282828; }
-      html button:hover:after, html .button:hover:after {
-        height: 450%; }
-  @media (max-width: 767px) {
-    html button {
-      width: 100%; }
-    html .button {
-      width: auto; } }
+    color: #ffffff;
+    font-size: 1.8rem; }
   html .text-center {
     text-align: center; }
   html .highlight {
     color: #bde1ff; }
+  html .body-background {
+    background-color: #000000;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 100 60'%3E%3Cg %3E%3Crect fill='%23000000' width='11' height='11'/%3E%3Crect fill='%23000000' x='10' width='11' height='11'/%3E%3Crect fill='%23000000' y='10' width='11' height='11'/%3E%3Crect fill='%23000001' x='20' width='11' height='11'/%3E%3Crect fill='%23010001' x='10' y='10' width='11' height='11'/%3E%3Crect fill='%23010101' y='20' width='11' height='11'/%3E%3Crect fill='%23010101' x='30' width='11' height='11'/%3E%3Crect fill='%23010102' x='20' y='10' width='11' height='11'/%3E%3Crect fill='%23010102' x='10' y='20' width='11' height='11'/%3E%3Crect fill='%23010102' y='30' width='11' height='11'/%3E%3Crect fill='%23020102' x='40' width='11' height='11'/%3E%3Crect fill='%23020102' x='30' y='10' width='11' height='11'/%3E%3Crect fill='%23020103' x='20' y='20' width='11' height='11'/%3E%3Crect fill='%23020103' x='10' y='30' width='11' height='11'/%3E%3Crect fill='%23020103' y='40' width='11' height='11'/%3E%3Crect fill='%23020203' x='50' width='11' height='11'/%3E%3Crect fill='%23020204' x='40' y='10' width='11' height='11'/%3E%3Crect fill='%23030204' x='30' y='20' width='11' height='11'/%3E%3Crect fill='%23030204' x='20' y='30' width='11' height='11'/%3E%3Crect fill='%23030204' x='10' y='40' width='11' height='11'/%3E%3Crect fill='%23030204' y='50' width='11' height='11'/%3E%3Crect fill='%23030205' x='60' width='11' height='11'/%3E%3Crect fill='%23030205' x='50' y='10' width='11' height='11'/%3E%3Crect fill='%23040205' x='40' y='20' width='11' height='11'/%3E%3Crect fill='%23040205' x='30' y='30' width='11' height='11'/%3E%3Crect fill='%23040306' x='20' y='40' width='11' height='11'/%3E%3Crect fill='%23040306' x='10' y='50' width='11' height='11'/%3E%3Crect fill='%23040306' x='70' width='11' height='11'/%3E%3Crect fill='%23040306' x='60' y='10' width='11' height='11'/%3E%3Crect fill='%23040306' x='50' y='20' width='11' height='11'/%3E%3Crect fill='%23050307' x='40' y='30' width='11' height='11'/%3E%3Crect fill='%23050307' x='30' y='40' width='11' height='11'/%3E%3Crect fill='%23050307' x='20' y='50' width='11' height='11'/%3E%3Crect fill='%23050307' x='80' width='11' height='11'/%3E%3Crect fill='%23050307' x='70' y='10' width='11' height='11'/%3E%3Crect fill='%23050408' x='60' y='20' width='11' height='11'/%3E%3Crect fill='%23050408' x='50' y='30' width='11' height='11'/%3E%3Crect fill='%23060408' x='40' y='40' width='11' height='11'/%3E%3Crect fill='%23060408' x='30' y='50' width='11' height='11'/%3E%3Crect fill='%23060409' x='90' width='11' height='11'/%3E%3Crect fill='%23060409' x='80' y='10' width='11' height='11'/%3E%3Crect fill='%23060409' x='70' y='20' width='11' height='11'/%3E%3Crect fill='%23060409' x='60' y='30' width='11' height='11'/%3E%3Crect fill='%23070409' x='50' y='40' width='11' height='11'/%3E%3Crect fill='%2307040a' x='40' y='50' width='11' height='11'/%3E%3Crect fill='%2307050a' x='90' y='10' width='11' height='11'/%3E%3Crect fill='%2307050a' x='80' y='20' width='11' height='11'/%3E%3Crect fill='%2307050a' x='70' y='30' width='11' height='11'/%3E%3Crect fill='%2307050b' x='60' y='40' width='11' height='11'/%3E%3Crect fill='%2307050b' x='50' y='50' width='11' height='11'/%3E%3Crect fill='%2308050b' x='90' y='20' width='11' height='11'/%3E%3Crect fill='%2308050b' x='80' y='30' width='11' height='11'/%3E%3Crect fill='%2308050b' x='70' y='40' width='11' height='11'/%3E%3Crect fill='%2308050c' x='60' y='50' width='11' height='11'/%3E%3Crect fill='%2308050c' x='90' y='30' width='11' height='11'/%3E%3Crect fill='%2308060c' x='80' y='40' width='11' height='11'/%3E%3Crect fill='%2309060c' x='70' y='50' width='11' height='11'/%3E%3Crect fill='%2309060d' x='90' y='40' width='11' height='11'/%3E%3Crect fill='%2309060d' x='80' y='50' width='11' height='11'/%3E%3Crect fill='%2309060d' x='90' y='50' width='11' height='11'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat; }
+    @media (max-width: 1366px) {
+      html .body-background {
+        background-position: center; } }

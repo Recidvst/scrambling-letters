@@ -17,10 +17,9 @@
   "scripts": {
     "check": "echo 'npm OK'",
     "clean": "rimraf dist",
-    "e2e": "cross-env BABEL_ENV=test node nightwatch.js test/e2e",
-    "test": "cross-env BABEL_ENV=test NODE_ENV=test nyc mocha --require @babel/register",
-    "cover": "cross-env BABEL_ENV=test NODE_ENV=test nyc --require @babel/register mocha",
+    "test": "cross-env BABEL_ENV=test NODE_ENV=test nyc mocha test/unit --require @babel/register",
     "coverage": "cross-env BABEL_ENV=test NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
+    "e2e": "cross-env BABEL_ENV=test node nightwatch.js test/e2e",
     "lint": "eslint js/**/*.js",
     "styles": "node-sass scss/example.scss -o dist/css & cleancss dist/css/example.css -o dist/css/example.min.css",
     "example": "babel js/example.js --out-file dist/example.js",
@@ -31,6 +30,7 @@
     "type": "git",
     "url": "git+https://github.com/Recidvst/scrambling-letters.git"
   },
+  "homepage": "https://recidvst.github.io/scrambling-letters/",
   "author": "Chris Snowden <cdsnowden@gmail.com>",
   "license": "MIT",
   "bugs": {

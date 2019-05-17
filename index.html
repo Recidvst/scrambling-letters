@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
   </head>
 
-<body>
+<body class="body-background">
 
 <main class="container">
     <header class="row heading">
@@ -24,10 +24,27 @@
             <h3> A lightweight javascript library for adding a scrambling/decoding effect to your text.</h3>
         </div>
 
-        <div class="col-xs-12 button-hold ">
-            <button class="trigger-btn" id="scramble-title-button"> Scramble Titles </button>
-            <button class="trigger-btn" id="scramble-paragraph-button"> Scramble Text </button>
-            <button class="trigger-btn" id="scramble-paragraph-decode"> Decode Titles </button>
+        <div class="col-xs-12 button-hold">
+
+            <a class="nano-button anim-sides" id="scramble-title-button" href="javascript:void(0);" title="Scramble Titles">
+                <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="outline" height="100%" width="100%"></rect>
+                </svg>
+                <div class="text">Scramble Titles</div>
+            </a>
+            <a class="nano-button anim-sides" id="scramble-paragraph-button" href="javascript:void(0);" title="Scramble Text">
+                <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="outline" height="100%" width="100%"></rect>
+                </svg>
+                <div class="text">Scramble Text</div>
+            </a>
+            <a class="nano-button anim-sides" id="scramble-paragraph-decode" href="javascript:void(0);" title="Decode Titles">
+                <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="outline" height="100%" width="100%"></rect>
+                </svg>
+                <div class="text">Decode Titles</div>
+            </a>
+
         </div>
     </header>        
 
@@ -39,16 +56,13 @@
                     Vanilla JS with no dependencies.
                 </li>
                 <li>
-                    Just 9kb dist minified or 10kb for the ES5 version.
-                </li>
-                <li>
                     Support for targeting multiple text sections independently.
                 </li>
                 <li>
-                    Multiple versions available if you need legacy browser support.
+                    Multiple bundle versions available - IIFE, UMD, ESM, CJS.
                 </li>
                 <li>
-                    Simple configuration options.
+                    Simple but powerful configuration options.
                 </li>
                 <li>
                     Available on NPM and Yarn.
@@ -60,8 +74,19 @@
     <section class="row get-scrambling">
         <div class="col-xs-12">
         <h2 data-title-scrambler data-scramble-text="Get Scrambling Letters"><a href="https://github.com/Recidvst/scrambling-letters" rel="noopener" title="Find on Github" class="nondescript-link">Get Scrambling Letters</a></h2>
-            <a href="https://github.com/Recidvst/scrambling-letters" rel="noopener" title="Find on Github" class="button download-btn"> Github </a>
-            <a href="https://www.npmjs.com/package/scrambling-letters" rel="noopener" title="Find on NPM" class="button download-btn"> NPM </a> 
+            
+            <a class="nano-button anim-sides" href="javascript:void(0);" rel="noopener" title="Find on Github">
+                <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="outline" height="100%" width="100%"></rect>
+                </svg>
+                <div class="text">Github</div>
+            </a>
+            <a class="nano-button anim-sides" href="javascript:void(0);" rel="noopener" title="Find on NPM">
+                <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect class="outline" height="100%" width="100%"></rect>
+                </svg>
+                <div class="text">NPM</div>
+            </a>
         </div>
     </section>
 

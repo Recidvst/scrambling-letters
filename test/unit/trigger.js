@@ -5,8 +5,8 @@ const chai = require('chai');
 const expect = chai.expect;
 
 // import Scrambler and create test vars
-import Scrambler from '../js/scrambler.js';
-import ScramblerSetup from '../js/scrambleSetup.js';
+import Scrambler from '../../js/scrambler.js';
+import ScramblerSetup from '../../js/scrambleSetup.js';
 
 const TEST_TRIGGER = Scrambler;
 const TEST_SETUP = ScramblerSetup;

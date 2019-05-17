@@ -1,0 +1,78 @@
+// fancy animated svg buttons
+
+$blue: #bde1ff;
+$blue-back: rgba(189, 225, 255, 0.1);
+$green: #3fc35e;
+$purple:#B96CFF;
+$purple-back: rgba(185, 108, 255, 0.1);
+
+.nano-button {
+  position: relative;
+  display: inline-block;
+  color: $blue;
+  text-decoration: none;
+  width: 250px;
+  height: 50px;
+  margin: 10px;
+  overflow: hidden;
+  transition: all 1s ease;
+  .outline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    stroke: $blue;
+    stroke-width: 2px;
+    fill: transparent;
+    fill: $blue-back;
+    transition: all 1.5s ease;
+  }
+  .text {
+    font-size: 2rem;
+    line-height: 1;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-family: 'Inconsolata', monospace;
+    text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 1.5s ease;
+  }
+  &:hover {
+    .outline {
+      stroke: $purple;
+      fill: $purple-back;
+    }
+    .text {
+      color: $purple;
+    }
+  }
+  // versions
+  &.anim-sides {
+    .outline {
+      stroke-dasharray: 70 230;
+      stroke-dashoffset: 60;
+    }
+    &:hover {
+      .outline {
+        stroke-dashoffset: -650;
+      }
+    }
+  }
+  &.anim-top-bottom {
+    .outline {
+      stroke-dasharray: 150;
+      stroke-dashoffset: 250;
+    }
+    &:hover {
+      .outline {
+        stroke-dashoffset: -350;
+      }
+    }
+  }
+}
