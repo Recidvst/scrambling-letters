@@ -5,6 +5,9 @@ rollup.config.js
 .eslintrc
 .babelrc
 .travis.yml
+nightwatch.js
+nightwatch.conf.js
+nightwatch.json
 
 # dev
 index.html
@@ -21,6 +24,8 @@ dist/js/dev/
 # tests
 test/
 coverage/
+tests_output/
+lib/
 .nyc_output
 .cache
 

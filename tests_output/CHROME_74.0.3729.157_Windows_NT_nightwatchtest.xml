@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="nightwatchtest"
+    errors="0" failures="0" hostname="" id="" package="nightwatchtest" skipped="0"
+    tests="1" time="6.255" timestamp="">
+  
+    <testcase name="Demo test Google" classname="nightwatchtest" time="6.255" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+    <system-err>
+      [0;31m  describe is not defined[0m
+[0;90m       at Object.describe (C:\Users\cdsno\Desktop\Code\scrambling-text\test/tests.js:16:1)
+       at Module._compile (module.js:652:30)
+       at Module._extensions..js (module.js:663:10)
+       at Module.load (module.js:565:32)
+       at tryModuleLoad (module.js:505:12)
+       at Function.Module._load (module.js:497:3)
+       at Module.require (module.js:596:17)
+       at require (internal/module.js:11:18)[0m
+    </system-err>
+  
+
+  
+  </testsuite>
+</testsuites>
