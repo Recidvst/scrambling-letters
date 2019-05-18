@@ -7,14 +7,11 @@ cache:
 before_script: "echo 'Ready to test'"
 script:
   - npm test
-  - npm run build
 after_success:
   - npm run coverage
   - "echo 'Tests complete'"
 before_deploy: "echo 'Ready to deploy'"
 deploy:
-  # provider: pages
-  # github_token: $GITHUB_TOKEN
   provider: script
   script: netlify deploy -s $NETLIFY_SITE_ID -t $NETLIFY_ACCESS_TOKEN -p
   skip_cleanup: true

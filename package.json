@@ -30,13 +30,12 @@
     "type": "git",
     "url": "git+https://github.com/Recidvst/scrambling-letters.git"
   },
-  "homepage": "https://recidvst.github.io/scrambling-letters/",
+  "homepage": "https://github.com/Recidvst/scrambling-lettersr#readme",
   "author": "Chris Snowden <cdsnowden@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Recidvst/scrambling-letters/issues"
   },
-  "homepage": "https://github.com/Recidvst/scrambling-lettersr#readme",
   "dependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",

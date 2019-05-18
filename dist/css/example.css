@@ -677,8 +677,7 @@
   width: 250px;
   height: 50px;
   margin: 10px;
-  overflow: hidden;
-  transition: all 1s ease; }
+  overflow: hidden; }
   .nano-button .outline {
     position: absolute;
     top: 0;
