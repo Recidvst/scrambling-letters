@@ -60,10 +60,11 @@ Scrambler({
 });
 ```
 
-#### Warning:
+#### Warnings:
+- Certain fonts with wide and variable letter widths can cause issues with the text wrapping onto a new line while scrambling. This is usually undesirable, but can be avoided by using css to prevent the wrap, force a max width or slightly reduce the text size whilst scrambling (you can target the attribute `data-scramble-active` or the class `scrambling` which are both applied during the animation). This is envisioned as a JS library decoupled from the user's CSS, so a solution is not baked in.
 - Scrambler will temporarily lose unique styling from text within child nodes e.g. link tags within a paragraph. This will be replaced at the end of the cycle but can result in FOUC. This is planned to be addressed later, but best practice is to be more granular in your targeting.
 
 #### To-do:
 - 100% test coverage
 - Better handling of nested tags?
-- Better example page
+- requestAnimationFrame instead of setInterval?

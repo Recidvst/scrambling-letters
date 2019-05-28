@@ -28,6 +28,8 @@ tests_output/
 lib/
 .nyc_output
 .cache
+chromedriver.log
+geckodriver.log
 
 bower_components
 node_modules

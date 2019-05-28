@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export, no-console */
 
-// export helper functions - these are used in the ScrambleSetup wrapper
+// export helper functions for the Scrambler fn
 
 // object test
 export const isObject = function (a) {
@@ -16,6 +16,14 @@ export const isArray = function (a) {
 export const isBool = function (a) {
   return typeof a === 'boolean';
 };
+
+// only if string or object
+export const isValidArgType = function (args) {
+  if (isArray(args) || isBool(args) || (typeof args === 'number') || (typeof args === 'function') || (typeof args === 'undefined') ) {
+    return false;
+  }
+  return true;
+}
 
 // utility fn to get a random character
 export const randomChar = function (length, debug) {

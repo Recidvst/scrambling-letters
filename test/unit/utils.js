@@ -15,7 +15,8 @@ describe('utilFunctionsExist', function() {
   });
 });
 
-describe('utilFunctionsOutput', function() {
+describe('utilFunctionsOutput', function() { // wrapper
+
   describe('isBool', function() {
     it('should exist', function() {
       expect(TEST_UTILS.isBool).to.exist;
@@ -58,6 +59,24 @@ describe('utilFunctionsOutput', function() {
     });
     it('should return false if passed something other than an object', function() {
       expect(TEST_UTILS.isObject(1)).to.be.false;
+    });
+  });
+
+  describe('isValidArgType', function() {
+    it('should exist', function() {
+      expect(TEST_UTILS.isValidArgType).to.exist;
+    });
+    it('should be a function', function() {
+      expect(typeof(TEST_UTILS.isValidArgType)).to.equal('function')
+    });
+    it('should return true if passed an object', function() {
+      expect(TEST_UTILS.isValidArgType({a:1})).to.be.true;
+    });
+    it('should return true if passed a string', function() {
+      expect(TEST_UTILS.isValidArgType('test')).to.be.true;
+    });
+    it('should return false if passed something other than an object or a string', function() {
+      expect(TEST_UTILS.isValidArgType(1)).to.be.false;
     });
   });
   

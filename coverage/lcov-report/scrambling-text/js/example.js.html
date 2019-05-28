@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/13</span>
+        <span class='fraction'>0/11</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/13</span>
+        <span class='fraction'>0/11</span>
       </div>
     </div>
     <p class="quiet">
@@ -83,8 +83,10 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -93,23 +95,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -120,53 +105,65 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >Scrambler({</span>
-    target: '[data-title-scrambler]',
-    random: [1000, 30000],
-    speed: 100
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* global Scrambler */
+/* eslint-disable import/prefer-default-export, no-console */
+&nbsp;
+<span class="cstat-no" title="statement not covered" >Scrambler({</span>
+  target: '[data-title-scrambler]',
+  random: [1000, 5000],
+  speed: 100,
 });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >Scrambler('p:not(.no-scramble), ul:not(.no-scramble) li');</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >Scrambler({</span>
-    target: '#scramble-text-id',
+const buttonT = <span class="cstat-no" title="statement not covered" >document.querySelector('#scramble-title-button');</span>
+const buttonP = <span class="cstat-no" title="statement not covered" >document.querySelector('#scramble-paragraph-button');</span>
+const buttonN = <span class="cstat-no" title="statement not covered" >document.querySelector('#scramble-paragraph-decode');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >buttonT.addEventListener('click', <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  Scrambler({</span>
+    target: '[data-title-scrambler]',
+    random: [1000, 10000],
+  });
+});
+&nbsp;
+<span class="cstat-no" title="statement not covered" >buttonP.addEventListener('click', <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  Scrambler({</span>
+    target: 'p:not(.no-scramble), ul:not(.no-scramble) li, h3:not(.no-scramble)',
     random: [1000, 30000],
-    speed: 100
+  });
 });
 &nbsp;
-&nbsp;
-var buttonT = <span class="cstat-no" title="statement not covered" >document.querySelector("#scramble-title-button");</span>
-var buttonP = <span class="cstat-no" title="statement not covered" >document.querySelector("#scramble-paragraph-button");</span>
-var buttonN = <span class="cstat-no" title="statement not covered" >document.querySelector("#scramble-paragraph-new");</span>
-<span class="cstat-no" title="statement not covered" >buttonT.addEventListener('click', <span class="fstat-no" title="function not covered" >fu</span>nction (e) {</span>
-<span class="cstat-no" title="statement not covered" >    Scrambler('[data-title-scrambler]');</span>
-<span class="cstat-no" title="statement not covered" >    Scrambler({</span>
-        target: '#scramble-text-id',
-        random: [1000, 30000],
-        speed: 100
-    });
+<span class="cstat-no" title="statement not covered" >buttonN.addEventListener('click', <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  Scrambler({</span>
+    target: '[data-title-scrambler]',
+    random: [1000, 20000],
+    speed: 100,
+    text: 'Secret message',
+  });
 });
-<span class="cstat-no" title="statement not covered" >buttonP.addEventListener('click', <span class="fstat-no" title="function not covered" >fu</span>nction (e) {</span>
-<span class="cstat-no" title="statement not covered" >    Scrambler('p:not(.no-scramble), ul:not(.no-scramble) li, h3:not(.no-scramble)');</span>
-});
-<span class="cstat-no" title="statement not covered" >buttonN.addEventListener('click', <span class="fstat-no" title="function not covered" >fu</span>nction (e) {</span>
-<span class="cstat-no" title="statement not covered" >    Scrambler({</span>
-        target: '[data-title-scrambler]',
-        random: [1000, 30000],
-        speed: 100,
-        text: 'Secret message'
-    });
-});
-&nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Mar 17 2019 14:03:33 GMT+0000 (GMT Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 28 2019 17:47:34 GMT+0100 (GMT Summer Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>

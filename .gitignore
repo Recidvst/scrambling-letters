@@ -12,9 +12,13 @@ yarn-error.log*
 lib
 lib/
 
+coverage
 coverage/
 .nyc_output
 tests_output
+tests_output/
+chromedriver.log
+geckodriver.log
 
 .cache/
 

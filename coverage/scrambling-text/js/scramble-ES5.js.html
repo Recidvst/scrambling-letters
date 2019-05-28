@@ -22,12 +22,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/88</span>
+        <span class='fraction'>0/89</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/86</span>
+        <span class='fraction'>0/90</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/75</span>
+        <span class='fraction'>0/74</span>
       </div>
     </div>
     <p class="quiet">
@@ -209,7 +209,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -339,10 +338,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
 &nbsp;
 function <span class="fstat-no" title="function not covered" >_instanceof(</span>left, right) { <span class="cstat-no" title="statement not covered" >if (right != null &amp;&amp; typeof Symbol !== "undefined" &amp;&amp; right[Symbol.hasInstance]) { <span class="cstat-no" title="statement not covered" >return right[Symbol.hasInstance](left); </span>} else { <span class="cstat-no" title="statement not covered" >return left instanceof right; </span>} </span>}
 &nbsp;
@@ -352,12 +352,11 @@ function <span class="fstat-no" title="function not covered" >_nonIterableSpread
 &nbsp;
 function <span class="fstat-no" title="function not covered" >_iterableToArray(</span>iter) { <span class="cstat-no" title="statement not covered" >if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") <span class="cstat-no" title="statement not covered" >return Array.from(iter); </span></span>}
 &nbsp;
-function <span class="fstat-no" title="function not covered" >_arrayWithoutHoles(</span>arr) { <span class="cstat-no" title="statement not covered" >if (Array.isArray(arr)) { <span class="cstat-no" title="statement not covered" >for (var i = 0, arr2 = new Array(arr.length); i &lt; arr.length; i++) { <span class="cstat-no" title="statement not covered" >arr2[i] = arr[i]; </span>} <span class="cstat-no" title="statement not covered" ></span>return arr2; </span>} </span>}
+function <span class="fstat-no" title="function not covered" >_arrayWithoutHoles(</span>arr) { <span class="cstat-no" title="statement not covered" >if (Array.isArray(arr)) { <span class="cstat-no" title="statement not covered" >for (var i = <span class="cstat-no" title="statement not covered" >0,</span> arr2 = <span class="cstat-no" title="statement not covered" >new Array(arr.length);</span> i &lt; arr.length; i++) { <span class="cstat-no" title="statement not covered" >arr2[i] = arr[i]; </span>} <span class="cstat-no" title="statement not covered" ></span>return arr2; </span>} </span>}
 &nbsp;
 function <span class="fstat-no" title="function not covered" >_typeof(</span>obj) { <span class="cstat-no" title="statement not covered" >if (typeof Symbol === "function" &amp;&amp; typeof Symbol.iterator === "symbol") { <span class="cstat-no" title="statement not covered" >_typeof = function <span class="fstat-no" title="function not covered" >_typeof(</span>obj) { <span class="cstat-no" title="statement not covered" >return typeof obj; </span>}; </span>} else { <span class="cstat-no" title="statement not covered" >_typeof = function <span class="fstat-no" title="function not covered" >_typeof(</span>obj) { <span class="cstat-no" title="statement not covered" >return obj &amp;&amp; typeof Symbol === "function" &amp;&amp; obj.constructor === Symbol &amp;&amp; obj !== Symbol.prototype ? "symbol" : typeof obj; </span>}; </span>} <span class="cstat-no" title="statement not covered" ></span>return _typeof(obj); </span>}
 &nbsp;
 var Scrambler = <span class="cstat-no" title="statement not covered" >function <span class="fstat-no" title="function not covered" >Scrambler(</span>scrambleArgs) {</span>
-<span class="cstat-no" title="statement not covered" >  try {</span>
     // call action fn
     var scrambleFire = <span class="cstat-no" title="statement not covered" >function <span class="fstat-no" title="function not covered" >scrambleFire(</span>scrambleArgs) {</span>
       // remember, hoisted
@@ -486,17 +485,18 @@ var Scrambler = <span class="cstat-no" title="statement not covered" >function <
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    scrambleFire(scrambleArgs);</span>
     ; // end scrambleFire
-  } catch (e) {
-<span class="cstat-no" title="statement not covered" >    console.trace('%cuh-oh: %c' + e + '', 'color:indianred;', 'color:cornflowerblue;');</span>
-  }
+&nbsp;
 }; // end Scramble
-<span class="cstat-no" title="statement not covered" >module.exports = Scrambler;</span></pre></td></tr>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >if (typeof module !== 'undefined' &amp;&amp; typeof module.exports !== 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >  module.exports = Scrambler;</span>
+}</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Mar 17 2019 14:03:31 GMT+0000 (GMT Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue May 28 2019 17:47:33 GMT+0100 (GMT Summer Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>
