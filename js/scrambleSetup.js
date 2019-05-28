@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export, no-console */
 
 // get util functions
-import { isObject, isArray, isBool, isValidArgType } from './scrambleUtil.js';
+import { isObject, isValidArgType } from './scrambleUtil.js';
 // get action functions
 import { setArgs } from './scrambleActions.js';
 // get main function to do the actual scrambling
@@ -20,7 +20,7 @@ export default function (passedArgs) {
    
     // for each scramble element
     scrambleElements.forEach((sE) => {
-      Scramble(sE);
+      Scramble(sE, scrambleFireArgs);
     });
 
     return true;

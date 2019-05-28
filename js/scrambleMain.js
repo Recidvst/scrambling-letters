@@ -3,9 +3,9 @@
 // get util functions
 import { isObject, randomChar, randomTime } from './scrambleUtil.js';
 // get action functions
-import { killCheck, activateDOM, deactivateDOM } from './scrambleActions.js';
+import { killCheck } from './scrambleActions.js';
 
-export default function (element) {
+export default function (element, scrambleFireArgs) {
   if (typeof element === "undefined") return false;
 
   if (element.getAttribute('data-scramble-active') !== 'true') {
@@ -86,4 +86,4 @@ export default function (element) {
   } // end check for active
 
   return true;
-};
+}
