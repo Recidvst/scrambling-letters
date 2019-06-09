@@ -2,7 +2,6 @@ require("@babel/register");
 require('jsdom-global')();
 const assert = require('assert');
 const chai = require('chai');
-chai.use(require('chai-dom'));
 const expect = chai.expect;
 
 import * as TEST_ACTIONS from '../../js/scrambleActions.js';
