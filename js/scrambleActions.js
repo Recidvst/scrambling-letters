@@ -2,6 +2,9 @@
 
 // export actions for the Scrambler fn
 
+// import randomChar
+import { randomChar } from './scrambleUtil.js';
+
 // sets args after checking
 export const setArgs = function (args, t) {
   let passedAsObject = t || false;
@@ -30,3 +33,28 @@ export const killCheck = function(newLetters, truth) {
   }
   return false;
 }
+
+// set end state of text if user specifies
+export const defineEndText = function(end, element) {
+  if ( !end || end === undefined || !(typeof end === 'string' || end instanceof String) ) return false; // break if no string passed
+  const endText = end || element.textContent;
+  const truth = endText.split('');
+  const newLetters = endText.split('');
+  const startTextTemp = [];
+  let startText;
+
+  truth.forEach((item, index) => {
+    if (' \t\n\r\v'.indexOf(truth[index]) > -1) {
+      startTextTemp.push(' ');
+    } else {
+      startTextTemp.push(randomChar());
+    }
+  });
+  startText = startTextTemp;
+
+  return {
+    truth,
+    newLetters,
+    startText
+  }
+};

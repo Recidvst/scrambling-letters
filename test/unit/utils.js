@@ -62,6 +62,24 @@ describe('utilFunctionsOutput', function() { // wrapper
     });
   });
 
+  describe('isValidString', function() {
+    it('should exist', function() {
+      expect(TEST_UTILS.isValidString).to.exist;
+    });
+    it('should be a function', function() {
+      expect(typeof(TEST_UTILS.isValidString)).to.equal('function')
+    });
+    it('should return true if passed a string', function() {
+      expect(TEST_UTILS.isValidString('test')).to.be.true;
+    });
+    it('should return false if passed something other than a string', function() {
+      expect(TEST_UTILS.isValidString(1)).to.be.false;
+    });
+    it('should return false if passed nothing', function() {
+      expect(TEST_UTILS.isValidString()).to.be.false;
+    });
+  });
+
   describe('isValidArgType', function() {
     it('should exist', function() {
       expect(TEST_UTILS.isValidArgType).to.exist;

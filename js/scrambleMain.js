@@ -1,9 +1,9 @@
 /* eslint-disable import/prefer-default-export, no-console */
 
 // get util functions
-import { isObject, randomChar, randomTime } from './scrambleUtil.js';
+import { isObject, isValidString, randomChar, randomTime } from './scrambleUtil.js';
 // get action functions
-import { killCheck } from './scrambleActions.js';
+import { killCheck, defineEndText } from './scrambleActions.js';
 
 export default function (element, scrambleFireArgs) {
   if (typeof element === "undefined") return false;
@@ -21,30 +21,20 @@ export default function (element, scrambleFireArgs) {
     const speed = (scrambleFireArgs.speed) ? scrambleFireArgs.speed : 100;
     let HTMLreset = false;
 
-    // if user defines an ending text string then use that instead of the original text
-    const defineEndText = function defEndText (end) {
-      const endText = end || element.textContent;
-      truth = endText.split('');
-      newLetters = endText.split('');
-      const startTextTemp = [];
-      // ADD TEST HERE
-      truth.forEach((item, index) => {
-        if (' \t\n\r\v'.indexOf(truth[index]) > -1) {
-          startTextTemp.push(' ');
-        } else {
-          startTextTemp.push(randomChar());
-        }
-      });
-      startText = startTextTemp;
-    };
+    // if user defines an ending text string then use that instead of the original text   
+    let newTextResult;
     // first check passed option and then data-attribute
-    // ADD TEST HERE
-    if (scrambleFireArgs.text && scrambleFireArgs.text !== '' && (typeof scrambleFireArgs.text === 'string' || scrambleFireArgs.text instanceof String)) {
-      defineEndText(scrambleFireArgs.text);
+    if ( isValidString(scrambleFireArgs.text) ) {
+      newTextResult = defineEndText(scrambleFireArgs.text, element);
+    } else if ( element.getAttribute('data-scramble-text') && element.getAttribute('data-scramble-text') !== '' ) {
+      newTextResult = defineEndText(element.getAttribute('data-scramble-text'), element);
+    }
+    // reset vars
+    if ( newTextResult ) {
       HTMLreset = true;
-    } else if (element.getAttribute('data-scramble-text') && element.getAttribute('data-scramble-text') !== '') {
-      defineEndText(element.getAttribute('data-scramble-text'));
-      HTMLreset = true;
+      truth = newTextResult.truth;
+      newLetters = newTextResult.newLetters;
+      startText = newTextResult.startText;
     }
 
     const ticker = setInterval(() => {

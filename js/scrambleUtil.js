@@ -17,6 +17,14 @@ export const isBool = function (a) {
   return typeof a === 'boolean';
 };
 
+// is a string and valid
+export const isValidString = function (argsText) {
+  if (argsText && argsText !== '' && (typeof argsText === 'string' || argsText instanceof String)) {
+    return true;
+  }
+  return false;
+};
+
 // only if string or object
 export const isValidArgType = function (args) {
   if (isArray(args) || isBool(args) || (typeof args === 'number') || (typeof args === 'function') || (typeof args === 'undefined') ) {

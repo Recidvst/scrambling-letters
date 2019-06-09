@@ -2,6 +2,7 @@ require("@babel/register");
 require('jsdom-global')();
 const assert = require('assert');
 const chai = require('chai');
+chai.use(require('chai-dom'));
 const expect = chai.expect;
 
 import * as TEST_ACTIONS from '../../js/scrambleActions.js';
@@ -53,6 +54,28 @@ describe('actionsFunctionsOutput', function() { // wrapper
     });
     it('should return false if both args differ', function() {
       expect(TEST_ACTIONS.killCheck([1,3], [1,2])).to.be.false;
+    });
+  });
+
+  describe('defineEndText', function() {
+    it('should exist', function() {
+      expect(TEST_ACTIONS.defineEndText).to.exist;
+    });
+    it('should be a function', function() {
+      expect(typeof(TEST_ACTIONS.defineEndText)).to.equal('function');
+    });
+    it('should return an object', function() {
+      expect(typeof(TEST_ACTIONS.defineEndText('test'))).to.equal('object');
+    });
+    it('should return false if passed no argument', function() {
+      expect(TEST_ACTIONS.defineEndText()).to.be.false;
+    });
+    it('should return false if passed something other than a string', function() {
+      expect(TEST_ACTIONS.defineEndText([1,2,3])).to.be.false;
+    });
+    it('should return an object with three items', function() {
+      let result = TEST_ACTIONS.defineEndText('test');
+      expect(Object.keys(result)).length.to.have.length(3);
     });
   });
 
