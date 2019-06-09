@@ -1,6 +1,7 @@
 
 [![npm](https://img.shields.io/npm/dt/scrambling-letters.svg)]()
 [![npm](https://img.shields.io/npm/v/scrambling-letters.svg)]()
+[![Travis (.com)](https://img.shields.io/travis/com/Recidvst/scrambling-letters.svg)]()
 [![Coverage Status](https://coveralls.io/repos/github/Recidvst/scrambling-letters/badge.svg?branch=master)](https://coveralls.io/github/Recidvst/scrambling-letters?branch=master)
 [![license](https://img.shields.io/github/license/recidvst/scrambling-letters.svg)]()
 
@@ -36,7 +37,7 @@ You can configure your Scrambler instance by passing an object. The available op
 **Required:** Yes.
 #### Random
 **Purpose:** This controls the randomised time before each letter returns to its original state. The first value is the minimum delay and the second value is the maximum. E.g. changing [1000, 3000] to [1000, 9000] would increase the maximum time.  
-**Type:** Array  
+**Type:** Array
 **Default:** [1000, 3000]  
 **Required:** No.
 #### Speed
