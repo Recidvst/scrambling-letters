@@ -1,6 +1,6 @@
 {
   "name": "scrambling-letters",
-  "version": "1.5.0",
+  "version": "1.5.2",
   "description": "A lightweight javascript library for scrambling letters within a piece of text, giving a nice decoding effect.",
   "keywords": [
     "scramble",
@@ -36,7 +36,7 @@
   "bugs": {
     "url": "https://github.com/Recidvst/scrambling-letters/issues"
   },
-  "dependencies": {
+  "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
@@ -54,7 +54,6 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "geckodriver": "^1.16.2",
-    "istanbul": "^0.4.5",
     "jsdom": "14.0.0",
     "jsdom-global": "3.0.2",
     "mocha": "*",
