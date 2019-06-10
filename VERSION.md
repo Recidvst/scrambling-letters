@@ -9,3 +9,4 @@
 1.4.1: Adding 'Text' config option
 1.4.2: Adding 'scrambling' CSS class when active | unit tests introduced
 1.5.0: Overhaul of code structure. Now offers export of various bundle options including UMD, ESM etc.
+1.5.1: Adding analytics
