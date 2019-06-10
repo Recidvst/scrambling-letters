@@ -10,7 +10,6 @@ import ScramblerSetup from '../../js/scrambleSetup.js';
 
 const TEST_TRIGGER = Scrambler;
 const TEST_SETUP = ScramblerSetup;
-console.log(TEST_SETUP.Scramble);
 
 describe('scramblerFunctionsExist', function() {
   it('main function should exist', function() {
