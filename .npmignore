@@ -13,8 +13,7 @@ nightwatch.json
 index.html
 scss/example.scss
 scss/grid.scss
-js/example.js
-js/example.js
+scss/buttons.scss
 favicon.ico
 
 # local dist
@@ -23,20 +22,33 @@ dist/js/dev/
 
 # tests
 test/
+coverage
 coverage/
+.nyc_output
+tests_output
+tests_output/
+chromedriver.log
+geckodriver.log
 tests_output/
 lib/
 .nyc_output
 .cache
-chromedriver.log
-geckodriver.log
+
+.env
 
 bower_components
 node_modules
+node_modules/
 
-yarn.lock
-package-lock.json
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log
 yarn-error.log*
+
+/.DS_Store
+.DS_Store
+Thumbs.db
+
+_redirects

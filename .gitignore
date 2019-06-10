@@ -27,3 +27,5 @@ geckodriver.log
 /.DS_Store
 .DS_Store
 Thumbs.db
+
+_redirects
