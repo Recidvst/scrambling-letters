@@ -17,6 +17,11 @@ export const isBool = function (a) {
   return typeof a === 'boolean';
 };
 
+// function test
+export const isFunction = function (a) {
+  return typeof a === 'function';
+};
+
 // is a string and valid
 export const isValidString = function (argsText) {
   if (argsText && argsText !== '' && (typeof argsText === 'string' || argsText instanceof String)) {

@@ -3,7 +3,7 @@
 // export actions for the Scrambler fn
 
 // import randomChar
-import { randomChar } from './scrambleUtil.js';
+import { randomChar, isFunction } from './scrambleUtil.js';
 
 // sets args after checking
 export const setArgs = function (args, t) {
@@ -13,7 +13,9 @@ export const setArgs = function (args, t) {
     target: '[data-scrambler]',
     random: [1000, 3000],
     speed: 100,
-    text: false
+    text: false,
+    beforeEach: false,
+    afterEach: false
   };
   // update if arg object present
   if ( args && passedAsObject ) {
@@ -21,6 +23,8 @@ export const setArgs = function (args, t) {
     obj.random = (typeof args.random !== 'undefined') ? args.random : [1000, 3000];
     obj.speed = (typeof args.speed !== 'undefined') ? args.speed : 100;
     obj.text = (typeof args.text !== 'undefined') ? args.text : false;
+    obj.beforeEach = (isFunction(args.beforeEach)) ? args.beforeEach : false;
+    obj.afterEach = (isFunction(args.afterEach)) ? args.afterEach : false;
   }
   return obj;
 }
@@ -45,7 +49,7 @@ export const defineEndText = function(end, element) {
 
   truth.forEach((item, index) => {
     if (' \t\n\r\v'.indexOf(truth[index]) > -1) {
-      startTextTemp.push(' ');
+      startTextTemp.push(' '); // TODO: add test for a space being matched
     } else {
       startTextTemp.push(randomChar());
     }

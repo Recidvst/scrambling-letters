@@ -19,14 +19,12 @@ export default function (passedArgs) {
     const scrambleElements = (isObject(scrambleFireArgs)) ? [...document.querySelectorAll(scrambleFireArgs.target)] : [...document.querySelectorAll(scrambleFireArgs)];
    
     // for each scramble element
-    scrambleElements.forEach((sE) => {
-      Scramble(sE, scrambleFireArgs);
+    scrambleElements.forEach((item) => {
+      Scramble(item, scrambleFireArgs);
     });
 
     return true;
   }
-  else {
-    return false;
-  }
+  return false;
 
 }

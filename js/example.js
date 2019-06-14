@@ -5,6 +5,12 @@ Scrambler({
   target: '[data-title-scrambler]',
   random: [1000, 5000],
   speed: 100,
+  beforeEach: function() {
+    console.log('before1');
+  },
+  afterEach: function() {
+    console.log('after1');
+  }
 });
 
 Scrambler('p:not(.no-scramble), ul:not(.no-scramble) li');
@@ -24,6 +30,12 @@ buttonP.addEventListener('click', () => {
   Scrambler({
     target: 'p:not(.no-scramble), ul:not(.no-scramble) li, h3:not(.no-scramble)',
     random: [1000, 30000],
+    beforeEach: function() {
+      console.log('before');
+    },
+    afterEach: function(element) {
+      console.log(element);
+    }
   });
 });
 

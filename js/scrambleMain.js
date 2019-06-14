@@ -10,15 +10,19 @@ export default function (element, scrambleFireArgs) {
 
   if (element.getAttribute('data-scramble-active') !== 'true') {
     
+    if (scrambleFireArgs.beforeEach) { // callback fired before fn
+      scrambleFireArgs.beforeEach(element);
+    }
+
     element.setAttribute('data-scramble-active', 'true');
     element.classList.add('scrambling');
 
-    let truth = element.textContent.split(''); // get letters
     const truthHTML = element.innerHTML; // get html
-    let startText = truth;
-    let newLetters = element.textContent.split('');
     const revert = []; // init empty kill switch array
     const speed = (scrambleFireArgs.speed) ? scrambleFireArgs.speed : 100;
+    let truth = element.textContent.split(''); // get letters
+    let startText = truth;
+    let newLetters = element.textContent.split('');
     let HTMLreset = false;
 
     // if user defines an ending text string then use that instead of the original text   
@@ -71,6 +75,10 @@ export default function (element, scrambleFireArgs) {
         clearInterval(ticker); // stop looping
         element.setAttribute('data-scramble-active', 'false');
         element.classList.remove('scrambling');
+
+        if (scrambleFireArgs.afterEach) { // callback fired after fn
+          scrambleFireArgs.afterEach(element);
+        }
       }
     }, speed); // end ticker
   } // end check for active

@@ -30,26 +30,42 @@ Loops through any elements with the relevant selector or data attribute and scra
 ### Configure
 You can configure your Scrambler instance by passing an object. The available options are as follows:
 
-#### Target
+#### target
 **Purpose:** This is the text you wish to Scramble! Pass a selector or data attribute (or anything else valid for document.querySelectorAll).    
 **Type:** String  
 **Default:** '[data-scrambler]'  
 **Required:** Yes.
-#### Random
+#### random
 **Purpose:** This controls the randomised time before each letter returns to its original state. The first value is the minimum delay and the second value is the maximum. E.g. changing [1000, 3000] to [1000, 9000] would increase the maximum time.  
 **Type:** Array
 **Default:** [1000, 3000]  
 **Required:** No.
-#### Speed
+#### speed
 **Purpose:** This controls the speed a which the letters will change. I would advise leaving it at the default 100, but you can tweak this value if you desire.  
 **Type:** Integer  
 **Default:** 100  
 **Required:** No.  
-#### Text
+#### text
 **Purpose:** This lets you specify the end state of the Scrambled text. By default the Scrambler will revert to the original text after animating, but if this option is set then the end state of the text will instead be the specified string. e.g. "Starting Text" -> *scramble* -> "Ending Text".
 **Type:** String  
 **Default:** The element text  
 **Required:** No.
+#### beforeEach
+**Purpose:** This hook allows you to add a user defined function which will fire immediately *before* the scrambling animation begins. Default argument is the element being scrambled. This applies to each element e.g. it will fire 3 times if you apply the effect to an array of 3 paragraphs. Defaults to no action.
+**Type:** Function
+**Params:** ```argument``` - the element being targeted.
+**Default:** false
+**Required:** No.
+#### afterEach
+**Purpose:** This hook allows you to add a user defined function which will fire immediately *after* the scrambling animation ends. Default argument is the element being scrambled. This applies to each element e.g. it will fire 3 times if you apply the effect to an array of 3 paragraphs. Defaults to no action.
+**Type:** Function
+**Params:** ```argument``` - the element being targeted.
+**Default:** false
+**Required:** No.
+#### beforeAll
+*coming soon*
+#### afterAll
+*coming soon*
 
 #### Example
 ```
@@ -57,7 +73,10 @@ Scrambler({
   target: '#scramble-id',
   random: [1000, 12000],
   speed: 100,
-  text: 'Hello World'
+  text: 'Hello World',
+  afterEach: function(element) {
+    console.log(`${element} finished scrambling`);
+  }
 });
 ```
 

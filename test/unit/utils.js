@@ -47,6 +47,21 @@ describe('utilFunctionsOutput', function() { // wrapper
     });
   });
 
+  describe('isFunction', function() {
+    it('should exist', function() {
+      expect(TEST_UTILS.isFunction).to.exist;
+    });
+    it('should be a function', function() {
+      expect(typeof(TEST_UTILS.isFunction)).to.equal('function')
+    });
+    it('should return true if passed a function', function() {
+      expect(TEST_UTILS.isFunction(function tester() { console.log('test'); })).to.be.true;
+    });
+    it('should return false if passed something other than a function', function() {
+      expect(TEST_UTILS.isFunction(1)).to.be.false;
+    });
+  });
+
   describe('isObject', function() {
     it('should exist', function() {
       expect(TEST_UTILS.isObject).to.exist;
