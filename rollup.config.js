@@ -37,7 +37,7 @@ export default {
     resolve(),
     eslint(),
     babel({
-      exclude: 'node_modules/**',
+      exclude: 'node_modules/**'
     }),
     uglify()
   ]

@@ -15,7 +15,9 @@ export const setArgs = function (args, t) {
     speed: 100,
     text: false,
     beforeEach: false,
-    afterEach: false
+    afterEach: false,
+    beforeAll: false,
+    afterAll: false
   };
   // update if arg object present
   if ( args && passedAsObject ) {
@@ -23,8 +25,10 @@ export const setArgs = function (args, t) {
     obj.random = (typeof args.random !== 'undefined') ? args.random : [1000, 3000];
     obj.speed = (typeof args.speed !== 'undefined') ? args.speed : 100;
     obj.text = (typeof args.text !== 'undefined') ? args.text : false;
-    obj.beforeEach = (isFunction(args.beforeEach)) ? args.beforeEach : false;
-    obj.afterEach = (isFunction(args.afterEach)) ? args.afterEach : false;
+    obj.beforeEach = (typeof args.beforeEach !== 'undefined' && isFunction(args.beforeEach)) ? args.beforeEach : false;
+    obj.afterEach = (typeof args.afterEach !== 'undefined' && isFunction(args.afterEach)) ? args.afterEach : false;
+    obj.beforeAll = (typeof args.beforeAll !== 'undefined' && isFunction(args.beforeAll)) ? args.beforeAll : false;
+    obj.afterAll = (typeof args.afterAll !== 'undefined' && isFunction(args.afterAll)) ? args.afterAll : false;
   }
   return obj;
 }
@@ -39,9 +43,9 @@ export const killCheck = function(newLetters, truth) {
 }
 
 // set end state of text if user specifies
-export const defineEndText = function(end, element) {
+export const defineEndText = function(end) {
   if ( !end || end === undefined || !(typeof end === 'string' || end instanceof String) ) return false; // break if no string passed
-  const endText = end || element.textContent;
+  const endText = end;
   const truth = endText.split('');
   const newLetters = endText.split('');
   const startTextTemp = [];
@@ -49,7 +53,7 @@ export const defineEndText = function(end, element) {
 
   truth.forEach((item, index) => {
     if (' \t\n\r\v'.indexOf(truth[index]) > -1) {
-      startTextTemp.push(' '); // TODO: add test for a space being matched
+      startTextTemp.push(' ');
     } else {
       startTextTemp.push(randomChar());
     }

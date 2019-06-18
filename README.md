@@ -30,42 +30,60 @@ Loops through any elements with the relevant selector or data attribute and scra
 ### Configure
 You can configure your Scrambler instance by passing an object. The available options are as follows:
 
-#### target
+#### Options
+
+#### ```target```
 **Purpose:** This is the text you wish to Scramble! Pass a selector or data attribute (or anything else valid for document.querySelectorAll).    
 **Type:** String  
 **Default:** '[data-scrambler]'  
 **Required:** Yes.
-#### random
+
+#### ```random```
 **Purpose:** This controls the randomised time before each letter returns to its original state. The first value is the minimum delay and the second value is the maximum. E.g. changing [1000, 3000] to [1000, 9000] would increase the maximum time.  
 **Type:** Array
 **Default:** [1000, 3000]  
 **Required:** No.
-#### speed
+#### ```speed```
 **Purpose:** This controls the speed a which the letters will change. I would advise leaving it at the default 100, but you can tweak this value if you desire.  
 **Type:** Integer  
 **Default:** 100  
 **Required:** No.  
-#### text
+
+#### ```text```
 **Purpose:** This lets you specify the end state of the Scrambled text. By default the Scrambler will revert to the original text after animating, but if this option is set then the end state of the text will instead be the specified string. e.g. "Starting Text" -> *scramble* -> "Ending Text".
 **Type:** String  
 **Default:** The element text  
 **Required:** No.
-#### beforeEach
-**Purpose:** This hook allows you to add a user defined function which will fire immediately *before* the scrambling animation begins. Default argument is the element being scrambled. This applies to each element e.g. it will fire 3 times if you apply the effect to an array of 3 paragraphs. Defaults to no action.
+
+#### Callbacks
+
+#### ```beforeEach```
+**Purpose:** This callback allows you to add a user defined function which will fire immediately *before* the scrambling animation begins. This applies to each element e.g. it will fire 3 times if you apply the effect to an array of 3 paragraphs. Defaults to no action.
 **Type:** Function
 **Params:** ```argument``` - the element being targeted.
 **Default:** false
 **Required:** No.
-#### afterEach
-**Purpose:** This hook allows you to add a user defined function which will fire immediately *after* the scrambling animation ends. Default argument is the element being scrambled. This applies to each element e.g. it will fire 3 times if you apply the effect to an array of 3 paragraphs. Defaults to no action.
+
+#### ```afterEach```
+**Purpose:** This callback allows you to add a user defined function which will fire immediately *after* the scrambling animation ends. This applies to each element e.g. it will fire 3 times if you apply the effect to an array of 3 paragraphs. Defaults to no action.
 **Type:** Function
 **Params:** ```argument``` - the element being targeted.
 **Default:** false
 **Required:** No.
-#### beforeAll
-*coming soon*
-#### afterAll
-*coming soon*
+
+#### ```beforeAll```
+**Purpose:** This callback allows you to add a user defined function which will fire immediately *before* all of the the scrambling animations begins. This applies to the Scramble instance e.g. it will fire only once (after the animations start) if you apply the effect to an array of 3 paragraphs. Defaults to no action.
+**Type:** Function
+**Params:** ```argument``` - the element(s) being targeted.
+**Default:** false
+**Required:** No.
+
+#### ```afterAll```
+**Purpose:** This callback allows you to add a user defined function which will fire immediately *after* all of the scrambling animations end. This applies to the Scramble instance e.g. it will fire only once (after all animations have completed) if you apply the effect to an array of 3 paragraphs. Defaults to no action.
+**Type:** Function
+**Params:** ```argument``` - the element(s) being targeted.
+**Default:** false
+**Required:** No.
 
 #### Example
 ```
@@ -74,14 +92,17 @@ Scrambler({
   random: [1000, 12000],
   speed: 100,
   text: 'Hello World',
-  afterEach: function(element) {
-    console.log(`${element} finished scrambling`);
+  beforeEach: function(element) {
+    console.log(`${element} about to scramble`);
+  },
+  afterAll: function(elements) {
+    console.log('all done!);
   }
 });
 ```
 
 #### Warnings:
-- Certain fonts with wide and variable letter widths can cause issues with the text wrapping onto a new line while scrambling. This is usually undesirable, but can be avoided by using css to prevent the wrap, force a max width or slightly reduce the text size whilst scrambling (you can target the attribute `data-scramble-active` or the class `scrambling` which are both applied during the animation). This is envisioned as a JS library decoupled from the user's CSS, so a solution is not baked in.
+- Certain fonts with wide and variable letter widths can cause issues with the text wrapping onto a new line while scrambling. This is usually undesirable, but can be avoided by using css to prevent the wrap, force a max width or slightly reduce the text size whilst scrambling (you can target the attribute `data-scramble-active` or the class `scrambling` which are both applied during the animation). You can also access the beforeEach, beforeAll, afterEach and afterAll callbacks to apply/remove classes etc. where necessary. This is envisioned as a JS library decoupled from the user's CSS, so a styling solution is not baked in.
 - Scrambler will temporarily lose unique styling from text within child nodes e.g. link tags within a paragraph. This will be replaced at the end of the cycle but can result in FOUC. This is planned to be addressed later, but best practice is to be more granular in your targeting.
 
 #### To-do:

@@ -6,8 +6,8 @@
           "targets": {
             "node": "current",
             "browsers": [
-                "last 5 versions",
-                "not ie <= 8"
+              "last 5 versions",
+              "not ie <= 8"
             ]
           },
           "modules": false
@@ -15,7 +15,7 @@
       ]
   ],
   "plugins": [
-    "add-module-exports",
+    "add-module-exports"
   ],
   "env": {
     "test": {
@@ -26,15 +26,15 @@
               "targets": {
                 "node": "current",
                 "browsers": [
-                    "last 5 versions",
-                    "not ie <= 8"
+                  "last 5 versions",
+                  "not ie <= 8"
                 ]
               }
             }
           ]
       ],
       "plugins": [
-        "add-module-exports",
+        "add-module-exports"
       ]
     }
   }

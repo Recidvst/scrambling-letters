@@ -10,7 +10,8 @@
     "ga": true
   },
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": 2017
   },
   "rules": {
     "no-console": ["error", { allow: ["warn"] }],
@@ -20,6 +21,7 @@
     "func-names": ["off"],
     "max-len": "off",
     "no-param-reassign": ["error", { "props": false }],
-    "no-shadow": ["error", { "hoist": "never" }]
+    "no-shadow": ["error", { "hoist": "never" }],
+    "no-unused-vars": ["off"]
   }
 }

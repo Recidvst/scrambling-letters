@@ -17,14 +17,32 @@ export default function (passedArgs) {
     
     // get chosen scramble items
     const scrambleElements = (isObject(scrambleFireArgs)) ? [...document.querySelectorAll(scrambleFireArgs.target)] : [...document.querySelectorAll(scrambleFireArgs)];
-   
-    // for each scramble element
-    scrambleElements.forEach((item) => {
-      Scramble(item, scrambleFireArgs);
+
+    // create promises from chosen items
+    let promiseArr = [];
+    scrambleElements.forEach( (item) => {
+      let promise = Scramble(item, scrambleFireArgs);
+      promiseArr.push(promise);
     });
 
-    return true;
+    if (promiseArr.length > 0) {
+      // beforeAll hook
+      if (scrambleFireArgs.beforeAll) {
+        scrambleFireArgs.beforeAll(scrambleElements);      
+      }
+      // use promise.all to wait for all promises to complete
+      Promise.all(promiseArr).then(function(els) {
+        // afterAll hook
+        if (scrambleFireArgs.afterAll) {
+          scrambleFireArgs.afterAll(els);
+        }
+      });
+    } 
+    else {
+      return false;
+    }
   }
-  return false;
-
+  else {
+    return false;
+  }
 }

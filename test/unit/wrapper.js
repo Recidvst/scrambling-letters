@@ -6,10 +6,10 @@ const expect = chai.expect;
 
 // import Scrambler and create test vars
 import Scrambler from '../../js/scrambler.js';
-import ScramblerSetup from '../../js/scrambleSetup.js';
+import ScrambleSetup from '../../js/scrambleSetup.js';
 
 const TEST_TRIGGER = Scrambler;
-const TEST_SETUP = ScramblerSetup;
+const TEST_SETUP = ScrambleSetup;
 
 describe('scramblerFunctionsExist', function() {
   it('main function should exist', function() {

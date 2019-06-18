@@ -33,6 +33,18 @@ describe('actionsFunctionsOutput', function() { // wrapper
     it('should return the new argument if a defined value is passed to a valid key', function() {
       expect(TEST_ACTIONS.setArgs({text: 'newtext'}, true)).to.deep.include({text: 'newtext'});
     });
+    it('should return the default value if no callback option is passed', function() {
+      expect(TEST_ACTIONS.setArgs({beforeEach: undefined}, true)).to.deep.include({beforeEach: false});
+    });
+    it('should return the default value if an invalid function is passed', function() {
+      expect(TEST_ACTIONS.setArgs({beforeEach: 'text: newtext'}, true)).to.deep.include({beforeEach: false});
+    });
+    it('should return the callback if a valid function is passed', function() {
+      expect(TEST_ACTIONS.setArgs({beforeEach: function() { console.log('example - before one'); }, text: 'newtext'}, true)).to.not.deep.include({beforeEach: false});
+      expect(TEST_ACTIONS.setArgs({afterEach: function() { console.log('example - after one'); }, text: 'newtext'}, true)).to.not.deep.include({afterEach: false});
+      expect(TEST_ACTIONS.setArgs({beforeAll: function() { console.log('example - before all'); }, text: 'newtext'}, true)).to.not.deep.include({beforeAll: false});
+      expect(TEST_ACTIONS.setArgs({afterAll: function() { console.log('example - after all'); }, text: 'newtext'}, true)).to.not.deep.include({afterAll: false});
+    });
   });
 
   describe('killCheck', function() {
@@ -75,6 +87,11 @@ describe('actionsFunctionsOutput', function() { // wrapper
     it('should return an object with three items', function() {
       let result = TEST_ACTIONS.defineEndText('test');
       expect(Object.keys(result)).length.to.have.length(3);
+    });
+    it('should return a space if passed a space', function() {
+      let result = TEST_ACTIONS.defineEndText(' ');
+      expect(result.startText).length.to.have.length(1);
+      expect(result.startText[0]).to.equal(' ');
     });
   });
 
