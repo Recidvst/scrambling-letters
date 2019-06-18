@@ -11,3 +11,4 @@
 1.5.0: Overhaul of code structure. Now offers export of various bundle options including UMD, ESM etc.
 1.5.1: Adding analytics
 1.5.2: Fix dependencies
+1.6.0: Adding before and after (singular and overall) callbacks
