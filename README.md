@@ -62,28 +62,28 @@ You can configure your Scrambler instance by passing an object. The available op
 **Purpose:** This callback allows you to add a user defined function which will fire immediately *before* the scrambling animation begins. This applies to each element e.g. it will fire 3 times if you apply the effect to an array of 3 paragraphs. Defaults to no action.  
 **Type:** Function  
 **Params:** ```argument``` - the element being targeted.  
-**Default:** false  
+**Default:** n/a  
 **Required:** No.
 
 #### ```afterEach```
 **Purpose:** This callback allows you to add a user defined function which will fire immediately *after* the scrambling animation ends. This applies to each element e.g. it will fire 3 times if you apply the effect to an array of 3 paragraphs. Defaults to no action.  
 **Type:** Function  
 **Params:** ```argument``` - the element being targeted.  
-**Default:** false  
+**Default:** n/a  
 **Required:** No.
 
 #### ```beforeAll```
 **Purpose:** This callback allows you to add a user defined function which will fire immediately *before* all of the the scrambling animations begins. This applies to the Scramble instance e.g. it will fire only once (before the animations start) if you apply the effect to an array of 3 paragraphs. Defaults to no action.  
 **Type:** Function  
 **Params:** ```argument``` - the element(s) being targeted.  
-**Default:** false  
+**Default:** n/a  
 **Required:** No.
 
 #### ```afterAll```
 **Purpose:** This callback allows you to add a user defined function which will fire immediately *after* all of the scrambling animations end. This applies to the Scramble instance e.g. it will fire only once (after all animations have completed) if you apply the effect to an array of 3 paragraphs. Defaults to no action.  
 **Type:** Function  
 **Params:** ```argument``` - the element(s) being targeted.  
-**Default:** false  
+**Default:** n/a  
 **Required:** No.
 
 #### Example
