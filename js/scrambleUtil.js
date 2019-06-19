@@ -51,7 +51,7 @@ export const randomChar = function (length, debug) {
 export const randomTime = function (arg, rand) {
   const asObj = arg || false;
   if (asObj && isArray(rand) && rand.length > 1) {
-    return rand[0] + ((Math.random() * (1 - rand[1])) + rand[1]);
+    return Math.floor(Math.random() * (rand[1] - (rand[0] + 1))) + rand[0];
   }
-  return 1000 + ((Math.random() * (1 - 3000)) + 3000);
+  return Math.floor(Math.random() * (3000 - (1000 + 1))) + 1000;
 };

@@ -3,11 +3,9 @@
 
 Scrambler({
   target: '[data-title-scrambler]',
-  random: [1000, 5000],
+  random: [1000, 4000],
   speed: 100,
 });
-
-Scrambler('p:not(.no-scramble), ul:not(.no-scramble) li');
 
 const buttonT = document.querySelector('#scramble-title-button');
 const buttonP = document.querySelector('#scramble-paragraph-button');
@@ -23,7 +21,7 @@ buttonT.addEventListener('click', () => {
 buttonP.addEventListener('click', () => {
   Scrambler({
     target: 'p:not(.no-scramble), ul:not(.no-scramble) li, h3:not(.no-scramble)',
-    random: [1000, 30000],
+    random: [2000, 4000],
     beforeAll: function() {
       console.log('example - before all');
     },
@@ -37,7 +35,7 @@ buttonP.addEventListener('click', () => {
 buttonN.addEventListener('click', () => {
   Scrambler({
     target: '[data-title-scrambler]',
-    random: [1000, 20000],
+    random: [3000, 10000],
     speed: 100,
     text: 'Secret message',
   });
