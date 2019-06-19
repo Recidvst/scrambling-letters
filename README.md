@@ -1,9 +1,9 @@
 
-[![npm](https://img.shields.io/npm/dt/scrambling-letters.svg)]()
-[![npm](https://img.shields.io/npm/v/scrambling-letters.svg)]()
-[![Travis (.com)](https://img.shields.io/travis/com/Recidvst/scrambling-letters.svg)]()
+[![npm](https://img.shields.io/npm/dt/scrambling-letters.svg)](https://www.npmjs.com/package/scrambling-letters)
+[![npm](https://img.shields.io/npm/v/scrambling-letters.svg)](https://www.npmjs.com/package/scrambling-letters)
+[![Travis (.com)](https://img.shields.io/travis/com/Recidvst/scrambling-letters.svg)](https://travis-ci.com/Recidvst/scrambling-letters)
 [![Coverage Status](https://coveralls.io/repos/github/Recidvst/scrambling-letters/badge.svg?branch=master)](https://coveralls.io/github/Recidvst/scrambling-letters?branch=master)
-[![license](https://img.shields.io/github/license/recidvst/scrambling-letters.svg)]()
+[![license](https://img.shields.io/github/license/recidvst/scrambling-letters.svg)](https://github.com/Recidvst/scrambling-letters/blob/master/LICENSE)
 
 # Scrambling Letters
 > A lightweight javascript library for scrambling letters within a piece of text, giving a nice decoding effect.
@@ -103,7 +103,7 @@ Scrambler({
 ```
 
 #### Warnings:
-- Certain fonts with wide and variable letter widths can cause issues with the text wrapping onto a new line while scrambling. This is usually undesirable, but can be avoided by using css to prevent the wrap, force a max width or slightly reduce the text size whilst scrambling (you can target the attribute `data-scramble-active` or the class `scrambling` which are both applied during the animation). You can also access the beforeEach, beforeAll, afterEach and afterAll callbacks to apply/remove classes etc. where necessary. This is envisioned as a JS library decoupled from the user's CSS, so a styling solution is not baked in.
+- Certain fonts with wide and variable letter widths can cause issues with the text wrapping onto a new line while scrambling. This is usually undesirable, but can be avoided by using css to prevent the wrap, force a max width or slightly reduce the text size whilst scrambling (you can target the attribute `data-scramble-active` or the class `scrambling` which are both applied during the animation). You can also access the `beforeEach`, `beforeAll`, `afterEach` and `afterAll` callbacks to apply/remove classes etc. where necessary. This is envisioned as a JS library decoupled from the user's CSS, so a styling solution is not baked in.
 - Scrambler will temporarily lose unique styling from text within child nodes e.g. link tags within a paragraph. This will be replaced at the end of the cycle but can result in FOUC. This is planned to be addressed later, but best practice is to be more granular in your targeting.
 
 #### To-do:

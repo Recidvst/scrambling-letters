@@ -40,7 +40,7 @@ $purple-back: rgba(185, 108, 255, 0.1);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: all 1.5s ease;
+    transition: color 1.5s ease;
   }
   &:hover {
     .outline {
