@@ -62,6 +62,23 @@ describe('utilFunctionsOutput', function() { // wrapper
     });
   });
 
+  describe('isInteger', function() {
+    it('should exist', function() {
+      expect(TEST_UTILS.isInteger).to.exist;
+    });
+    it('should be a function', function() {
+      expect(typeof(TEST_UTILS.isInteger)).to.equal('function')
+    });
+    it('should return true if passed an integer', function() {
+      expect(TEST_UTILS.isInteger(100)).to.be.true;
+    });
+    it('should return false if passed something other than an integer', function() {
+      expect(TEST_UTILS.isInteger(false)).to.be.false;
+      expect(TEST_UTILS.isInteger(undefined)).to.be.false;
+      expect(TEST_UTILS.isInteger('100')).to.be.false;
+    });
+  });
+
   describe('isObject', function() {
     it('should exist', function() {
       expect(TEST_UTILS.isObject).to.exist;

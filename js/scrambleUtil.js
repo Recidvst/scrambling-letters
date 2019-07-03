@@ -22,6 +22,11 @@ export const isFunction = function (a) {
   return typeof a === 'function';
 };
 
+// integer test
+export const isInteger = function (a) {
+  return Number.isInteger(a);
+};
+
 // is a string and valid
 export const isValidString = function (argsText) {
   if (argsText && argsText !== '' && (typeof argsText === 'string' || argsText instanceof String)) {
@@ -48,10 +53,33 @@ export const randomChar = function (length, debug) {
 };
 
 // utility fn to get a random delay time
-export const randomTime = function (arg, rand) {
-  const asObj = arg || false;
+export const randomTime = function (obj, rand, speed) {
+  const asObj = obj || false;
+  let compensater = speed || 100;
+  let output = 1000; // default output
+
   if (asObj && isArray(rand) && rand.length > 1) {
-    return Math.floor(Math.random() * (rand[1] - (rand[0] + 1))) + rand[0];
+    let [ timing1, timing2 ] = rand; // destructure duration
+    
+    if (speed >= timing2 || compensater >= timing2) { // check the speed value isn't higher than the duration
+      compensater = timing2 - 1; 
+    }
+
+    timing2 = timing2 - compensater;
+
+    if (timing1 > timing2) {
+      timing1 = timing2;
+    }
+  
+    if (isInteger(timing1) && isInteger(timing2)) {
+      output = Math.floor(Math.random() * (timing2 - timing1)) + timing1;
+      // return output - compensater;
+      return output;
+    }
   }
-  return Math.floor(Math.random() * (3000 - (1000 + 1))) + 1000;
+
+  // fallback
+  output = Math.floor(Math.random() * (3000 - (1000 + 1))) + 1000;
+  // return output - compensater;
+  return output;
 };

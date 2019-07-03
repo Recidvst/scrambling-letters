@@ -17,7 +17,8 @@ export const setArgs = function (args, t) {
     beforeEach: false,
     afterEach: false,
     beforeAll: false,
-    afterAll: false
+    afterAll: false,
+    errorHandler: false
   };
   // update if arg object present
   if ( args && passedAsObject ) {
@@ -29,6 +30,7 @@ export const setArgs = function (args, t) {
     obj.afterEach = (typeof args.afterEach !== 'undefined' && isFunction(args.afterEach)) ? args.afterEach : false;
     obj.beforeAll = (typeof args.beforeAll !== 'undefined' && isFunction(args.beforeAll)) ? args.beforeAll : false;
     obj.afterAll = (typeof args.afterAll !== 'undefined' && isFunction(args.afterAll)) ? args.afterAll : false;
+    obj.errorHandler = (typeof args.errorHandler !== 'undefined' && isFunction(args.errorHandler)) ? args.errorHandler : false;
   }
   return obj;
 }

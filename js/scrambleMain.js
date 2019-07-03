@@ -1,14 +1,14 @@
 /* eslint-disable import/prefer-default-export, no-console */
 
 // get util functions
-import { isObject, isValidString, randomChar, randomTime } from './scrambleUtil.js';
+import { isObject, isArray, isValidString, randomChar, randomTime } from './scrambleUtil.js';
 // get action functions
 import { killCheck, defineEndText } from './scrambleActions.js';
 
 export default function (element, scrambleFireArgs) {
   return new Promise((resolve, reject) => { // create promise to wrap fn
 
-    if (typeof element === "undefined") reject();
+    if (typeof element === "undefined") reject('Target element is undefined');
 
     if (element.getAttribute('data-scramble-active') !== 'true') {
       
@@ -43,17 +43,25 @@ export default function (element, scrambleFireArgs) {
         startText = newTextResult.startText;
       }
 
-      const ticker = setInterval(() => {
+      // set random killswitch timers to reset letters to original states
+      const timeoutHandler = function(arr) {
+        if (arr && isArray(arr)) {
+          for (let i = 0; i <= arr.length; i++ ) {
+            setTimeout(() => {
+              revert[i] = true;
+            }, randomTime(isObject(scrambleFireArgs), scrambleFireArgs.random, scrambleFireArgs.speed));
+          }
+        }
+        return false;
+      }
+
+      const intervalHandler = function() {
         // map over letters and replace with random or revert back to truth
         startText.map((letter, i) => {
           // break if a space
           if (' \t\n\r\v'.indexOf(letter) > -1) return false;
           // set new random letter
           newLetters[i] = randomChar();
-          // set random timeout to make letters reset at different times
-          setTimeout(() => {
-            revert[i] = true;
-          }, randomTime(isObject(scrambleFireArgs), scrambleFireArgs.random));
           // reset individual letter if kill switch
           if (revert[i] === true) {
             newLetters[i] = truth[i];
@@ -83,12 +91,18 @@ export default function (element, scrambleFireArgs) {
           }
 
           resolve(element); // resolve promise
-
         }
-      }, speed); // end ticker
+      }
+
+      // fire timeouts and interval
+      timeoutHandler(startText);
+      intervalHandler();
+      const ticker = setInterval(() => {
+        intervalHandler();
+      }, speed);
     } // end check for active
     else {
-      reject();
+      reject('Animation already triggered');
     }
 
   });

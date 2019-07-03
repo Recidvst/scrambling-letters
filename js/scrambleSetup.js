@@ -31,10 +31,17 @@ export default function (passedArgs) {
         scrambleFireArgs.beforeAll(scrambleElements);      
       }
       // use promise.all to wait for all promises to complete
-      Promise.all(promiseArr).then(function(els) {
+      Promise.all(promiseArr)
+      .then(function(els) {
         // afterAll hook
         if (scrambleFireArgs.afterAll) {
           scrambleFireArgs.afterAll(els);
+        }
+      })
+      .catch((e) => {
+        // error handler, also fires when anim locked (running)
+        if (scrambleFireArgs.errorHandler) {
+          scrambleFireArgs.errorHandler(e);
         }
       });
     } 

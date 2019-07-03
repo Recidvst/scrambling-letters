@@ -39,14 +39,14 @@ You can configure your Scrambler instance by passing an object. The available op
 **Required:** Yes.   
 
 #### ```random```
-**Purpose:** This controls the randomised time before each letter returns to its original state. The first value is the minimum delay and the second value is the maximum. E.g. changing [1000, 3000] to [1000, 9000] would increase the maximum time.    
-**Type:** Array  
+**Purpose:** This controls the randomised time in milliseconds before each letter returns to its original state. The first value is the minimum delay and the second value is the maximum. E.g. changing [1000, 3000] to [1000, 9000] would increase the maximum time. Set both to the same value to make all letters finish together. This also controls the maximum time the animation will take e.g. if you want the animation to take 3 seconds then set both to 3000.    
+**Type:** Array (ms)  
 **Default:** [1000, 3000]    
 **Required:** No.
 
 #### ```speed```
-**Purpose:** This controls the speed a which the letters will change. I would advise leaving it at the default 100, but you can tweak this value if you desire.    
-**Type:** Integer   
+**Purpose:** This controls the speed at which the letters will change. I would advise leaving it at the default 100ms, but you can tweak this value if you desire. This value should be substantially lower than than the length of the animation if it is to look good.    
+**Type:** Integer (ms)   
 **Default:** 100  
 **Required:** No.  
 
@@ -83,6 +83,13 @@ You can configure your Scrambler instance by passing an object. The available op
 **Purpose:** This callback allows you to add a user defined function which will fire immediately *after* all of the scrambling animations end. This applies to the Scramble instance e.g. it will fire only once (after all animations have completed) if you apply the effect to an array of 3 paragraphs. Defaults to no action.  
 **Type:** Function  
 **Params:** ```argument``` - the element(s) being targeted.  
+**Default:** n/a  
+**Required:** No.
+
+#### ```errorHandler```
+**Purpose:** This callback allows you to add a custom error handler function which will fire if one of the promises wrapping the main Scrambler function is rejected. Defaults to no action.  
+**Type:** Function  
+**Params:** ```argument``` - the error message (if relevant).  
 **Default:** n/a  
 **Required:** No.
 

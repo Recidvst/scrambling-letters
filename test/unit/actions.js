@@ -44,6 +44,7 @@ describe('actionsFunctionsOutput', function() { // wrapper
       expect(TEST_ACTIONS.setArgs({afterEach: function() { console.log('example - after one'); }, text: 'newtext'}, true)).to.not.deep.include({afterEach: false});
       expect(TEST_ACTIONS.setArgs({beforeAll: function() { console.log('example - before all'); }, text: 'newtext'}, true)).to.not.deep.include({beforeAll: false});
       expect(TEST_ACTIONS.setArgs({afterAll: function() { console.log('example - after all'); }, text: 'newtext'}, true)).to.not.deep.include({afterAll: false});
+      expect(TEST_ACTIONS.setArgs({errorHandler: function() { console.log('example - error handler'); }, text: 'newtext'}, true)).to.not.deep.include({errorHandler: false});
     });
   });
 
