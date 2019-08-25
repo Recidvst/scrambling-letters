@@ -104,7 +104,7 @@ Scrambler({
     console.log(`${element} about to scramble`);
   },
   afterAll: function(elements) {
-    console.log('all done!);
+    console.log('all done!');
   }
 });
 ```
