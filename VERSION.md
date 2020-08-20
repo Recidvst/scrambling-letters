@@ -7,3 +7,4 @@
 1.5.2: Fix dependencies  
 1.6.0: Adding before and after (singular and overall) callbacks  
 1.6.1: Fixing bug with randomTime generator  
+1.6.2: PR to update package.json and security updates

@@ -12,7 +12,7 @@ var buttonN = document.querySelector('#scramble-paragraph-decode');
 buttonT.addEventListener('click', function () {
   Scrambler({
     target: '[data-title-scrambler]',
-    random: [3000, 3000],
+    random: [2000, 3000],
     speed: 100,
     beforeAll: function beforeAll() {
       d1 = Date.now();
