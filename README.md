@@ -114,6 +114,9 @@ Scrambler({
 - Scrambler will temporarily lose unique styling from text within child nodes e.g. link tags within a paragraph. This will be replaced at the end of the cycle but can result in FOUC. This is planned to be addressed later, but best practice is to be more granular in your targeting.
 
 #### To-do:
-- 100% test coverage
-- Better handling of nested tags?
-- requestAnimationFrame instead of setInterval?
+1. Allow passing of elements rather than just IDs/classes, as per Issue #4.
+2. Use requestAnimationFrame instead of setInterval.
+3. 100% test coverage if possible.
+4. Review options for better handling of nested tags.
+
+I am planning a refactor of the package in the near future to improve the code quality, so will look to handle some of the above at the same time.
