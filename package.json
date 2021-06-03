@@ -26,7 +26,8 @@
     "styles": "node-sass scss/example.scss -o dist/css & cleancss dist/css/example.css -o dist/css/example.min.css",
     "example": "babel js/example.js --out-file dist/example.js",
     "prebuild": "npm run clean",
-    "build": "cross-env BABEL_ENV=production NODE_ENV=production rollup -c && npm run styles && npm run example"
+    "build": "cross-env BABEL_ENV=production NODE_ENV=production rollup -c && npm run styles && npm run example",
+    "docs:serve": "docsify serve ./docs"
   },
   "repository": {
     "type": "git",
