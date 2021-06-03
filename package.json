@@ -1,6 +1,6 @@
 {
   "name": "scrambling-letters",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "main": "dist/scrambler.cjs.js",
   "module": "dist/scrambler.esm.js",
   "description": "A lightweight javascript library for scrambling letters within a piece of text, giving a nice decoding effect.",
