@@ -2,7 +2,7 @@
 
 - Getting Started
 
-  - [Installation](installation/readme.md)
+  - [Installation](installation/install.md)
 
 - Configuration
 
