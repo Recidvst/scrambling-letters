@@ -1,8 +1,8 @@
-- [Home](/#/?id=scrambling-letters)
+- [Home](/)
 
 - Getting Started
 
-  - [Installation](installation/)
+  - [Installation](installation/readme.md)
 
 - Configuration
 

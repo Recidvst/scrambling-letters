@@ -12,6 +12,6 @@
 
 Loops through any elements with the relevant selector or data attribute and scrambles the letters randomly for a couple of seconds before returning them one by one to their original state or an alternate string.
 
-[**Demo Page**](https://scrambling-letters.chris-snowden.me/ 'Scrambling Letters demo')
+[**Demo Page**](https://scrambling-letters.chris-snowden.me/ 'Scrambling Letters demo page')
 
----
+[**Documentation**](https://recidvst.github.io/scrambling-letters/#/ 'Scrambling Letters docs site')
