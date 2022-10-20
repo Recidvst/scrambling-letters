@@ -5,6 +5,8 @@ rollup.config.js
 .eslintrc
 .babelrc
 .travis.yml
+.github/**/*
+.idea/**/*
 nightwatch.js
 nightwatch.conf.js
 nightwatch.json
