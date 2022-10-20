@@ -20,7 +20,7 @@
     "check": "echo 'npm OK'",
     "clean": "rimraf dist",
     "test": "cross-env BABEL_ENV=test NODE_ENV=test nyc mocha test/unit --require @babel/register",
-    "coverage": "cross-env BABEL_ENV=test NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
+    "coverage": "cross-env BABEL_ENV=test NODE_ENV=test nyc report --reporter=lcov",
     "e2e": "cross-env BABEL_ENV=test node nightwatch.js test/e2e",
     "lint": "eslint js/**/*.js",
     "styles": "node-sass scss/example.scss -o dist/css & cleancss dist/css/example.css -o dist/css/example.min.css",
