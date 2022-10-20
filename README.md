@@ -1,6 +1,6 @@
 
 [![downloads](https://img.shields.io/npm/dt/scrambling-letters.svg)](https://www.npmjs.com/package/scrambling-letters)
-[![Travis (.com)](https://img.shields.io/travis/com/Recidvst/scrambling-letters.svg)](https://travis-ci.com/Recidvst/scrambling-letters)
+![Tests](https://github.com/Recidvst/scrambling-letters/actions/workflows/testing.yml/badge.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/Recidvst/scrambling-letters/badge.svg?branch=master)](https://coveralls.io/github/Recidvst/scrambling-letters?branch=master)
 [![npm version](https://img.shields.io/npm/v/scrambling-letters.svg)](https://www.npmjs.com/package/scrambling-letters)
 [![status](https://img.shields.io/website?url=https%3A%2F%2Fscrambling-letters.chris-snowden.me%2F)](https://scrambling-letters.chris-snowden.me/)
