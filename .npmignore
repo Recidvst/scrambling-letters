@@ -36,6 +36,10 @@ lib/
 .nyc_output
 .cache
 
+# docs
+docs/README.md
+docs/**/*
+
 .env
 
 bower_components

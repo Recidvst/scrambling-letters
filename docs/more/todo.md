@@ -5,5 +5,7 @@
 2. Use requestAnimationFrame instead of setInterval.
 3. 100% test coverage if possible.
 4. Review options for better handling of nested tags.
+5. Rewrite in TypeScript.
+6. Remove dependency on Rollup - can we use Vite?
 
 > I am planning a refactor of the package in the near future to improve the code quality, so will look to handle some of the above at the same time.

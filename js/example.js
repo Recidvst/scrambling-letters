@@ -1,5 +1,4 @@
 /* global Scrambler */
-/* eslint-disable import/prefer-default-export, no-console */
 
 Scrambler({
   target: '[data-title-scrambler]',
@@ -12,6 +11,8 @@ const buttonP = document.querySelector('#scramble-paragraph-button');
 const buttonN = document.querySelector('#scramble-paragraph-decode');
 
 buttonT.addEventListener('click', () => {
+  let d1;
+  let d2;
   Scrambler({
     target: '[data-title-scrambler]',
     random: [2000, 3000],

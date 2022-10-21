@@ -14,7 +14,7 @@
     "ecmaVersion": 2017
   },
   "rules": {
-    "no-console": ["error", { allow: ["warn"] }],
+    "no-console": ["off"],
     "no-tabs": ["off"],
     "indent": ["off"],
     "eol-last": "off",
@@ -22,6 +22,7 @@
     "max-len": "off",
     "no-param-reassign": ["error", { "props": false }],
     "no-shadow": ["error", { "hoist": "never" }],
-    "no-unused-vars": ["off"]
+    "no-unused-vars": ["off"],
+    "import/prefer-default-export": ["off"]
   }
 }

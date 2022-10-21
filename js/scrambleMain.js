@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export, no-console */
 
 // get util functions
 import { isObject, isArray, isValidString, randomChar, randomTime } from './scrambleUtil.js';

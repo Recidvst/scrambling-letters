@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export, no-console */
-
 // export actions for the Scrambler fn
 
 // import randomChar

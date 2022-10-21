@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export, no-console */
-
 // export helper functions for the Scrambler fn
 
 // object test

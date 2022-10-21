@@ -1,1 +1,359 @@
-function _slicedToArray(r,e){return _arrayWithHoles(r)||_iterableToArrayLimit(r,e)||_nonIterableRest()}function _toConsumableArray(r){return _arrayWithoutHoles(r)||_iterableToArray(r)||_nonIterableSpread()}function _arrayWithoutHoles(r){if(Array.isArray(r)){for(var e=0,t=new Array(r.length);e<r.length;e++)t[e]=r[e];return t}}function _arrayWithHoles(r){if(Array.isArray(r))return r}function _iterableToArray(r){if(Symbol.iterator in Object(r)||"[object Arguments]"===Object.prototype.toString.call(r))return Array.from(r)}function _iterableToArrayLimit(r,e){var t=[],n=!0,a=!1,i=void 0;try{for(var o,l=r[Symbol.iterator]();!(n=(o=l.next()).done)&&(t.push(o.value),!e||t.length!==e);n=!0);}catch(r){a=!0,i=r}finally{try{n||null==l.return||l.return()}finally{if(a)throw i}}return t}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance")}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance")}function Scramble(r,e){return new Promise(function(t,n){if(void 0===r&&n("Target element is undefined"),"true"!==r.getAttribute("data-scramble-active")){e.beforeEach&&e.beforeEach(r),r.setAttribute("data-scramble-active","true"),r.classList.add("scrambling");var a,i=r.innerHTML,o=[],l=e.speed?e.speed:100,c=r.textContent.split(""),u=c,f=r.textContent.split(""),s=!1;isValidString(e.text)?a=defineEndText(e.text):r.getAttribute("data-scramble-text")&&""!==r.getAttribute("data-scramble-text")&&(a=defineEndText(r.getAttribute("data-scramble-text"))),a&&(s=!0,c=a.truth,f=a.newLetters,u=a.startText);var d=function(){if(u.map(function(e,t){return!(" \t\n\r\v".indexOf(e)>-1)&&(f[t]=randomChar(),!0===o[t]&&(f[t]=c[t]),r.textContent=f.join(""),!0)}),killCheck(f,c)){if(r.innerHTML=i,s){var n=r.children[0];n&&""!==n?n.textContent=f.join(""):r.textContent=f.join("")}clearInterval(b),r.setAttribute("data-scramble-active","false"),r.classList.remove("scrambling"),e.afterEach&&e.afterEach(r),t(r)}};!function(r){if(r&&isArray(r))for(var t=0;t<=r.length;t++)!function(r){setTimeout(function(){o[r]=!0},randomTime(isObject(e),e.random,e.speed))}(t)}(u),d();var b=setInterval(function(){d()},l)}else n("Animation already triggered")})}function ScramblerSetup(r){if(!isValidArgType(r))return!1;var e=setArgs(r,isObject(r)),t=_toConsumableArray(isObject(e)?document.querySelectorAll(e.target):document.querySelectorAll(e)),n=[];if(t.forEach(function(r){var t=Scramble(r,e);n.push(t)}),!(n.length>0))return!1;e.beforeAll&&e.beforeAll(t),Promise.all(n).then(function(r){e.afterAll&&e.afterAll(r)}).catch(function(r){e.errorHandler&&e.errorHandler(r)})}var isObject=function(r){return!!r&&r.constructor===Object},isArray=function(r){return!!r&&r.constructor===Array},isBool=function(r){return"boolean"==typeof r},isFunction=function(r){return"function"==typeof r},isInteger=function(r){return Number.isInteger(r)},isValidString=function(r){return!(!r||""===r||!("string"==typeof r||r instanceof String))},isValidArgType=function(r){return!isArray(r)&&!isBool(r)&&"number"!=typeof r&&"function"!=typeof r&&void 0!==r},randomChar=function(r,e){var t=r||1,n=e||!1,a=Math.random().toString(36).replace(/[^a-z]+/g,"").substr(0,t);return" \t\n\r\v".indexOf(a)<0&&!0!==n&&a},randomTime=function(r,e,t){var n=r||!1,a=t||100;if(n&&isArray(e)&&e.length>1){var i=_slicedToArray(e,2),o=i[0],l=i[1];if((t>=l||a>=l)&&(a=l-1),l-=a,o>l&&(o=l),isInteger(o)&&isInteger(l))return Math.floor(Math.random()*(l-o))+o}return Math.floor(1999*Math.random())+1e3},setArgs=function(r,e){var t=e||!1,n={target:"[data-scrambler]",random:[1e3,3e3],speed:100,text:!1,beforeEach:!1,afterEach:!1,beforeAll:!1,afterAll:!1,errorHandler:!1};return r&&t&&(n.target=void 0!==r.target?r.target:"[data-scrambler]",n.random=void 0!==r.random?r.random:[1e3,3e3],n.speed=void 0!==r.speed?r.speed:100,n.text=void 0!==r.text&&r.text,n.beforeEach=!(void 0===r.beforeEach||!isFunction(r.beforeEach))&&r.beforeEach,n.afterEach=!(void 0===r.afterEach||!isFunction(r.afterEach))&&r.afterEach,n.beforeAll=!(void 0===r.beforeAll||!isFunction(r.beforeAll))&&r.beforeAll,n.afterAll=!(void 0===r.afterAll||!isFunction(r.afterAll))&&r.afterAll,n.errorHandler=!(void 0===r.errorHandler||!isFunction(r.errorHandler))&&r.errorHandler),n},killCheck=function(r,e){return!(r.length!==e.length||!r.every(function(r,t){return r===e[t]}))},defineEndText=function(r){if(!r||void 0===r||!("string"==typeof r||r instanceof String))return!1;var e,t=r,n=t.split(""),a=t.split(""),i=[];return n.forEach(function(r,e){" \t\n\r\v".indexOf(n[e])>-1?i.push(" "):i.push(randomChar())}),e=i,{truth:n,newLetters:a,startText:e}},scrambler=function(){return ScramblerSetup}();export default scrambler;
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+function _iterableToArrayLimit(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+  if (_i == null) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _s, _e;
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+  return _arr;
+}
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+  return arr2;
+}
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+// export helper functions for the Scrambler fn
+
+// object test
+var isObject = function isObject(a) {
+  return !!a && a.constructor === Object;
+};
+
+// array test
+var isArray = function isArray(a) {
+  return !!a && a.constructor === Array;
+};
+
+// boolean test
+var isBool = function isBool(a) {
+  return typeof a === 'boolean';
+};
+
+// function test
+var isFunction = function isFunction(a) {
+  return typeof a === 'function';
+};
+
+// integer test
+var isInteger = function isInteger(a) {
+  return Number.isInteger(a);
+};
+
+// is a string and valid
+var isValidString = function isValidString(argsText) {
+  if (argsText && argsText !== '' && (typeof argsText === 'string' || argsText instanceof String)) {
+    return true;
+  }
+  return false;
+};
+
+// only if string or object
+var isValidArgType = function isValidArgType(args) {
+  if (isArray(args) || isBool(args) || typeof args === 'number' || typeof args === 'function' || typeof args === 'undefined') {
+    return false;
+  }
+  return true;
+};
+
+// utility fn to get a random character
+var randomChar = function randomChar(length, debug) {
+  var l = length || 1;
+  var d = debug || false;
+  var r = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, l);
+  if (' \t\n\r\v'.indexOf(r) < 0 && d !== true) return r;
+  return false;
+};
+
+// utility fn to get a random delay time
+var randomTime = function randomTime(obj, rand, speed) {
+  var asObj = obj || false;
+  var compensater = speed || 100;
+  var output = 1000; // default output
+
+  if (asObj && isArray(rand) && rand.length > 1) {
+    var _rand = _slicedToArray(rand, 2),
+      timing1 = _rand[0],
+      timing2 = _rand[1]; // destructure duration
+
+    if (speed >= timing2 || compensater >= timing2) {
+      // check the speed value isn't higher than the duration
+      compensater = timing2 - 1;
+    }
+    timing2 = timing2 - compensater;
+    if (timing1 > timing2) {
+      timing1 = timing2;
+    }
+    if (isInteger(timing1) && isInteger(timing2)) {
+      output = Math.floor(Math.random() * (timing2 - timing1)) + timing1;
+      // return output - compensater;
+      return output;
+    }
+  }
+
+  // fallback
+  output = Math.floor(Math.random() * (3000 - (1000 + 1))) + 1000;
+  // return output - compensater;
+  return output;
+};
+
+// export actions for the Scrambler fn
+
+// sets args after checking
+var setArgs = function setArgs(args, t) {
+  var passedAsObject = t || false;
+  // default args
+  var obj = {
+    target: '[data-scrambler]',
+    random: [1000, 3000],
+    speed: 100,
+    text: false,
+    beforeEach: false,
+    afterEach: false,
+    beforeAll: false,
+    afterAll: false,
+    errorHandler: false
+  };
+  // update if arg object present
+  if (args && passedAsObject) {
+    obj.target = typeof args.target !== 'undefined' ? args.target : '[data-scrambler]';
+    obj.random = typeof args.random !== 'undefined' ? args.random : [1000, 3000];
+    obj.speed = typeof args.speed !== 'undefined' ? args.speed : 100;
+    obj.text = typeof args.text !== 'undefined' ? args.text : false;
+    obj.beforeEach = typeof args.beforeEach !== 'undefined' && isFunction(args.beforeEach) ? args.beforeEach : false;
+    obj.afterEach = typeof args.afterEach !== 'undefined' && isFunction(args.afterEach) ? args.afterEach : false;
+    obj.beforeAll = typeof args.beforeAll !== 'undefined' && isFunction(args.beforeAll) ? args.beforeAll : false;
+    obj.afterAll = typeof args.afterAll !== 'undefined' && isFunction(args.afterAll) ? args.afterAll : false;
+    obj.errorHandler = typeof args.errorHandler !== 'undefined' && isFunction(args.errorHandler) ? args.errorHandler : false;
+  }
+  return obj;
+};
+
+// check if animation has completed
+var killCheck = function killCheck(newLetters, truth) {
+  var result = newLetters.length === truth.length && newLetters.every(function (e, i) {
+    return e === truth[i];
+  });
+  if (result) {
+    return true;
+  }
+  return false;
+};
+
+// set end state of text if user specifies
+var defineEndText = function defineEndText(end) {
+  if (!end || end === undefined || !(typeof end === 'string' || end instanceof String)) return false; // break if no string passed
+  var endText = end;
+  var truth = endText.split('');
+  var newLetters = endText.split('');
+  var startTextTemp = [];
+  var startText;
+  truth.forEach(function (item, index) {
+    if (' \t\n\r\v'.indexOf(truth[index]) > -1) {
+      startTextTemp.push(' ');
+    } else {
+      startTextTemp.push(randomChar());
+    }
+  });
+  startText = startTextTemp;
+  return {
+    truth: truth,
+    newLetters: newLetters,
+    startText: startText
+  };
+};
+
+// get util functions
+function Scramble (element, scrambleFireArgs) {
+  return new Promise(function (resolve, reject) {
+    // create promise to wrap fn
+
+    if (typeof element === "undefined") reject('Target element is undefined');
+    if (element.getAttribute('data-scramble-active') !== 'true') {
+      if (scrambleFireArgs.beforeEach) {
+        // callback fired before fn
+        scrambleFireArgs.beforeEach(element);
+      }
+      element.setAttribute('data-scramble-active', 'true');
+      element.classList.add('scrambling');
+      var truthHTML = element.innerHTML; // get html
+      var revert = []; // init empty kill switch array
+      var speed = scrambleFireArgs.speed ? scrambleFireArgs.speed : 100;
+      var truth = element.textContent.split(''); // get letters
+      var startText = truth;
+      var newLetters = element.textContent.split('');
+      var HTMLreset = false;
+
+      // if user defines an ending text string then use that instead of the original text   
+      var newTextResult;
+      // first check passed option and then data-attribute
+      if (isValidString(scrambleFireArgs.text)) {
+        newTextResult = defineEndText(scrambleFireArgs.text);
+      } else if (element.getAttribute('data-scramble-text') && element.getAttribute('data-scramble-text') !== '') {
+        newTextResult = defineEndText(element.getAttribute('data-scramble-text'));
+      }
+      // reset vars
+      if (newTextResult) {
+        HTMLreset = true;
+        truth = newTextResult.truth;
+        newLetters = newTextResult.newLetters;
+        startText = newTextResult.startText;
+      }
+
+      // set random killswitch timers to reset letters to original states
+      var timeoutHandler = function timeoutHandler(arr) {
+        if (arr && isArray(arr)) {
+          var _loop = function _loop(i) {
+            setTimeout(function () {
+              revert[i] = true;
+            }, randomTime(isObject(scrambleFireArgs), scrambleFireArgs.random, scrambleFireArgs.speed));
+          };
+          for (var i = 0; i <= arr.length; i++) {
+            _loop(i);
+          }
+        }
+        return false;
+      };
+      var intervalHandler = function intervalHandler() {
+        // map over letters and replace with random or revert back to truth
+        startText.map(function (letter, i) {
+          // break if a space
+          if (' \t\n\r\v'.indexOf(letter) > -1) return false;
+          // set new random letter
+          newLetters[i] = randomChar();
+          // reset individual letter if kill switch
+          if (revert[i] === true) {
+            newLetters[i] = truth[i];
+          }
+          // set html
+          element.textContent = newLetters.join('');
+          return true;
+        });
+
+        // kill interval after all letter returned to normal to save stack
+        if (killCheck(newLetters, truth)) {
+          element.innerHTML = truthHTML;
+          if (HTMLreset) {
+            var innerContent = element.children[0];
+            if (innerContent && innerContent !== '') {
+              innerContent.textContent = newLetters.join('');
+            } else {
+              element.textContent = newLetters.join('');
+            }
+          }
+          clearInterval(ticker); // stop looping
+          element.setAttribute('data-scramble-active', 'false');
+          element.classList.remove('scrambling');
+          if (scrambleFireArgs.afterEach) {
+            // callback fired after fn
+            scrambleFireArgs.afterEach(element);
+          }
+          resolve(element); // resolve promise
+        }
+      };
+
+      // fire timeouts and interval
+      timeoutHandler(startText);
+      intervalHandler();
+      var ticker = setInterval(function () {
+        intervalHandler();
+      }, speed);
+    } // end check for active
+    else {
+      reject('Animation already triggered');
+    }
+  });
+}
+
+// export main setup function - this is imported in the main api export
+function ScramblerSetup (passedArgs) {
+  if (isValidArgType(passedArgs)) {
+    // set function default arguments if it was an object
+    var scrambleFireArgs = setArgs(passedArgs, isObject(passedArgs));
+
+    // get chosen scramble items
+    var scrambleElements = isObject(scrambleFireArgs) ? _toConsumableArray(document.querySelectorAll(scrambleFireArgs.target)) : _toConsumableArray(document.querySelectorAll(scrambleFireArgs));
+
+    // create promises from chosen items
+    var promiseArr = [];
+    scrambleElements.forEach(function (item) {
+      var promise = Scramble(item, scrambleFireArgs);
+      promiseArr.push(promise);
+    });
+    if (promiseArr.length > 0) {
+      // beforeAll hook
+      if (scrambleFireArgs.beforeAll) {
+        scrambleFireArgs.beforeAll(scrambleElements);
+      }
+      // use promise.all to wait for all promises to complete
+      Promise.all(promiseArr).then(function (els) {
+        // afterAll hook
+        if (scrambleFireArgs.afterAll) {
+          scrambleFireArgs.afterAll(els);
+        }
+      })["catch"](function (e) {
+        // error handler, also fires when anim locked (running)
+        if (scrambleFireArgs.errorHandler) {
+          scrambleFireArgs.errorHandler(e);
+        }
+      });
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+}
+
+// get setup function
+
+// export main api function
+var scrambler = (function () {
+  return ScramblerSetup;
+})();
+
+export { scrambler as default };
