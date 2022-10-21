@@ -9,3 +9,4 @@
 1.6.1: Fixing bug with randomTime generator  
 1.6.2: PR to update package.json and security updates
 1.6.3: Generate standalone docs site
+1.6.4: Updating dependencies, migrating from Travis to GitHub Actions
