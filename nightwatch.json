@@ -39,7 +39,7 @@
         ]
       },
       "desiredCapabilities" : {
-        "browserName" : "chrome",
+        "browserName" : "firefox",
         "loggingPrefs": {"driver": "INFO", "server": "OFF", "browser": "INFO"}
       }
     }

@@ -1,7 +1,7 @@
 # setup
 package.json
 gulpfile.js
-rollup.config.js
+rollup.config.mjs
 .eslintrc
 .babelrc
 .travis.yml
