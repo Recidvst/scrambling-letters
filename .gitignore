@@ -29,3 +29,5 @@ geckodriver.log
 Thumbs.db
 
 _redirects
+
+.idea
